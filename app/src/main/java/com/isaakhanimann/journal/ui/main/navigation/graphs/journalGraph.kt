@@ -75,7 +75,7 @@ fun NavGraphBuilder.journalGraph(navController: NavHostController) {
             TimelineScreen()
         }
         composableWithTransitions<VolumetricDosingOnJournalTabRoute> {
-            VolumetricDosingScreen()
+            VolumetricDosingScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<ExperienceRoute> { backStackEntry ->
             val experienceRoute: ExperienceRoute = backStackEntry.toRoute()
@@ -130,7 +130,9 @@ fun NavGraphBuilder.journalGraph(navController: NavHostController) {
             )
         }
         addIngestionGraph(navController)
-        composableWithTransitions<ExplainTimelineOnJournalTabRoute> { ExplainTimelineScreen() }
+        composableWithTransitions<ExplainTimelineOnJournalTabRoute> {
+            ExplainTimelineScreen(navigateBack = navController::popBackStack)
+        }
         composableWithTransitions<SaferSniffingRouteOnJournalTab> { SaferSniffingScreen() }
         composableWithTransitions<CalendarRoute> {
             CalendarJournalScreen(

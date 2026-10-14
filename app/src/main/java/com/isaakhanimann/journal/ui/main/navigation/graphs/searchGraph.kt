@@ -70,10 +70,11 @@ fun NavGraphBuilder.searchGraph(navController: NavHostController) {
                 navigateToVolumetricDosingScreen = {
                     navController.navigate(VolumetricDosingOnSearchTabRoute)
                 },
+                navigateBack = navController::popBackStack
             )
         }
         composableWithTransitions<CategoryRoute> {
-            CategoryScreen()
+            CategoryScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<EditCustomSubstanceRoute> {
             EditCustomSubstanceScreen(navigateBack = navController::popBackStack)
@@ -84,11 +85,15 @@ fun NavGraphBuilder.searchGraph(navController: NavHostController) {
             )
         }
         composableWithTransitions<VolumetricDosingOnSearchTabRoute> {
-            VolumetricDosingScreen()
+            VolumetricDosingScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions<ExplainTimelineOnSearchTabRoute> { ExplainTimelineScreen() }
+        composableWithTransitions<ExplainTimelineOnSearchTabRoute> {
+            ExplainTimelineScreen(navigateBack = navController::popBackStack)
+        }
 
-        composableWithTransitions<DosageExplanationRouteOnSearchTab> { DoseExplanationScreen() }
+        composableWithTransitions<DosageExplanationRouteOnSearchTab> {
+            DoseExplanationScreen(navigateBack = navController::popBackStack)
+        }
 
     }
 }

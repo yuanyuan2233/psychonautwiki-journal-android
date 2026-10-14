@@ -65,9 +65,12 @@ fun MainScreen(
                         onClick = {
                             if (selected) {
                                 val isAlreadyOnTopOfTab =
-                                    topLevelRoutes.any { it.route == currentDestination?.route }
+                                    currentDestination?.hasRoute(topLevelRoute.startRoute) == true
                                 if (!isAlreadyOnTopOfTab) {
-                                    navController.popBackStack()
+                                    navController.popBackStack(
+                                        route = topLevelRoute.startRoute,
+                                        inclusive = false
+                                    )
                                 }
                             } else {
                                 navController.navigate(topLevelRoute.route) {

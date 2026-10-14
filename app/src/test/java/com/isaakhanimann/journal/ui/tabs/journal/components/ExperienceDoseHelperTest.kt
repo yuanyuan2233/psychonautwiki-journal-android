@@ -1,6 +1,6 @@
 package com.isaakhanimann.journal.ui.tabs.journal.components
 
-import com.isaakhanimann.journal.data.room.experiences.entities.AdministrationRoute
+import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import junit.framework.TestCase.assertEquals

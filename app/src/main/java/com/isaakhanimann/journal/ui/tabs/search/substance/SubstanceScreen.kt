@@ -38,6 +38,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ChevronRight
 import androidx.compose.material.icons.filled.GppBad
 import androidx.compose.material.icons.filled.Update
@@ -99,6 +100,7 @@ fun SubstanceScreen(
     navigateToVolumetricDosingScreen: () -> Unit,
     navigateToExplainTimeline: () -> Unit,
     navigateToCategoryScreen: (categoryName: String) -> Unit,
+    navigateBack: () -> Unit,
     viewModel: SubstanceViewModel = hiltViewModel()
 ) {
     SubstanceScreen(
@@ -111,6 +113,7 @@ fun SubstanceScreen(
         navigateToVolumetricDosingScreen = navigateToVolumetricDosingScreen,
         navigateToCategoryScreen = navigateToCategoryScreen,
         navigateToExplainTimeline = navigateToExplainTimeline,
+        navigateBack = navigateBack,
         substanceWithCategories = viewModel.substanceWithCategories,
         customUnits = viewModel.customUnitsFlow.collectAsState().value,
     )
@@ -132,6 +135,7 @@ fun SubstanceScreenPreview(
             navigateToVolumetricDosingScreen = {},
             navigateToExplainTimeline = {},
             navigateToCategoryScreen = {},
+            navigateBack = {},
             substanceWithCategories = substanceWithCategories,
             customUnits = listOf(
                 CustomUnit.mdmaSample
@@ -152,6 +156,7 @@ fun SubstanceScreen(
     navigateToVolumetricDosingScreen: () -> Unit,
     navigateToExplainTimeline: () -> Unit,
     navigateToCategoryScreen: (categoryName: String) -> Unit,
+    navigateBack: () -> Unit,
     substanceWithCategories: SubstanceWithCategories,
     customUnits: List<CustomUnit>
 ) {
@@ -169,6 +174,14 @@ fun SubstanceScreen(
                         }
                     } else {
                         Text(substance.name)
+                    }
+                },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
                     }
                 },
                 actions = {

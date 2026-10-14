@@ -19,7 +19,11 @@
 package com.isaakhanimann.journal.ui.tabs.search.substance.category
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -41,9 +45,10 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun CategoryScreen(
+    navigateBack: (() -> Unit)? = null,
     viewModel: CategoryViewModel = hiltViewModel()
 ) {
-    CategoryScreen(category = viewModel.category)
+    CategoryScreen(category = viewModel.category, navigateBack = navigateBack)
 }
 
 @Preview
@@ -56,24 +61,55 @@ fun CategoryPreview() {
             url = "https://psychonautwiki.org/wiki/Psychedelics",
             color = Color.Red
         ),
+        navigateBack = null
     )
 }
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CategoryScreen(category: Category?) {
+fun CategoryScreen(category: Category?, navigateBack: (() -> Unit)? = null) {
     if (category == null) {
-        EmptyScreenDisclaimer(
-            title = stringResource(R.string.drugs_category_not_found),
-            description = stringResource(R.string.drugs_category_error_navigate_back)
-        )
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(stringResource(R.string.drugs_category_not_found)) },
+                    navigationIcon = {
+                        if (navigateBack != null) {
+                            IconButton(onClick = navigateBack) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                    contentDescription = stringResource(R.string.journal_action_back)
+                                )
+                            }
+                        }
+                    }
+                )
+            }
+        ) { padding ->
+            androidx.compose.foundation.layout.Box(modifier = Modifier.padding(padding)) {
+                EmptyScreenDisclaimer(
+                    title = stringResource(R.string.drugs_category_not_found),
+                    description = stringResource(R.string.drugs_category_error_navigate_back)
+                )
+            }
+        }
     } else {
         val uriHandler = LocalUriHandler.current
         Scaffold(
             topBar = {
                 TopAppBar(
                     title = { Text(getCategoryDisplayName(category.name)) },
+                    navigationIcon = {
+                        if (navigateBack != null) {
+                            IconButton(onClick = navigateBack) {
+                                Icon(
+                                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                    contentDescription = stringResource(R.string.journal_action_back)
+                                )
+                            }
+                        }
+                    },
                     actions = {
                         if (category.url != null) {
                             TextButton(
