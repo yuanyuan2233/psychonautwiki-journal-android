@@ -68,6 +68,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.ui.utils.titleRes
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.Category
@@ -271,7 +272,7 @@ fun SubstanceScreen(
                                 modifier = Modifier.padding(vertical = 5.dp)
                             ) {
                                 Text(
-                                    text = roa.route.displayText,
+                                    text = stringResource(roa.route.titleRes),
                                     style = MaterialTheme.typography.titleMedium
                                 )
                                 if (roa.roaDose == null) {
@@ -440,7 +441,7 @@ fun SubstanceScreen(
                                     RouteColorCircle(roa.route)
                                     Spacer(modifier = Modifier.width(8.dp))
                                     Text(
-                                        text = roa.route.displayText,
+                                        text = stringResource(roa.route.titleRes),
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                 }
