@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 通用 -->
+    <string name="safer_action_article">权威条目</string>
+    <string name="safer_cd_open_link">打开链接</string>
+    <string name="safer_cd_info">详情信息</string>
+
+    <!-- 第一章：物质安全使用总则 (SaferUseScreen) -->
+    <string name="safer_use_title">物质安全使用总则</string>
+    <string name="safer_section_research_title">1. 研究先行 (Research)</string>
+    <string name="safer_section_research_text" formatted="false">在接触任何物质或多种物质组合之前，务必提前深入检索并了解其可能产生的持续时间、主观体验效应以及潜在的不良反应。\n请仔细阅读本应用内的全部信息，并参阅 PsychonautWiki 对应的百科条目。最理想的做法是与其他权威减害与医学数据库（如 TripSit、Erowid、维基百科、Bluelight、Reddit 减害板块等）进行交叉核对与印证。切忌草率行事，多花时间查证绝不吃亏。</string>
+    <string name="safer_section_testing_title">2. 物质检测 (Testing)</string>
+    <string name="safer_section_testing_text" formatted="false">请尽可能利用匿名且免费的专业“物质检测与鉴定服务（Drug Checking Services）”来检测你的物质样本。如果你所在的国家或地区尚未普及此类公共服务，请自行使用“化学试剂显色检测盒（Reagent Testing Kits）”与“芬太尼检测试纸（Fentanyl Test Strip）”。\n切勿盲目相信卖方声称的纯度或品质。建立经过事先严格测试的安全储备，远好于临时起意获取来源不明的物质。</string>
+    <string name="safer_btn_drug_testing">全球物质检测服务机构名录</string>
+    <string name="safer_btn_reagent_testing">化学试剂显色检测指南</string>
+    <string name="safer_section_dosage_title">3. 剂量掌控 (Dosage)</string>
+    <string name="safer_section_dosage_text" formatted="false">明确你的目标剂量：从小剂量起步，耐心等待药效发挥。饱腹状态下口服吞咽给药，可能导致药效初显时间（起效期）推迟数小时之久。对产生耐受性的人而言轻松承受的剂量，对你而言可能极其危险甚至致命。\n\n请务必购置一台毫克级高精度电子天平，以便精准称量你的剂量。请注意：售价在 1000 美元以下的普通毫克天平无法准确称量 50 毫克以下的超低剂量，且在 10 至 15 毫克以下时误差极大。如果物质的有效剂量极小，请务必使用“容积法微量配液”（将其完全溶解在适量水或乙醇中，通过体积稀释测量法以实现精准分装）。\n\n许多精神活性物质的“剂量-效应曲线”是非线性的。这意味着剂量哪怕仅增加一倍，其生理与心理效应强度的增幅可能远超两倍，甚至会迅速演变成压倒性、令人极度不适乃至危及生命的危险体验。因此，追加或调整剂量时必须极其微量谨慎递增（例如仅在上一次剂量的 1/4 到 1/2 范围内微幅递增）。</string>
+    <string name="safer_btn_dosage_guide">剂量与称量指南</string>
+    <string name="safer_btn_dosage_classification">剂量分级标准体系</string>
+    <string name="safer_btn_volumetric_dosing">容积法微量配液指南</string>
+    <string name="safer_section_set_setting_title">4. 心境与环境 (Set and Setting)</string>
+    <string name="safer_section_set_setting_text" formatted="false">心境（Set / 心智状态）：确保你的思维、内心渴望、情绪状态、整体心境以及对即将到来的体验所抱持的任何预期，都是积极且有助于本次体验的。同时确保身体状况良好；若你感到生病、身体受伤或整体状态不佳，坚决不要服用。\n\n环境（Setting / 外在环境）：陌生、失控或令人不悦的社交或物理环境，极易诱发痛苦或危险的负面体验（Bad Trip）。请务必选择一个能带给你安全感、熟悉感、掌控感和舒适感的环境。对于致幻剂（迷幻剂、解离剂和致谵妄剂）的使用，请参阅致幻剂安全探索指南。</string>
+    <string name="safer_btn_safer_hallucinogens">致幻剂安全探索指南</string>
+    <string name="safer_section_combinations_title">5. 避免多药滥用与配伍禁忌 (Combinations)</string>
+    <string name="safer_section_combinations_text" formatted="false">在未彻底查明相互作用前，切勿混合使用多种物质（包括酒精）。在所有与物质相关的死亡事件中，最常见的原因正是将中枢神经抑制剂（例如阿片类、苯二氮䓬类镇静剂或酒精）与其他抑制剂混合联用，这会导致致命的呼吸抑制。</string>
+    <string name="safer_btn_swiss_combi">瑞士物质联用查询工具 (Swiss Combination Checker)</string>
+    <string name="safer_btn_tripsit_combi">TripSit 联用相互作用查询工具</string>
+    <string name="safer_section_routes_title">6. 给药途径卫生 (Administration Routes)</string>
+    <string name="safer_section_routes_text" formatted="false">切勿共用鼻吸工具（如吸管、纸币、粉末分装弹舱等），以杜绝丙型肝炎（HCV）等血源性传染病的传播——微量到肉眼完全无法察觉的血液渗出即可造成感染。\n注射是所有给药途径中最为危险的方式，医学上极度不建议采用。如果你执意注射，绝不要共用任何注射器具，并务必参阅专业《安全注射指南》。</string>
+    <string name="safer_btn_routes_info">给药途径机制与风险详解</string>
+    <string name="safer_section_allergy_title">7. 过敏排查测试 (Allergy Tests)</string>
+    <string name="safer_section_allergy_text" formatted="false">在正式使用新批次物质前，务必先摄入极微量样本（例如常规剂量的 1/10 至 1/4），并静待数小时，以确认你的身体不会对该批次物质表现出异常反应、严重过敏或特异体质过敏（Idiosyncratic Response）。</string>
+    <string name="safer_section_reflection_title">8. 自我审视与使用反思 (Reflection)</string>
+    <string name="safer_section_reflection_text" formatted="false">严密监测并记录任何物质的使用频次与剂量强度，警惕心理与生理防线退化，防止滑向滥用和成瘾深渊。特别是许多兴奋剂、阿片类药物和中枢镇静剂，均具有极高的成瘾性与耐受风险。</string>
+    <string name="safer_section_safety_others_title">9. 保障他人安全 (Safety of Others)</string>
+    <string name="safer_section_safety_others_text" formatted="false">在处于物质致醉或意识改变状态期间，严禁驾驶任何机动车辆、操作重型机械，或直接/间接对任何其他人的照护与人身安全承担责任。</string>
+    <string name="safer_section_recovery_title">10. 复苏体位与急救技能 (Recovery Position)</string>
+    <string name="safer_section_recovery_text" formatted="false">如果有人在物质体验中失去意识但仍有呼吸，请立即将其置于“复苏体位”（稳定侧卧位，Recovery Position），以防过量或昏迷中因呕吐物倒流堵塞呼吸道而导致窒息身亡。\n务必将急救热线与医疗救援机构的联系方式提前准备在手边，以备突发紧急状况时第一时间呼叫救援。</string>
+    <string name="safer_btn_recovery_position_video">复苏体位操作演示视频</string>
+    <string name="safer_btn_responsible_use_article">PsychonautWiki：负责任的物质使用条目</string>
+    <string name="safer_cd_responsible_use">负责任的物质使用</string>
+
+    <!-- 第二章：剂量与称量指南 (DoseGuideScreen) -->
+    <string name="safer_dose_guide_title">剂量与称量指南</string>
+    <string name="safer_dose_guide_overview_text" formatted="false">剂量（Dosage）是指单次所给予的精神活性物质的分量或具体重量。\n尽管衡量尺度因具体物质而异，但通常可划分为六个等级：阈值剂量、轻度剂量、常规/中度剂量、强效剂量、极重剂量以及过量剂量（包括非致命性与致命性过量）。基于物质本身的药理学特性及使用者的个体生理差异，每个剂量等级都对应着不同程度的主观预期效应与潜在副反应。在探索心灵或娱乐性物质使用的情境中，深刻理解剂量的运作机制至关重要。\n给药剂量不当会导致严重的负面体验，例如极度焦虑、躯体不适副反应、紧急送医救治，甚至在极端情况下导致死亡。值得警惕的是，服用过低的剂量也往往容易令人感到悬而未决的不适与挫败感；当这种烦躁驱使人们进行“追加剂量（Re-dosing）”且补服量远超最初计划时，就会诱发极度危险的突发性暴冲体验，陷入难以承受与失控的绝境。</string>
+    <string name="safer_dose_guide_choosing_title">选择适宜剂量</string>
+    <string name="safer_dose_guide_choosing_text" formatted="false">使用者应坚决回避自己感到不安或不熟悉的剂量。缺乏经验的使用者应始终从低剂量起步，其目标是循序渐进地过渡到常规推荐剂量。这有助于使用者先行确认自身的生理机能是否能够接纳该物质，排查是否患有潜在过敏症或异常高敏性。\n在完成初次低剂量测试后，若使用者决定提升剂量，强烈建议以受控的微量增幅递增，通常每次增加上一次剂量的 1/3 到 1/2 为宜。然而，某些物质的剂量控制极其棘手。例如，2C-P 具有臭名昭著的陡峭“剂量-效应曲线”，仅仅多出区区几毫克，就能将一个原本可控的剂量推向过量中毒。此外，2C-P 经口服摄入后的起效过程极为缓慢，据报告其峰值效应在摄入后 3 至 5 小时才会出现。因此，面对陌生新物质时，请务必保持极大耐心！绝不可盲目将剂量翻倍或增至三倍，否则会急剧增加经历“糟糕旅程（Bad Trip）”或突发严重副作用（如惊恐发作、极度焦虑以及药物性精神病）的风险。\n这种克制能够最大程度消除发生意外负面事件的隐患。切记，每个人对每种物质的生物学反应截然不同，受诸多因素共同制约：个人耐受度、脑内神经生化平衡、体重与体脂率、新陈代谢速率、胃内饱腹状态以及个人体质敏感度。另一个不可忽视的关键变量是物质纯度，不同批次来源的产品之间纯度往往存在显著差异。\n关于任何物质的适宜剂量信息，应综合查阅 PsychonautWiki、Erowid、TripSit、维基百科、Bluelight 与学术文献。若检索到相互矛盾的剂量数据，必须始终遵循“就低不就高”原则，从最低剂量开始以化解风险。</string>
+    <string name="safer_dose_guide_allergy_title">过敏排查测试</string>
+    <string name="safer_dose_guide_allergy_text" formatted="false">部分人群（尤其是本身存在基础疾患或免疫系统过敏者）可能会对某些物质产生严重不良反应或特异性过敏，表现为剧烈的躯体不适、认知紊乱或极度高敏。预防这一风险的最佳途径，是在收到任何新批次的物质时，均对其进行过敏测试（即便是来自看似可靠的供货渠道亦是如此，因为在实际流通中，更强效、更致命的危险化合物被意外混入或冒充标称产品的事件屡见不鲜）。\n规范进行过敏测试的方法是：仅摄入微不足道的微量样本（约为常规剂量的 1/6），随后静待数小时乃至数天时间细致观察。\n进行过敏排查时，应密切留意任何异常副反应，包括皮疹、荨麻疹、呼吸窘迫受阻、心动过速、心律失常或皮肤灼痛感。根据症状的严重程度，必要时应立即寻求急诊医疗协助。</string>
+    <string name="safer_dose_guide_measurement_title">剂量称量与工具考量</string>
+    <string name="safer_dose_guide_measurement_text" formatted="false">使用者称量精神活性物质剂量的方法多种多样。最为精准且安全的量取方式，是将毫克级电子天平与容积法微量配液法相结合。这种规范做法远比仅凭肉眼目测（Eyeballing）估量粉末分量安全千百倍——目测不过是不可靠的盲目猜测，极易酿成惨剧。</string>
+    <string name="safer_dose_guide_eyeballing_title">严禁肉眼目测估量 (Eyeballing)</string>
+    <string name="safer_dose_guide_eyeballing_text" formatted="false">在任何情况下都坚决反对目测估量。目测估量是一种极其粗放不准的危险方法，即单纯通过肉眼观察粉末体积来猜测其重量。在视觉感知上，10 毫克与 30 毫克的粉末几乎毫无肉眼可见的差异，但这微小的体积差别往往意味着从轻度安全区间暴增至致死过量区间。常见的目测陋习包括使用所谓的“微量勺（Micro-scoop）”以及“方格纸分割法（Graph Paper Method）”。\n在方格纸分割法中，使用者将已知重量的粉末大致均匀摊开在网格方格纸上，根据覆盖的格子数量来切分剂量。这种方法毫无准确性可言，原因在于同等重量的粉末其堆积密度（Density）差异极大——即使是同一种化学物质，不同结晶批次或研磨细度下的松装密度也截然不同。例如，两堆看起来大小完全一致的麦司卡林（Mescaline）粉末，其内在密度可能天差地别，重量相差数倍。\n使用者绝不能轻信卖家声称的包装净重，卖家在称重分装时因人为失误或刻意过量/缺斤少两的情况屡见不鲜（实际分量多于标称值同样会导致用户在不知情下发生过量）。\n\n对于有效起效剂量极低（低于 10 毫克）且具有敏锐剂量-效应曲线的高活性物质，目测估量无异于拿生命豪赌。</string>
+    <string name="safer_dose_guide_scales_title">毫克级电子天平的使用规范</string>
+    <string name="safer_dose_guide_scales_text" formatted="false">售价在 1000 美元以内的常规毫克天平，通常无法精准称量 50 毫克以下的粉末，而在 10 至 15 毫克以下时误差甚至可达数倍。为了获得更高的称量线性与读数精度，可以在天平盘上放置随附的校准砝码（切勿按去皮置零键），在此预载重量基础上再添加 10 毫克以上的待测物质。对于效价更高、起效剂量更低的物质，强烈敦促使用者采用容积法微量配液。\n获取粉末状化学物质时，强烈建议购置一台可靠且精确的数字毫克天平，以确保服用的剂量处于安全推荐范畴内。对这类仪器投入区区二三十美元，往往就是安全平稳体验与致命危险事故之间的界线。\n为达到最高的称量精准度，天平必须放置在绝对平整的水平台面上，远离一切机械振动、空气对流与微风干扰。电池电量不足亦会导致天平读数漂移，因此应定期更换电池。\n市面上可供选购的天平品类繁多，用户在选购时应仔细核查用户评价与技术指标，理想情况下应选择最小分度值（可读性）达到 0.001 克（1 毫克）的天平。如果使用的天平精度仅为 0.005 克（5 毫克），那么正负双向均存在 5 毫克的漂移误差；这意味着当你试图量取 20 毫克物质时，实际读数落点可能在 15 至 25 毫克之间波动。</string>
+    <string name="safer_dose_guide_technique_title">高精度称量操作规程（标准八步称重法）</string>
+    <string name="safer_dose_guide_technique_text" formatted="false">大多数千元级毫克天平在较重区间（5 至 15 克）的传感器线性响应远优于近乎零点的极低量程区间。因此，在天平托盘上保留校准砝码进行增量称重，能够获得更出色的称量准确性。标准称重八步操作法如下：\n1. 置于平稳基准面：将天平置于远离风动、气流与机械振动的完全水平稳固台面上。\n2. 基准校准：按照说明书使用标准砝码对天平进行校准（Calibrate）。\n3. 放置预载砝码：将天平自带的标准校准砝码放置在称盘中央，注意：此时绝对不要按“去皮（Tare/置零）”键。\n4. 放置称量载体并记录基重：将一枚空胶囊（或空称量舟）放置在砝码上方，记录下此时的初始总重量，同样切勿去皮置零。\n5. 添加样品粉末：将待测粉末小心装入该胶囊（或称量舟）中。\n6. 记录满载总重：记录装入粉末后的最终总重量。\n7. 差减计算净重：用第 6 步的最终总重量减去第 4 步的初始空胶囊重量，所得差值即为粉末的实际净重。\n8. 后续容积配液：称量完毕后，特别是针对高活性强效物质（起效量低于 10 毫克），请务必随后配合使用“容积法微量配液”。</string>
+    <string name="safer_dose_guide_volumetric_title">容积法微量配液</string>
+    <string name="safer_dose_guide_volumetric_text" formatted="false">容积法微量配液尤其适用于高活性强效物质，因为市面上绝大多数常规毫克天平根本无法准确称量 10 至 15 毫克以下的超低剂量。\n容积法微量配液是指将已知净重的一定总量化合物彻底溶解于精确计量体积的液体介质中，使溶质在溶液中均匀分布，从而便于通过量取液体体积实现精准分装与给药。出于减害原则，对于那些效力极强、无法用传统称重天平准确量取的化合物，在液体溶液中进行容积配液是一项至关重要的核心操作。</string>
+    <string name="safer_dose_guide_classification_title">剂量分级标准体系</string>
+    <string name="safer_dose_guide_classification_text" formatted="false">精神活性物质所引起的效应范围与强度受多重变量调控，包括给药途径（ROA）、剂量大小、心境与环境（Set &amp; Setting）以及个体身心与外界条件。\n标准临床与减害分类将有效剂量严密划分为五个梯级：阈值剂量、轻度剂量、常规/中度剂量、强效剂量与极重剂量。</string>
+
+    <!-- 第三章：全球物质检测服务机构名录 (DrugTestingScreen) -->
+    <string name="safer_drug_testing_title">全球物质检测服务机构名录</string>
+    <string name="safer_drug_testing_intro" formatted="false">专业物质检测与化学鉴别服务（Drug Checking / Pill Testing）是现代减害体系的核心基石，能够运用红外光谱（FTIR）、气相色谱-质谱联用（GC-MS）、高效液相色谱（HPLC）等先进实验室仪器，精准定性定量分析样品成分，彻底杜绝高危掺假物危害。</string>
+    <string name="safer_drug_testing_report_missing">向作者报送新增或缺失的检测机构</string>
+    <string name="safer_country_austria">奥地利 (Austria)</string>
+    <string name="safer_country_australia">澳大利亚 (Australia)</string>
+    <string name="safer_country_belgium">比利时 (Belgium)</string>
+    <string name="safer_country_canada">加拿大 (Canada)</string>
+    <string name="safer_country_germany">德国 (Germany)</string>
+    <string name="safer_country_france">法国 (France)</string>
+    <string name="safer_country_italy">意大利 (Italy)</string>
+    <string name="safer_country_netherlands">荷兰 (Netherlands)</string>
+    <string name="safer_country_norway">挪威 (Norway)</string>
+    <string name="safer_country_slovenia">斯洛文尼亚 (Slovenia)</string>
+    <string name="safer_country_spain">西班牙 (Spain)</string>
+    <string name="safer_country_switzerland">瑞士 (Switzerland)</string>
+    <string name="safer_country_united_kingdom">英国 (United Kingdom)</string>
+    <string name="safer_city_innsbruck">因斯布鲁克 (Innsbruck)</string>
+    <string name="safer_city_vienna">维也纳 (Vienna)</string>
+    <string name="safer_city_graz">格拉茨 (Graz)</string>
+    <string name="safer_city_canberra">堪培拉 (Canberra)</string>
+    <string name="safer_city_queensland">昆士兰 (Queensland)</string>
+    <string name="safer_city_saint_gilles">圣吉尔 (Saint-Gilles)</string>
+    <string name="safer_city_brussels">布鲁塞尔 (Brussels)</string>
+    <string name="safer_city_vancouver">温哥华 (Vancouver)</string>
+    <string name="safer_city_montreal">蒙特利尔 (Montreal)</string>
+    <string name="safer_city_berlin">柏林 (Berlin)</string>
+    <string name="safer_city_dunkerque">敦刻尔克 (Dunkerque)</string>
+    <string name="safer_city_lyon">里昂 (Lyon)</string>
+    <string name="safer_city_metz">梅斯 (Metz)</string>
+    <string name="safer_city_torino">都灵 (Torino)</string>
+    <string name="safer_city_33_locations">全荷兰 33 个网点</string>
+    <string name="safer_city_oslo">奥斯陆 (Oslo)</string>
+    <string name="safer_city_various_locations">多处网点</string>
+    <string name="safer_city_spain_ailaket">维多利亚、毕尔巴鄂、圣塞巴斯蒂安</string>
+    <string name="safer_city_basel">巴塞尔 (Basel)</string>
+    <string name="safer_city_bern_biel">伯尔尼、比尔 (Bern, Biel)</string>
+    <string name="safer_city_geneva">日内瓦 (Geneva)</string>
+    <string name="safer_city_zurich">苏黎世 (Zurich)</string>
+    <string name="safer_city_luzern">卢塞恩 (Luzern)</string>
+    <string name="safer_city_lausanne">洛桑 (Lausanne)</string>
+    <string name="safer_city_bristol">布里斯托 (Bristol)</string>
+
+    <!-- 第四章：化学试剂显色检测指南 (ReagentTestingScreen) -->
+    <string name="safer_reagent_testing_title">化学试剂显色检测指南</string>
+    <string name="safer_reagent_testing_text" formatted="false">化学试剂显色检测盒是一种利用特定化学酸液/显色溶液与待测化合物发生反应产生颜色变化的物质检验方法（例如 Marquis、Mecke、Mandelin、Ehrlich、Hofmann 等试剂）。试剂测试有助于辅助判断样品中可能存在何种化学基团或目标化学成分。但在许多情况下，显色反应并不能排除同时混有其他类似化合物的可能性，也无法排除样品完全由另一种具有类似显色特征的化合物冒充的可能性。\n\n虽然只有极少数高活性物质能够在纸质印片（Blotter，俗称“票”）所容纳的超微剂量下起效，但 LSD 绝非唯一的一种：针对印片必须进行专项检测（如使用 Ehrlich 与 Hofmann 试剂），以坚决杜绝误服毒性剧烈的 NBOMe 家族类化合物（如 25I-NBOMe，误服常规过量可直接致死）。此外，鉴于芬太尼（Fentanyl）这类超强效合成阿片类物质在极其微小的微克级剂量下即可抑制呼吸致死，致使其完全能够以极高致死量被吸附浸润于单张印片或掺杂在粉末、药片中，因此使用专用的“芬太尼检测试纸（Fentanyl Test Strip）”排查污染正变得日益刻不容缓。\n\n化学试剂显色反应只能定性鉴别特定化学基团的存在与否，绝对无法测定其精确含量或纯度。如果药片或粉末中混有多种成分，较深的显色反应往往会掩盖并压制其他潜在成分较浅的显色反应。某种物质对特定试剂呈现阳性或阴性反应，并不代表该物质就是安全的。没有任何物质使用能够做到 100% 绝对安全。请保持清醒睿智的决策，为你自己的身心健康和生命安全承担全部责任——没有人能替你负责。</string>
+    <string name="safer_reagent_kit_sellers_title">权威试剂套件与显色说明渠道</string>
+    <string name="safer_reagent_seller_dancesafe_title">DanceSafe (试剂使用说明书与显色对照表)</string>
+    <string name="safer_reagent_seller_dancesafe_desc" formatted="false">全球声誉卓著的老牌非营利减害倡导组织，提供详尽的分步检测说明书、多重试剂交叉比对矩阵以及高精度显色色卡。</string>
+    <string name="safer_reagent_seller_bunkpolice_title">Bunk Police (专业减害检测工具官方网站)</string>
+    <string name="safer_reagent_seller_bunkpolice_desc" formatted="false">专注于毒理快速检测技术与危害预防试剂研发的专业机构，提供丰富的物质分离纯化检测包（如分光检测与点阵色谱套件）。</string>
+
+    <!-- 第五章：容积法微量配液指南 (VolumetricDosingScreen) -->
+    <string name="safer_volumetric_dosing_title">容积法液体给药</string>
+    <string name="safer_volumetric_dosing_text">容积法微量配液是指将化合物溶解在液体中，使其更易于精确测量。出于减害原则，对于那些效力极强、无法用常规称重天平准确称量的化合物，使用容积法微量配液至关重要。\n许多精神活性物质（包括苯二氮䓬类和某些致幻剂）在低于 1 毫克时即可产生药效。普通的数显天平无法准确称量如此微小的分量，因此必须通过容积法给药：称量较大量的化合物，并将其溶解在计算好体积的适宜液体中。\n\n请在网上检索以确定适用的溶剂。所有物质均应能溶于酒精，但许多物质不溶于水。</string>
+
+    <!-- 第六章：致幻剂安全探索指南 (SaferHallucinogensScreen) -->
+    <string name="safer_hallucinogens_title">致幻剂安全探索指南</string>
+    <string name="safer_hallucinogens_intro" formatted="false">本指南专为使用与探索致幻剂（包括迷幻剂 Psychedelics、解离剂 Dissociatives 以及致谵妄剂 Deliriants）而定制编制。</string>
+    <string name="safer_hallucinogens_setting_title">外在环境准备 (Setting)</string>
+    <string name="safer_hallucinogens_setting_intro" formatted="false">选择适宜的场所来体验致幻剂的药效至关重要，它在很大程度上直接决定了整个体验的最终走向与基调。对于缺乏经验的初学者而言，理想的场所必须是一个熟悉、安全、完全受控且彻底排除了任何可能对心理状态造成负面干扰因素的室内环境。为致幻体验布置合格的外在环境，建议采取以下关键步骤：</string>
+    <string name="safer_hallucinogens_setting_p1" formatted="false">确保整个体验期间（以及最好次日一整天）彻底免除所有世俗事务与责任：在致幻剂药效影响下，即便最简单日常的任务也可能变得极其艰难，甚至带来强烈的心理压迫与焦虑。使用者必须做好彻底身心放松的准备，不承担任何家务、工作、回复消息或日常琐事，尤其严禁驾驶机动车或操作重型机械。</string>
+    <string name="safer_hallucinogens_setting_p2" formatted="false">回避未直接参与此次体验的人员：这包括可能在同一屋檐下睡觉的亲属，以及任何不够绝对值得信赖、缺乏同理心或对致幻剂药理一无所知的朋友。哪怕仅仅是有不知情的外人在附近走动，也会迅速诱发极度焦虑与被害妄想（Paranoia），并彻底阻碍你完全沉浸于体验之中。</string>
+    <string name="safer_hallucinogens_setting_p3" formatted="false">远离陌生、嘈杂、杂乱或公共暴露的场所：使用者应选择自己拥有高度调控权的环境。这种掌控感可以细微到能够随意调节室内空调温度、自由出入卫生间等。在体验的完整时段内，使用者应当能够随心所欲地坐下、躺倒或自由走动。理想的环境应当具备充分的私密性、舒缓轻柔的背景音乐、柔软舒适的座椅或卧具，以及触手可及的充足饮用水和适口点心。典范场景例如自家或亲密挚友家中安全、温馨的卧室。</string>
+    <string name="safer_hallucinogens_setting_p4" formatted="false">杜绝任何可能诱发“负面氛围（Bad Vibes）”的刺激源：切勿将自己暴露于令人不悦、不安或恐惧的感官刺激之下（例如恐怖惊悚电影、黑暗阴沉的音乐）。如果不适与负面氛围开始笼罩并侵蚀当下的体验，可以通过迅速改变眼前微观物理环境来进行摆脱——例如：如果此时正身处黑暗中坐着，不妨站起身把灯打开，更换一首欢快宁静的音乐，或者换到房子的另一个房间。</string>
+    <string name="safer_hallucinogens_setting_outro" formatted="false">关于开放与自然环境的警示：当使用者对某种特定物质的药理与心理动态已经极其熟稔之后，是否尝试在控制度较低的户外大自然、社交聚会、派对或狂欢电音节（Raves）等场景中进行体验，纯属个体自主的选择。但必须清醒认识到：在那些非受控开放环境中体验，会伴随着显著剧增的人身安全、意外伤害及法律合规风险。</string>
+    <string name="safer_hallucinogens_set_title">心境与心智状态 (Set / State of Mind)</string>
+    <string name="safer_hallucinogens_set_text" formatted="false">使用者的“心境（Set）”即内在本源的心智与心理状态，在决定一段旅程的成败与性质上起着决定性作用。致幻剂本质上是心灵放大器，它会急剧放大一个人当下的思维状态、情绪底色与人生观照：积极的心态往往会升华为更深邃的喜悦，而消极的心态则极易坠入成倍放大的痛苦深渊。因此，在人生经历剧烈现实压力、重大挫折或负面低谷期时，应坚决避免使用致幻剂。使用者必须充分清醒地意识到：致幻剂（尤其是迷幻剂）往往具有强大的心理穿透力，能够强行迫使人面对内心最隐秘的创伤与未解症结，而此时人们很可能在心理上根本尚未做好承受这种直面冲击的准备。\n\n精神疾病前置禁忌：既往存在精神健康疾患病史者（尤其是患有精神分裂症等精神病性障碍或双相情感障碍的人群），应绝对禁忌使用致幻剂。因为这类物质会不可逆地激化并强烈放大其潜在的精神与情感紊乱，并强力催生不可控的妄想与严重幻觉。患有此类疾患但仍执意考虑接触者，必须事先寻求具备执业资质的精神医学专科医师的评估与指导。\n\n核心心法：学会放手 (Let Go)：在致幻体验过程中，最为经典的减害格言就是“学会放手”，顺从药效的引领。使用者应当主动退居“副驾驶座”，放弃任何试图掌控、干预或压制当下体验的徒劳冲动。全然地放松身心、顺应自然流淌的感知至关重要；任何内在的抗拒与搏斗，只会将你试图逃避的不安与恐惧进一步放大数倍。\n\n坦然接纳暂时性的认知瓦解：此外，使用者必须懂得：致幻旅程的深刻体验往往是“无法言诠、难以把握（Ungraspable）”的。这意味着你应当坦然接受自己无法在理性上彻底弄懂或用人类语言准确描绘当下所经历的一切。使用者应当接纳一个客观生理现实：尽管在某些哲学维度上你的思维可能显得异常清澈澄明，但在现实层面，你的逻辑判断力、精细运动控制力、社交语言表达力以及情境态势感知能力都将不可避免地出现显著损害。使用者务必时常在内心温和地提醒自己：这一切光怪陆离的感官与思维异变完全是药物作用下的正常现象，并且最为关键的是——它们是纯粹暂时的，药效终将褪去，现实终将回归。</string>
+    <string name="safer_hallucinogens_body_title">躯体机能状态 (Bodily State)</string>
+    <string name="safer_hallucinogens_body_text" formatted="false">在开启一段致幻旅程之前，使用者当前的身体机能状况与内心情绪心态具有同等重要的分量。如果你的躯体正处于疲惫、患病或受伤状态，这些原本微弱的躯体不适感在药效的作用下会被放大数倍；再叠加某些物质所特有的“身体负荷（Body Load，如恶心、肌肉紧张、体温失调、头晕等）”，极易严重破坏甚至彻底毁掉整个体验。\n\n与其在身心俱疲、压力沉重、抱病或带伤时勉强服药，不如耐心等待更完美适宜的时机。这种自律将大幅降低经历负面或不适体验的几率。</string>
+    <string name="safer_hallucinogens_sitters_title">旅程陪护员职责 (Trip Sitters)</string>
+    <string name="safer_hallucinogens_sitters_text" formatted="false">在使用致幻剂时，强烈建议必须有一名具备责任心的“旅程陪护员（Trip Sitter）”在场陪同，尤其是当使用者对该物质缺乏充分经验时更应如此。旅程陪护员的核心天职在于协助个体或群体保持从容冷静、锚定现实的心智状态。这可以通过静静守护体验者来实现：一旦体验者产生任何焦虑或应激反应，陪护员应给予温和平定的心理抚慰与安全再保证（Reassurance），同时切实防止他们遭受任何物理伤害。英文中“Trip Sitter（旅程陪护员）”与“Baby Sitter（婴儿保姆）”在字面与内涵上有着直接关联：因为旅程陪护往往就像照看婴幼儿一样，这是一份必须以同等严肃态度对待的重大安全责任。\n\n一名优秀的旅程陪护员必须具备多项素质：\n• 除了必须是一个有担当的成年人外，他们理想中应当保持全程绝对清醒（Sober）。\n• 能够凭借个人的切身体验或深厚的知识储备，对体验者的心理处境产生深刻的同理心与共情。\n• 陪护员应当充分理解：当一个人处于致幻状态下时，他们往往无法像平日那样正常交流或互动。此外，由于他们的肢体平衡感与空间辨识力会受到明显损伤，适时给予照料——例如协助补充饮水、引领其在室内安全活动等，能极大缓解体验者的焦虑与困惑。\n• 陪护员可以适度融入对话，但也必须时刻谨记为体验者留出足够的个人心理空间，允许其探索内心体验而不施加过多不必要的外界干涉。\n\n随着使用者对某种物质药性有了深厚透彻的掌握，是否在没有陪护员的情况下体验便成了个人自主的决定。然而，在尝试高剂量或接触此前从未体验过的新剂量梯度时，依然强烈建议配置旅程陪护员。请牢记：在致幻过程中有信得过的挚友在旁守护，是防范潜在心理崩溃、医疗急救意外或法律困境的最有效防线。</string>
+    <string name="safer_hallucinogens_anchors_title">现实锚点与心理着陆工具 (Anchors)</string>
+    <string name="safer_hallucinogens_anchors_intro" formatted="false">在致幻剂使用的语境中，“锚点（Anchor）”是指一种能够帮助使用者在时间感知、空间感知、记忆机能以及自我认同（自我消融，Ego Dissolution）遭受剧烈扭曲时，依然能够稳固联结现实世界、保持心智不迷失的特定活动或实体物件。在较高剂量下，强烈的感知畸变极易诱发严重的定向障碍（Disorientation）与意识混乱。现实锚点的核心作用，就是对抗这种混乱，帮助体验者在现实维度中保持对当前客观处境的准确认知。</string>
+    <string name="safer_hallucinogens_anchors_examples_intro">典型的现实锚点包括：</string>
+    <string name="safer_hallucinogens_anchors_p1" formatted="false">熟悉且振奋人心的音乐：例如我们社区精选的“积极氛围音乐库（Good Vibes Portal）”。然而，更鼓励使用者提前精心编排专属于自己的歌单，其中收录那些令你个人产生幸福、放松与安全联想的熟悉旋律。</string>
+    <string name="safer_hallucinogens_anchors_p2" formatted="false">承载极深个人情感的实体物件：例如具有深刻记忆的随身饰物、家庭照片、护身符或手把件。</string>
+    <string name="safer_hallucinogens_anchors_p3" formatted="false">心灵咒语 (Mantra)：像诵经一样持续默念或重复念诵一句富有积极意涵的词汇或人生座右铭。</string>
+    <string name="safer_hallucinogens_anchors_p4" formatted="false">视线所及的备忘提示大字条：在醒目的大号纸张上书写简洁明了的备忘提示，并将其张贴放置于体验期间视线随时可及之处。常见的备忘语录包括物质名称、摄入剂量以及明确的事实陈述，例如：“你此刻正在 LSD 的药效中，这是暂时的，你是安全的。”同理，也可以直接将简短字句写在手背等清晰可见的身体部位上。</string>
+    <string name="safer_hallucinogens_anchors_p5" formatted="false">体验专属衣物或饰品：一件仅在致幻体验期间穿戴的专属外衣或饰品，从而在潜意识中与“当下处于神圣受控体验中”建立起紧密的心理联结。</string>
+    <string name="safer_hallucinogens_abort_title">中止旅程与紧急干预 (Aborting Trips)</string>
+    <string name="safer_hallucinogens_abort_text" formatted="false">致幻剂具有引发压倒性心理冲击的潜在风险，极易将使用者推向偏执妄想或极度恐惧的深渊，尤其是在使用者缺乏经验或“心境与环境（Set &amp; Setting）”出现严重偏差时。\n\n如果使用者或陪护员审慎评估后决定强制中止体验，苯二氮䓬类中枢镇静药物（如地西泮、劳拉西泮、阿普唑仑等）以及某些非典型抗精神病药物（如奥氮平、喹硫平等），可被视作应对体验持续恶化失控或超长药效不可耐受时的紧急“弹射逃生按钮（Eject Button）”。这类药物在平息急性惊恐发作、瓦解偏执妄想以及阻断潜在心理创伤形成方面通常极其高效。\n\n然而，资深体验者普遍建议：在身体体征安全可控的前提下，尽量尝试接纳并渡过旅程中那些艰难坎坷的阶段。因为充满挑战与震荡的心灵困境往往只是暂时性的，而直面并熬过这些艰难时刻，最终往往会升华为自我认知与心智蜕变中最具深刻启迪意义的宝贵财富。</string>
+
+    <!-- 附录一：剂量分级标准体系详解 (DoseExplanationScreen) -->
+    <string name="safer_dose_explanation_title">剂量分级标准体系详解</string>
+    <string name="safer_dose_explanation_intro" formatted="false">精神活性物质所引起的效应范围与强度受多重变量调控，包括给药途径（ROA）、剂量大小、心境与环境（Set &amp; Setting）以及个体身心与外界条件。标准临床与减害分类将有效剂量严密划分为五个梯级：</string>
+    <string name="safer_dose_class_threshold_title">1. 阈值剂量 (THRESHOLD)</string>
+    <string name="safer_dose_class_threshold_desc" formatted="false">阈值剂量是指由该物质引起的精神与躯体改变首次开始显现的临界给药量。\n此时产生的生理与心理效应已明确超越了安慰剂效应的范畴，但通过将个人的注意力与焦点主动导向外部现实环境，依然可以毫不费力地将其忽略。\n处于该剂量层级时，体验者通常会在潜意识中捕捉到一种若有若无的“异样感”，或是隐约察觉到一种在背景深处逐渐凝聚的期盼性冲动。</string>
+    <string name="safer_dose_class_light_title">2. 轻度剂量 (LIGHT)</string>
+    <string name="safer_dose_class_light_desc" formatted="false">轻度剂量所诱发的状态已经与完全清醒状态产生了一定程度的明确区分，但绝不会危及或压倒受试者的常规日常自我意识。\n只要受试者将专注力高度集中于外部物理环境或投身于复杂的认知与操作任务中，该效应便可被轻松忽略。\n受试者可能必须保持特别敏锐的内省觉知才能清晰感知到药效的作用；或者效应虽然轻微可见，但绝不会强行霸占受试者的注意力和感知中枢。</string>
+    <string name="safer_dose_class_common_title">3. 常规剂量 / 中度剂量 (COMMON)</string>
+    <string name="safer_dose_class_common_desc" formatted="false">常规剂量是指该物质的特异性药理效应与本质特征变得非常鲜明、确凿无误的标准剂量基准。受试者的常规意识状态开始滑移退让，想要忽略其药效作用已变得十分困难。\n受试者通常仍有能力参与常规的社会日常行为，并保持基本的机体功能运作与语言沟通交流能力（但具体表现因人而异）。\n在这一层级，体验者既可以任由药效占据身心主导地位，也可以在面临突发紧急事态或付出足够意志力的前提下，强行压制药效，使其退居为次要背景。</string>
+    <string name="safer_dose_class_strong_title">4. 强效剂量 (STRONG)</string>
+    <string name="safer_dose_class_strong_desc" formatted="false">强效剂量将使受试者大部分丧失正常的机体协调运作能力、日常人际社交互动能力或连贯线性的逻辑思考能力。\n该物质的效应极其强烈而清晰，已彻底无法被忽略、转移或用意志压制；无论受试者主观意愿如何，其身心都将被完全卷入并深陷于这段体验之中。在此剂量水平下，负面副反应（如剧烈焦虑、眩晕、惊恐、躯体负荷过载）的发生概率显著攀升。\n鉴于受试者在强效剂量下已基本丧失实时改变自身行为轨迹与危机避险的能力，因此必须提前严格准备好安全无虞的所处环境并预先规划好所有安全防范措施。</string>
+    <string name="safer_dose_class_heavy_title">5. 极重剂量 (HEAVY)</string>
+    <string name="safer_dose_class_heavy_desc" formatted="false">极重剂量代表了一种物质在产生预期精神活性效应维度的生理与心理耐受极限上限；超越这一区间的超负荷给药，只会导致毒副作用呈指数级剧增，而积极的预期效应增益几乎微乎其微。\n取决于所服用的具体物质，使用者不仅可能彻底丧失身体行动功能与语言沟通能力，还会承受极其剧烈的躯体痛苦与精神不适，这些恶性反应将完全掩盖并压垮在低剂量下原本能够体会到的积极愉悦感。\n在极重剂量下，必须全面启动并严格执行最高等级的减害救助预案，因为一旦遭遇急性医疗突发事件，使用者自身将完全不具备自救或呼救能力。此时强烈要求必须有专业清醒的旅程陪护员全程值守。\n使用者必须清醒警惕：极重剂量与致命过量（Overdose）之间的红线往往极其模糊。每当选择尝试极重剂量时，使用者都在将自己暴露于人身伤害、急性中毒急诊住院乃至猝死的心血管或呼吸衰竭极高风险之中。\n此外，频繁产生反复摄入极重剂量的冲动或强迫性行为（慢性重度滥用），往往是机体产生严重耐受性、深陷药物成瘾或伴随其他严重隐匿性精神健康危机的危险警讯。</string>
+
+    <!-- 附录二：给药途径机制与风险详解 (RouteExplanationScreen) -->
+    <string name="safer_routes_title">给药途径机制与风险详解</string>
+    <string name="safer_routes_intro" formatted="false">给药途径（Route of Administration, ROA）是指精神活性物质被输送导入人体的具体生理途径。给药途径的选择会极大地改变物质的生物利用度、效价强度、起效时间、药效持续时长以及主观体验特征。例如，许多物质在特定途径下生物利用度极高，而在某些途径下则可能因首过消除效应完全失去活性。决定最优途径需全面权衡物质理化性质、预期效果、毒副反应以及个人生理舒适度。</string>
+    <string name="safer_routes_non_injection_title">非注射途径 (Non-Injection Routes)</string>
+    <string name="safer_routes_injection_title">注射途径 (Injection Routes) —— 最高危途径警示</string>
+    <string name="safer_routes_injection_warning" formatted="false">高危警示：注射是所有给药途径中风险最高、致死率最大、成瘾危害最烈的给药手段。医学界强烈呼吁避免任何非医疗受控环境下的注射行为。若处于不可抗拒境况，必须严格践行全套安全注射减害规程，绝对严禁共用任何针头、注射器、溶解水、过滤棉或配药器皿。</string>
+    <string name="safer_btn_safer_plugging">直肠安全给药指南 (Safer Plugging)</string>
+    <string name="safer_btn_safer_injection">安全注射指南 (Safer Injection Guide)</string>
+    <string name="safer_cd_open_pw_article">打开 PsychonautWiki 条目</string>
+    <string name="safer_route_oral_title">1. 口服 (Oral)</string>
+    <string name="safer_route_oral_text" formatted="false">口服是绝大多数精神活性物质最为普遍的常规给药方式，主要指将物质直接吞服进入胃肠道。\n• 药代机制：物质在胃与小肠黏膜通过毛细血管吸收并汇入肝门静脉，必须首先经受肝脏的首过消除代谢（First-pass Metabolism）。\n• 动力学特征：起效时间（Onset）相对较慢（受胃内饱腹状态影响显著），吸收过程平缓，总药效持续时间普遍较长。\n• 风险特征：更容易诱发恶心、呕吐、腹痛及胃肠道功能紊乱。</string>
+    <string name="safer_route_sublingual_title">2. 舌下含服 (Sublingual)</string>
+    <string name="safer_route_sublingual_text" formatted="false">舌下含服是指将物质置于舌下黏膜处静待其溶化吸收，是麦角酰胺类（如 LSD）常见的给药方式。\n• 药代机制：通过舌下丰富的舌下动脉毛细血管网直接吸收入血。\n• 动力学特征：吸收速度通常显著快于普通胃肠道口服，且能绕过肝脏的首过代谢。这使得某些经口服会被消化酶或肝脏完全灭活的物质（例如某些 NBOMe 或 NBOH 类化合物）在舌下含服时能够完整保留强效活性。\n• 安全警告：具有强腐蚀性或刺激性的游离碱（Freebase）类化学物质绝不可用于舌下含服，否则会导致严重的口腔黏膜烧灼与溃疡坏死。</string>
+    <string name="safer_route_buccal_title">3. 颊囊含服 (Buccal)</string>
+    <string name="safer_route_buccal_text" formatted="false">颊囊含服是指将物质夹在牙龈与面颊内侧黏膜之间进行吸收。\n• 药代机制：与舌下含服类似，主要通过口腔黏膜微血管网络吸收并规避肝脏首过代谢。常用于印片载体（如 25I-NBOMe、DOM、LSD 或苯二氮䓬类印片），亦常见于咀嚼植物叶片（如巧茶 Khat、卡痛 Kratom、沙尔维亚 Salvia 以及口含烟草 Snus）。</string>
+    <string name="safer_route_insufflated_title">4. 鼻吸 (Insufflated)</string>
+    <string name="safer_route_insufflated_text" formatted="false">鼻吸（又称鼻腔黏膜吸入、嗅吸，Snorting/Sniffing）是指将粉末经鼻孔吸入鼻腔黏膜，规避肝脏首过代谢。\n• 药代机制：通过鼻甲与鼻窦黏膜上极其丰富的毛细血管网快速吸收。\n• 动力学特征：吸收速率与起效极快，通常比口服带来显著更为猛烈的冲击感（Rush），但总体持续时间相应缩短。\n• 生理损害与感染风险：长期或频繁鼻吸粉末会直接破坏鼻黏膜屏障、诱发局部坏死出血、腐蚀鼻中隔软骨导致穿孔，并引起慢性咽喉灼伤与鼻窦炎。减害建议：吸前必须将粉末研磨至极细无颗粒状态，并轮换使用两侧鼻孔。严禁共用吸管或纸币，微量肉眼不可见的渗出血液即可导致丙型肝炎（HCV）乃至艾滋病毒（HIV）的交叉感染。</string>
+    <string name="safer_route_rectal_title">5. 直肠给药 (Rectal / Boofing / Plugging)</string>
+    <string name="safer_route_rectal_text" formatted="false">直肠给药（俗称“塞肛”或“Boofing/Plugging”）是通过肛门将药物溶液或栓剂注入直肠黏膜吸收的高效途径。\n• 药代机制：直肠下静脉与直肠中静脉丛极其丰富，可直接汇入下腔静脉而完全绕过肝脏门脉首过代谢。\n• 动力学特征：吸收率极高、起效迅速、药效强度显著跃升而持续时间相对紧凑。\n• 操作与安全禁忌：可使用无针头洁净注射器或滴管缓慢推注极低容量的溶解液，或使用胶囊/栓剂。具有腐蚀性或高刺激性的物质（如 4-FA、氯苯氨丁酸盐酸盐 Phenibut HCl 等）绝对严禁直肠给药，否则会直接烧伤直肠内壁黏膜，引发剧烈下消化道出血与严重并发症。</string>
+    <string name="safer_route_transdermal_title">6. 透皮贴剂 (Transdermal)</string>
+    <string name="safer_route_transdermal_text" formatted="false">透皮途径是通过皮肤屏障将活性成分缓慢释放并渗透入全身毛细血管循环。\n• 临床特征：主要见于阿片类药物（如芬太尼透皮贴剂）或戒烟尼古丁贴剂。因工艺与透皮吸收促进剂要求极高，通常极少用于非医疗环境。</string>
+    <string name="safer_route_smoked_title">7. 燃烧吸食与雾化吸入 (Smoked / Vaporized)</string>
+    <string name="safer_route_smoked_text" formatted="false">• 燃烧吸食 (Smoked)：利用明火直接引燃物质，吸入高温烟气（常见于大麻、烟草）。物质在数秒内通过肺泡毛细血管网入血，以近乎瞬间的速度穿透血脑屏障，药效暴冲极强且持续时间短。但高温明火会造成严重肺黏膜热损伤，并产生大量致癌焦油；许多热敏性活性分子（如 DMT）在明火直接灼烧下会大量碳化分解损耗。\n• 雾化吸入 (Vaporized)：利用温控加热装置（如电子雾化笔、玻璃油管、锡纸间接加热），在不发生剧烈燃烧的前提下将活性成分蒸发为气溶胶吸入。具有更精准的控温特性，避免焦油生成。然而，使用锡纸“追龙（Chasing the dragon）”加热海洛因等行为，因加热温度极不可控，极易造成药量难以估量而突发过量致死风险。雾化器比铝箔锡纸更为安全。\n• 深吸保持法则：实验表明，吸入烟气后保持深呼吸约 10 秒（“10 秒法则”）即可使有效成分在肺泡充分沉降吸收，过度屏气无助于提升药效，反而会加重肺组织缺氧与毒素沉积。水烟壶（Bong）必须定期彻底杀菌清洁，否则极易滋生真菌、酵母菌与致病细菌，诱发致命肺部感染。</string>
+    <string name="safer_route_inhaled_title">8. 常温吸入 (Inhaled)</string>
+    <string name="safer_route_inhaled_text" formatted="false">常温吸入专指在无需任何外部热源辅助的条件下，直接吸入常温挥发性气体、易挥发液体或极度挥发性黏性化合物的气雾（如一氧化二氮/笑气、乙醚、亚硝酸烷基酯/Poppers 等）。\n• 动力学特征：挥发气体通过肺毛细血管瞬间完成气体交换，产生爆发性、极短促的意识改变状态。\n• 剧毒与神经毒性警告：通过吸入方式滥用工业或家用挥发性有机溶剂（如胶水中的甲苯、洗甲水中的丙酮、汽油、打火机补充装中的丁烷气体等），具有极其暴烈的急性神经毒性、骨髓造血抑制、永久性脑萎缩损伤以及突发性心律失常猝死综合征（Sudden Sniffing Death Syndrome），医学上严厉禁止接触。</string>
+    <string name="safer_route_subcutaneous_title">9. 皮下注射 (Subcutaneous / Skin Popping)</string>
+    <string name="safer_route_subcutaneous_text" formatted="false">皮下注射是指将药液注射于真皮与表皮直接下方的皮下疏松结缔组织中。由于非医疗操作极易引起皮下脓肿坏死与蜂窝织炎，在探索体验中极少被采用。</string>
+    <string name="safer_route_intramuscular_title">10. 肌肉注射 (Intramuscular, IM)</string>
+    <string name="safer_route_intramuscular_text" formatted="false">肌肉注射是指利用较长规格的皮下注射针头，将药物溶液直接穿刺注入深层肌肉组织（如臀大肌、三角肌）。\n• 特征：常见于某些特定药物（如氯胺酮的临床与减害应用）。吸收速率快于皮下且平稳，但穿刺痛感明显。\n• 安全规范：必须全程使用全新一次性无菌医疗注射器，严格进行皮肤局部消毒，且推注前必须严防并排尽针筒及储液管内的残留空气气泡。</string>
+    <string name="safer_route_intravenous_title">11. 静脉注射 (Intravenous, IV)</string>
+    <string name="safer_route_intravenous_text" formatted="false">静脉注射（推注）是将高纯度药物溶液通过静脉穿刺直接注入血液循环系统中。\n• 动力学特征：完全消除吸收过程，起效以秒计算，生物利用度直接达到 100%。\n• 极度致命风险：由于药物瞬间直击中枢受体，极微小的过量便会在数秒内直接诱发呼吸停骤与心跳骤停。此外，注射器内的任何微小空气气泡随血流推入均可导致致命的空气栓塞（Air Embolism）；若物质未经过医用级微孔滤膜彻底除杂过滤，微小悬浮颗粒将直接导致血栓、心内膜炎、肺肉芽肿及全身脓毒血症。\n• 血源性传染病：共用注射器具是艾滋病（HIV）、乙型肝炎（HBV）与丙型肝炎（HCV）暴发传播的最核心途径。</string>
+</resources>

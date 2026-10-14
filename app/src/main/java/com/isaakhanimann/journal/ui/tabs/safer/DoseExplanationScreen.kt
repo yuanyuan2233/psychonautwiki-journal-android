@@ -30,9 +30,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
@@ -44,7 +46,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 fun DoseExplanationScreen() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Dosage classification") })
+            TopAppBar(title = { Text(stringResource(R.string.safer_dose_explanation_title)) })
         }
     ) { padding ->
         Column(
@@ -56,17 +58,16 @@ fun DoseExplanationScreen() {
             VerticalSpace()
             ElevatedCard(modifier = Modifier.padding(vertical = 5.dp, horizontal = horizontalPadding)) {
                 Text(
-                    text = "The range and intensity of the effects of a substance depends on upon a number of factors. These include route of administration, dosage, set and setting, and personal and environmental factors.\n" +
-                            "Effective doses can be divided into five categories: threshold, light, common, strong, and heavy.",
+                    text = stringResource(R.string.safer_dose_explanation_intro),
                     textAlign = TextAlign.Left,
                     modifier = Modifier
                         .padding(vertical = 10.dp, horizontal = horizontalPadding)
                 )
             }
             DoseClass.entries.forEach {
-                SectionWithTitle(title = it.name) {
+                SectionWithTitle(title = stringResource(it.getTitleRes())) {
                     Text(
-                        text = it.description,
+                        text = stringResource(it.getDescriptionRes()),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(bottom = 10.dp)
@@ -76,4 +77,20 @@ fun DoseExplanationScreen() {
             }
         }
     }
+}
+
+private fun DoseClass.getTitleRes(): Int = when (this) {
+    DoseClass.THRESHOLD -> R.string.safer_dose_class_threshold_title
+    DoseClass.LIGHT -> R.string.safer_dose_class_light_title
+    DoseClass.COMMON -> R.string.safer_dose_class_common_title
+    DoseClass.STRONG -> R.string.safer_dose_class_strong_title
+    DoseClass.HEAVY -> R.string.safer_dose_class_heavy_title
+}
+
+private fun DoseClass.getDescriptionRes(): Int = when (this) {
+    DoseClass.THRESHOLD -> R.string.safer_dose_class_threshold_desc
+    DoseClass.LIGHT -> R.string.safer_dose_class_light_desc
+    DoseClass.COMMON -> R.string.safer_dose_class_common_desc
+    DoseClass.STRONG -> R.string.safer_dose_class_strong_desc
+    DoseClass.HEAVY -> R.string.safer_dose_class_heavy_desc
 }

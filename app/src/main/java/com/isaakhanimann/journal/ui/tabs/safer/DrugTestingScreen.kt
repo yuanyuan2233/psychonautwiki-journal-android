@@ -46,12 +46,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.theme.minimumTouchTargetHeight
 
@@ -61,7 +63,7 @@ import com.isaakhanimann.journal.ui.theme.minimumTouchTargetHeight
 fun DrugTestingScreen() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Drug testing services") })
+            TopAppBar(title = { Text(stringResource(R.string.safer_drug_testing_title)) })
         }
     ) { padding ->
         Column(
@@ -70,186 +72,191 @@ fun DrugTestingScreen() {
                 .padding(padding)
                 .padding(horizontal = horizontalPadding)
         ) {
-            CardWithTesting(title = "Austria") {
+            CardWithTesting(title = stringResource(R.string.safer_country_austria)) {
                 TestingServiceItem(
                     name = "Drogenarbeit Z6",
-                    city = "Innsbruck",
+                    city = stringResource(R.string.safer_city_innsbruck),
                     url = "https://www.drogenarbeitz6.at/drug-checking.html"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "Checkit!",
-                    city = "Vienna",
+                    city = stringResource(R.string.safer_city_vienna),
                     url = "https://checkit.wien/drug-checking-2/"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "Triptalks",
-                    city = "Graz",
+                    city = stringResource(R.string.safer_city_graz),
                     url = "https://triptalks.at"
                 )
             }
-            CardWithTesting(title = "Australia") {
+            CardWithTesting(title = stringResource(R.string.safer_country_australia)) {
                 TestingServiceItem(
                     name = "CanTEST",
-                    city = "Canberra",
+                    city = stringResource(R.string.safer_city_canberra),
                     url = "https://www.cahma.org.au/services/cantest/"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "CheQpoint",
-                    city = "Queensland",
+                    city = stringResource(R.string.safer_city_queensland),
                     url = "https://www.quihn.org/cheqpoint/"
                 )
             }
-            CardWithTesting(title = "Belgium") {
+            CardWithTesting(title = stringResource(R.string.safer_country_belgium)) {
                 TestingServiceItem(
                     name = "Modus Vivendi",
-                    city = "Saint-Gilles",
+                    city = stringResource(R.string.safer_city_saint_gilles),
                     url = "https://www.modusvivendi-be.org"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "Exaequo @ Rainbowhouse",
-                    city = "Brussels",
+                    city = stringResource(R.string.safer_city_brussels),
                     url = "https://www.exaequo.be"
                 )
             }
-            CardWithTesting(title = "Canada") {
+            CardWithTesting(title = stringResource(R.string.safer_country_canada)) {
                 TestingServiceItem(
                     name = "Get Your Drugs Tested",
-                    city = "Vancouver",
+                    city = stringResource(R.string.safer_city_vancouver),
                     url = "http://www.vch.ca/public-health/harm-reduction/overdose-prevention-response/drug-checking"
                 )
+                HorizontalDivider()
                 TestingServiceItem(
                     name = "grip",
-                    city = "Montreal",
+                    city = stringResource(R.string.safer_city_montreal),
                     url = "https://grip-prevention.ca/en/drug-checking/"
                 )
             }
-            CardWithTesting(title = "Germany") {
+            CardWithTesting(title = stringResource(R.string.safer_country_germany)) {
                 TestingServiceItem(
                     name = "Drugchecking",
-                    city = "Berlin",
+                    city = stringResource(R.string.safer_city_berlin),
                     url = "https://drugchecking.berlin"
                 )
             }
-            CardWithTesting(title = "France") {
+            CardWithTesting(title = stringResource(R.string.safer_country_france)) {
                 TestingServiceItem(
                     name = "Asso Michel - CAARUD Médiane",
-                    city = "Dunkerque",
+                    city = stringResource(R.string.safer_city_dunkerque),
                     url = "https://www.associationmichel.com/caarud-mediane-722/le-caarud-mediane-743/"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "Le MAS - CAARUD Pause diabolo",
-                    city = "Lyon",
+                    city = stringResource(R.string.safer_city_lyon),
                     url = "https://www.mas-asso.fr/service/pause-diabolo/"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "Centre \"Les Wads\"",
-                    city = "Metz",
+                    city = stringResource(R.string.safer_city_metz),
                     url = "http://www.leswadscmsea.fr"
                 )
             }
-            CardWithTesting(title = "Italy") {
+            CardWithTesting(title = stringResource(R.string.safer_country_italy)) {
                 TestingServiceItem(
                     name = "Neutravel Project",
-                    city = "Torino",
+                    city = stringResource(R.string.safer_city_torino),
                     url = "https://www.neutravel.net/drug-checking"
                 )
             }
-            CardWithTesting(title = "Netherlands") {
+            CardWithTesting(title = stringResource(R.string.safer_country_netherlands)) {
                 TestingServiceItem(
                     name = "Drugs-test",
-                    city = "33 locations",
+                    city = stringResource(R.string.safer_city_33_locations),
                     url = "https://www.drugs-test.nl/en/testlocations/"
                 )
             }
-            CardWithTesting(title = "Norway") {
+            CardWithTesting(title = stringResource(R.string.safer_country_norway)) {
                 TestingServiceItem(
                     name = "Rusopplysningen",
-                    city = "Oslo",
+                    city = stringResource(R.string.safer_city_oslo),
                     url = "https://rusopplysningen.no/analysetjeneste"
                 )
             }
-            CardWithTesting(title = "Slovenia") {
+            CardWithTesting(title = stringResource(R.string.safer_country_slovenia)) {
                 TestingServiceItem(
                     name = "DrogArt",
-                    city = "Various locations",
+                    city = stringResource(R.string.safer_city_various_locations),
                     url = "https://www.drogart.org/testirne-tocke/"
                 )
             }
-            CardWithTesting(title = "Spain") {
+            CardWithTesting(title = stringResource(R.string.safer_country_spain)) {
                 TestingServiceItem(
                     name = "Energy Control",
-                    city = "Various locations",
+                    city = stringResource(R.string.safer_city_various_locations),
                     url = "https://energycontrol.org/servicio-de-analisis/"
                 )
+                HorizontalDivider()
                 TestingServiceItem(
                     name = "CHEMSAFE",
-                    city = "Various locations",
+                    city = stringResource(R.string.safer_city_various_locations),
                     url = "https://www.chem-safe.org/check-your-chems/"
                 )
+                HorizontalDivider()
                 TestingServiceItem(
                     name = "Kykeon Analytics",
-                    city = "Various locations",
+                    city = stringResource(R.string.safer_city_various_locations),
                     url = "https://www.kykeonanalytics.com"
                 )
+                HorizontalDivider()
                 TestingServiceItem(
                     name = "Ai Laket",
-                    city = "Vitoria-Gasteiz, Bilbo and Donosti",
+                    city = stringResource(R.string.safer_city_spain_ailaket),
                     url = "https://ailaket.com/proyectos/punto-fijo/"
                 )
             }
-            CardWithTesting(title = "Switzerland") {
+            CardWithTesting(title = stringResource(R.string.safer_country_switzerland)) {
                 TestingServiceItem(
                     name = "DIBS / Safer Dance Basel",
-                    city = "Basel",
+                    city = stringResource(R.string.safer_city_basel),
                     url = "https://de.saferdancebasel.ch/drugchecking"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "DIB / rave it safe",
-                    city = "Bern, Biel",
+                    city = stringResource(R.string.safer_city_bern_biel),
                     url = "https://www.raveitsafe.ch/angebotsdetails/dib-drug-checking-bern/"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "Nuit Blanche",
-                    city = "Geneva",
+                    city = stringResource(R.string.safer_city_geneva),
                     url = "https://nuit-blanche.ch/drug-checking/"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "DIZ / Saferparty",
-                    city = "Zurich",
+                    city = stringResource(R.string.safer_city_zurich),
                     url = "https://en.saferparty.ch/angebote/drug-checking"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "DILU Luzern",
-                    city = "Luzern",
+                    city = stringResource(R.string.safer_city_luzern),
                     url = "https://www.gassenarbeit.ch/angebote/dilu"
                 )
                 HorizontalDivider()
                 TestingServiceItem(
                     name = "NightLife Vaud",
-                    city = "Lausanne",
+                    city = stringResource(R.string.safer_city_lausanne),
                     url = "https://nightlifevaud.ch/permanence/"
                 )
             }
 
-            CardWithTesting(title = "United Kingdom") {
+            CardWithTesting(title = stringResource(R.string.safer_country_united_kingdom)) {
                 TestingServiceItem(
                     name = "The Loop",
-                    city = "Bristol",
+                    city = stringResource(R.string.safer_city_bristol),
                     url = "https://wearetheloop.org"
                 )
             }
+
             val uriHandler = LocalUriHandler.current
-            val reportServiceText = "Report missing service"
+            val reportServiceText = stringResource(R.string.safer_drug_testing_report_missing)
             TextButton(
                 onClick = {
                     uriHandler.openUri("https://t.me/isaakhanimann")
@@ -317,7 +324,7 @@ fun TestingServiceItem(
     ) {
         Icon(
             imageVector = Icons.Outlined.Biotech,
-            contentDescription = "Open Link"
+            contentDescription = stringResource(R.string.safer_cd_open_link)
         )
         Text(
             text = name,
@@ -333,4 +340,3 @@ fun TestingServiceItem(
         )
     }
 }
-

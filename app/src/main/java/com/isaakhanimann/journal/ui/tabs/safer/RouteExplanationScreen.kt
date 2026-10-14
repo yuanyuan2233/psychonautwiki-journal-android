@@ -40,9 +40,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
@@ -57,12 +59,12 @@ fun RouteExplanationScreen() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Routes of administration") },
+                title = { Text(stringResource(R.string.safer_routes_title)) },
                 actions = {
                     TextButton(
                         onClick = { uriHandler.openUri(AdministrationRoute.PSYCHONAUT_WIKI_ARTICLE_URL) },
                     ) {
-                        Text("Article")
+                        Text(stringResource(R.string.safer_action_article))
                     }
                 }
             )
@@ -82,17 +84,15 @@ fun RouteExplanationScreen() {
             ) {
                 Column(modifier = Modifier.padding(horizontal = horizontalPadding)) {
                     SectionText(
-                        text = """A route of administration is the method in which a psychoactive substance is delivered into the body.
-The route through which a substance is administered can greatly impact its potency, duration, and subjective effects. For example, many substances are more effective when consumed using particular routes of administration, while some substances are completely inactive with certain routes.
-Determining an optimal route of administration is highly dependent on the substance consumed, its desired duration and potency and side effects, and one's personal comfort level."""
+                        text = stringResource(R.string.safer_routes_intro)
                     )
                     VerticalSpace()
                 }
             }
             AdministrationRoute.entries.filter { !it.isInjectionMethod }.forEach {
-                SectionWithTitle(title = it.displayText) {
+                SectionWithTitle(title = stringResource(it.getTitleRes())) {
                     Text(
-                        text = it.articleText,
+                        text = stringResource(it.getArticleTextRes()),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
@@ -105,18 +105,18 @@ Determining an optimal route of administration is highly dependent on the substa
                         ) {
                             Icon(
                                 Icons.Outlined.OpenInBrowser,
-                                contentDescription = "Open PW article",
+                                contentDescription = stringResource(R.string.safer_cd_open_pw_article),
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                            Text("Safer plugging")
+                            Text(stringResource(R.string.safer_btn_safer_plugging))
                         }
                     }
                 }
             }
             AdministrationRoute.entries.filter { it.isInjectionMethod }.forEach {
-                SectionWithTitle(title = it.displayText) {
+                SectionWithTitle(title = stringResource(it.getTitleRes())) {
                     Text(
-                        text = it.articleText,
+                        text = stringResource(it.getArticleTextRes()),
                         textAlign = TextAlign.Left,
                         modifier = Modifier
                             .padding(horizontal = horizontalPadding)
@@ -127,4 +127,32 @@ Determining an optimal route of administration is highly dependent on the substa
             Spacer(modifier = Modifier.height(10.dp))
         }
     }
+}
+
+private fun AdministrationRoute.getTitleRes(): Int = when (this) {
+    AdministrationRoute.ORAL -> R.string.safer_route_oral_title
+    AdministrationRoute.SUBLINGUAL -> R.string.safer_route_sublingual_title
+    AdministrationRoute.BUCCAL -> R.string.safer_route_buccal_title
+    AdministrationRoute.INSUFFLATED -> R.string.safer_route_insufflated_title
+    AdministrationRoute.RECTAL -> R.string.safer_route_rectal_title
+    AdministrationRoute.TRANSDERMAL -> R.string.safer_route_transdermal_title
+    AdministrationRoute.SMOKED -> R.string.safer_route_smoked_title
+    AdministrationRoute.INHALED -> R.string.safer_route_inhaled_title
+    AdministrationRoute.SUBCUTANEOUS -> R.string.safer_route_subcutaneous_title
+    AdministrationRoute.INTRAMUSCULAR -> R.string.safer_route_intramuscular_title
+    AdministrationRoute.INTRAVENOUS -> R.string.safer_route_intravenous_title
+}
+
+private fun AdministrationRoute.getArticleTextRes(): Int = when (this) {
+    AdministrationRoute.ORAL -> R.string.safer_route_oral_text
+    AdministrationRoute.SUBLINGUAL -> R.string.safer_route_sublingual_text
+    AdministrationRoute.BUCCAL -> R.string.safer_route_buccal_text
+    AdministrationRoute.INSUFFLATED -> R.string.safer_route_insufflated_text
+    AdministrationRoute.RECTAL -> R.string.safer_route_rectal_text
+    AdministrationRoute.TRANSDERMAL -> R.string.safer_route_transdermal_text
+    AdministrationRoute.SMOKED -> R.string.safer_route_smoked_text
+    AdministrationRoute.INHALED -> R.string.safer_route_inhaled_text
+    AdministrationRoute.SUBCUTANEOUS -> R.string.safer_route_subcutaneous_text
+    AdministrationRoute.INTRAMUSCULAR -> R.string.safer_route_intramuscular_text
+    AdministrationRoute.INTRAVENOUS -> R.string.safer_route_intravenous_text
 }
