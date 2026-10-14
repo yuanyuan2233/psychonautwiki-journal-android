@@ -38,6 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
+import com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -54,8 +55,10 @@ fun InteractionRow(interaction: Interaction) {
             ),
             verticalAlignment = Alignment.CenterVertically
         ) {
+            val localizedA = SubstanceLocalizationHelper.getLocalizedName(interaction.aName)
+            val localizedB = SubstanceLocalizationHelper.getLocalizedName(interaction.bName)
             Text(
-                text = stringResource(R.string.journal_interaction_and, interaction.aName, interaction.bName),
+                text = stringResource(R.string.journal_interaction_and, localizedA, localizedB),
                 textAlign = TextAlign.Center,
                 color = Color.Black,
             )

@@ -88,6 +88,7 @@ import com.isaakhanimann.journal.ui.FULL_STOMACH_DISCLAIMER
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardTitle
+import com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CumulativeDoseRow
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.IngestionTimeOrDurationText
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.InteractionRow
@@ -368,7 +369,7 @@ private fun ExperienceInteractionsSection(
                     onClick = {
                         uriHandler.openUri(it.url)
                     },
-                    label = { Text(it.name) }
+                    label = { Text(SubstanceLocalizationHelper.getLocalizedName(it.name)) }
                 )
             }
         }

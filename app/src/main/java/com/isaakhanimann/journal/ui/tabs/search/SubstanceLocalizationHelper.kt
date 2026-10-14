@@ -402,7 +402,49 @@ object SubstanceLocalizationHelper {
         "α-PiHP" to "4-甲基-1-苯基-2--1-戊酮",
         "ΑMT" to "α-甲基色胺",
         "β-Phenyl-γ-aminobutyric acid" to "菲尼布特",
+        // 相互作用分类与大类术语
+        "25x-NBOH" to "25x-NBOH类",
+        "25x-NBOMe" to "25x-NBOMe类",
+        "2C-T-X" to "2C-T系列",
+        "2C-T-x" to "2C-T系列",
+        "2C-X" to "2C系列",
+        "2C-x" to "2C系列",
+        "5-MeO-xxT" to "5-甲氧基色胺类",
+        "5-MeO-xxt" to "5-甲氧基色胺类",
+        "ALDH2 inhibitors" to "乙醛脱氢酶抑制剂",
+        "Antidepressants" to "抗抑郁药",
+        "Antihistamine" to "抗组胺药",
+        "Barbiturates" to "巴比妥类",
+        "Benzodiazepines" to "苯二氮䓬类",
+        "Bupropion" to "安非他酮",
+        "CYP2C19-substrates" to "CYP2C19底物药物",
+        "DOx" to "DOx类",
+        "Deliriant" to "谵妄剂",
+        "Depressant" to "中枢神经抑制剂",
+        "Dissociatives" to "解离剂",
+        "Grapefruit" to "西柚（葡萄柚）",
+        "Hepatotoxic drugs" to "肝毒性药物",
+        "Hormonal Birth Control" to "激素类避孕药",
+        "Hormonal birth control" to "激素类避孕药",
+        "Lithium" to "锂盐",
+        "MAOI" to "单胺氧化酶抑制剂(MAOI)",
+        "Opioids" to "阿片类",
+        "Protease Inhibitors" to "蛋白酶抑制剂",
+        "Psychedelics" to "致幻剂",
+        "Ritonavir" to "利托那韦",
+        "SNRIs" to "5-羟色胺与去甲肾上腺素再摄取抑制剂(SNRIs)",
+        "SSRIs" to "选择性5-羟色胺再摄取抑制剂(SSRIs)",
+        "Serotonin releasers" to "5-羟色胺释放剂",
+        "Stimulants" to "中枢神经兴奋剂",
+        "Substituted amphetamines" to "苯丙胺类衍生物",
+        "Trazodone" to "曲唑酮",
+        "Tricyclic antidepressants" to "三环类抗抑郁药(TCAs)",
     )
+
+    /**
+     * 快捷获取中文名称
+     */
+    fun getLocalizedName(name: String): String = getSubstanceDisplayName(name)
 
     /**
      * 获取物质的主要展示名称（优先返回中文标准名）

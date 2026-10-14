@@ -94,7 +94,7 @@ fun ToleranceSection(
                 Text(text = stringResource(R.string.drugs_tolerance_zero_explanation), style = MaterialTheme.typography.bodySmall)
             }
             if (crossTolerances.isNotEmpty()) {
-                val names = crossTolerances.map { it }.distinct()
+                val names = crossTolerances.map { com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(it) }.distinct()
                     .joinToString(separator = ", ")
                 Text(text = stringResource(R.string.drugs_cross_tolerance_with, names))
             }
