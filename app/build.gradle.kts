@@ -16,8 +16,8 @@ android {
         applicationId = "com.isaakhanimann.journal"
         minSdk = 26
         targetSdk = 35
-        versionCode = 62
-        versionName = "11.11"
+        versionCode = 63
+        versionName = "12.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -27,6 +27,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix = ".zh"
+            versionNameSuffix = "-zh"
+        }
         release {
             isMinifyEnabled = true
             isShrinkResources = true

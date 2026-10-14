@@ -75,9 +75,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.VERSION_NAME
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -157,11 +159,12 @@ fun SettingsScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Settings") }
+                title = { Text(stringResource(R.string.settings_title)) }
             )
         },
         snackbarHost = { SnackbarHost(snackbarHostState) },
     ) { padding ->
+        val context = LocalContext.current
         Column(
             modifier = Modifier
                 .padding(padding)
@@ -169,24 +172,24 @@ fun SettingsScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            CardWithTitle(title = "UI", innerPaddingHorizontal = 0.dp) {
+            CardWithTitle(title = stringResource(R.string.settings_section_ui), innerPaddingHorizontal = 0.dp) {
                 SettingsButton(
                     imageVector = Icons.Outlined.Medication,
-                    text = "Custom units"
+                    text = stringResource(R.string.settings_custom_units)
                 ) {
                     navigateToCustomUnits()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.Palette,
-                    text = "Substance colors"
+                    text = stringResource(R.string.settings_substance_colors)
                 ) {
                     navigateToSubstanceColors()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.Outlined.WarningAmber,
-                    text = "Interaction settings"
+                    text = stringResource(R.string.settings_interaction_settings)
                 ) {
                     navigateToComboSettings()
                 }
@@ -198,7 +201,7 @@ fun SettingsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Hide dosage dots")
+                    Text(text = stringResource(R.string.settings_hide_dosage_dots))
                     Switch(
                         checked = areDosageDotsHidden,
                         onCheckedChange = saveDosageDotsAreHidden
@@ -212,7 +215,7 @@ fun SettingsScreen(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Hide timeline")
+                    Text(text = stringResource(R.string.settings_hide_timeline))
                     Switch(
                         checked = isTimelineHidden,
                         onCheckedChange = saveIsTimelineHidden
@@ -237,7 +240,7 @@ fun SettingsScreen(
                             }
                             .padding(end = ButtonDefaults.IconSpacing)
                     ) {
-                        Text(text = "Independent substance heights")
+                        Text(text = stringResource(R.string.settings_independent_substance_heights))
                         if (showBottomSheet) {
                             ModalBottomSheet(
                                 onDismissRequest = {
@@ -246,13 +249,7 @@ fun SettingsScreen(
                                 sheetState = sheetState
                             ) {
                                 Text(
-                                    text = """
-                                    Enable this setting if you want the timeline of different substances and routes of administration (roas) to be independent. Then ingestions of different substances and roas will always take the full height of the timeline.
-                                    
-                                    If this setting is disabled then timelines of different substances have a height relative to each other. In that case the average of the common dose is used as the point to compare it to.
-                                    E.g. if the oral average common dose of MDMA is 100mg and the average common dose of insufflated MDMA is 50mg then the timeline for 100mg of oral MDMA is the same height as for 50mg of insufflated MDMA.
-                                    This is also applied across substances. E.g. if the common dose of oral 2C-B is 20mg then the timeline of 40mg oral 2C-B will be twice as high as 100mg of oral MDMA.
-                                """.trimIndent(),
+                                    text = stringResource(R.string.settings_independent_substance_heights_desc),
                                     modifier = Modifier
                                         .padding(horizontal = horizontalPadding)
                                         .padding(bottom = 15.dp)
@@ -260,7 +257,7 @@ fun SettingsScreen(
                                 )
                             }
                         }
-                        Icon(Icons.Outlined.Info, contentDescription = "Show more info")
+                        Icon(Icons.Outlined.Info, contentDescription = stringResource(R.string.settings_show_more_info))
                     }
                     Switch(
                         checked = areSubstanceHeightsIndependent,
@@ -268,9 +265,9 @@ fun SettingsScreen(
                     )
                 }
             }
-            CardWithTitle(title = "App data", innerPaddingHorizontal = 0.dp) {
+            CardWithTitle(title = stringResource(R.string.settings_section_app_data), innerPaddingHorizontal = 0.dp) {
                 var isShowingExportDialog by remember { mutableStateOf(false) }
-                SettingsButton(imageVector = Icons.Outlined.FileUpload, text = "Export File") {
+                SettingsButton(imageVector = Icons.Outlined.FileUpload, text = stringResource(R.string.settings_export_file)) {
                     isShowingExportDialog = true
                 }
                 val jsonMIMEType = "application/json"
@@ -288,10 +285,10 @@ fun SettingsScreen(
                     AlertDialog(
                         onDismissRequest = { isShowingExportDialog = false },
                         title = {
-                            Text(text = "Export?")
+                            Text(text = stringResource(R.string.settings_export_dialog_title))
                         },
                         text = {
-                            Text("This will export all your data from the app into a file so you can send it to someone or import it again on a new phone")
+                            Text(stringResource(R.string.settings_export_dialog_text))
                         },
                         confirmButton = {
                             TextButton(
@@ -304,21 +301,21 @@ fun SettingsScreen(
                                     )
                                 }
                             ) {
-                                Text("Export")
+                                Text(stringResource(R.string.settings_export_btn))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingExportDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(stringResource(R.string.settings_cancel))
                             }
                         }
                     )
                 }
                 HorizontalDivider()
                 var isShowingImportDialog by remember { mutableStateOf(false) }
-                SettingsButton(imageVector = Icons.Outlined.FileDownload, text = "Import file") {
+                SettingsButton(imageVector = Icons.Outlined.FileDownload, text = stringResource(R.string.settings_import_file)) {
                     isShowingImportDialog = true
                 }
                 val launcherImport =
@@ -331,10 +328,10 @@ fun SettingsScreen(
                     AlertDialog(
                         onDismissRequest = { isShowingImportDialog = false },
                         title = {
-                            Text(text = "Import file?")
+                            Text(text = stringResource(R.string.settings_import_dialog_title))
                         },
                         text = {
-                            Text("Import a file that was exported before. Note that this will delete the data that you already have in the app.")
+                            Text(stringResource(R.string.settings_import_dialog_text))
                         },
                         confirmButton = {
                             TextButton(
@@ -343,14 +340,14 @@ fun SettingsScreen(
                                     launcherImport.launch(jsonMIMEType)
                                 }
                             ) {
-                                Text("Import")
+                                Text(stringResource(R.string.settings_import_btn))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingImportDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(stringResource(R.string.settings_cancel))
                             }
                         }
                     )
@@ -359,7 +356,7 @@ fun SettingsScreen(
                 var isShowingDeleteDialog by remember { mutableStateOf(false) }
                 SettingsButton(
                     imageVector = Icons.Outlined.DeleteForever,
-                    text = "Delete everything"
+                    text = stringResource(R.string.settings_delete_everything)
                 ) {
                     isShowingDeleteDialog = true
                 }
@@ -368,10 +365,10 @@ fun SettingsScreen(
                     AlertDialog(
                         onDismissRequest = { isShowingDeleteDialog = false },
                         title = {
-                            Text(text = "Delete everything?")
+                            Text(text = stringResource(R.string.settings_delete_everything_dialog_title))
                         },
                         text = {
-                            Text("This will delete all your experiences, ingestions and custom substances.")
+                            Text(stringResource(R.string.settings_delete_everything_dialog_text))
                         },
                         confirmButton = {
                             TextButton(
@@ -380,60 +377,55 @@ fun SettingsScreen(
                                     deleteEverything()
                                     scope.launch {
                                         snackbarHostState.showSnackbar(
-                                            message = "Deleted everything",
+                                            message = context.getString(R.string.settings_deleted_everything_snackbar),
                                             duration = SnackbarDuration.Short
                                         )
                                     }
                                 }
                             ) {
-                                Text("Delete")
+                                Text(stringResource(R.string.settings_delete_btn))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingDeleteDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(stringResource(R.string.settings_cancel))
                             }
                         }
                     )
                 }
             }
             val uriHandler = LocalUriHandler.current
-            CardWithTitle(title = "Feedback", innerPaddingHorizontal = 0.dp) {
-                SettingsButton(imageVector = Icons.Outlined.QuestionAnswer, text = "FAQ") {
+            CardWithTitle(title = stringResource(R.string.settings_section_feedback), innerPaddingHorizontal = 0.dp) {
+                SettingsButton(imageVector = Icons.Outlined.QuestionAnswer, text = stringResource(R.string.settings_faq)) {
                     navigateToFAQ()
                 }
                 HorizontalDivider()
                 SettingsButton(
                     imageVector = Icons.AutoMirrored.Outlined.ContactSupport,
-                    text = "Question, bug report"
+                    text = stringResource(R.string.settings_question_bug_report)
                 ) {
-                    uriHandler.openUri("https://t.me/+ss8uZhBF6g00MTY8")
-                }
-                HorizontalDivider()
-                SettingsButton(imageVector = Icons.Outlined.VolunteerActivism, text = "Donate") {
-                    navigateToDonate()
+                    uriHandler.openUri("https://github.com/yuanyuan2233/psychonautwiki-journal-android/issues")
                 }
             }
-            CardWithTitle(title = "App", innerPaddingHorizontal = 0.dp) {
-                SettingsButton(imageVector = Icons.Outlined.Code, text = "Source Code") {
-                    uriHandler.openUri("https://github.com/isaakhanimann/psychonautwiki-journal-android")
+            CardWithTitle(title = stringResource(R.string.settings_section_app), innerPaddingHorizontal = 0.dp) {
+                SettingsButton(imageVector = Icons.Outlined.Code, text = stringResource(R.string.settings_source_code)) {
+                    uriHandler.openUri("https://github.com/yuanyuan2233/psychonautwiki-journal-android")
                 }
                 HorizontalDivider()
-                val context = LocalContext.current
                 val sendIntent: Intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(Intent.EXTRA_TEXT, SHARE_APP_URL)
                     type = "text/plain"
                 }
                 val shareIntent = Intent.createChooser(sendIntent, null)
-                SettingsButton(imageVector = Icons.Outlined.Share, text = "Share") {
+                SettingsButton(imageVector = Icons.Outlined.Share, text = stringResource(R.string.settings_share)) {
                     context.startActivity(shareIntent)
                 }
                 HorizontalDivider()
                 Text(
-                    text = "Version $VERSION_NAME",
+                    text = stringResource(R.string.settings_version, VERSION_NAME),
                     style = MaterialTheme.typography.labelLarge,
                     modifier = Modifier
                         .padding(horizontal = 15.dp)
@@ -444,7 +436,8 @@ fun SettingsScreen(
     }
 }
 
-const val SHARE_APP_URL = "https://psychonautwiki.org/wiki/PsychonautWiki_Journal"
+const val SHARE_APP_URL = "PsychonautWiki Journal 中文版 (v12.0.0)：\nhttps://github.com/yuanyuan2233/psychonautwiki-journal-android/releases/latest"
+
 
 
 @Composable
