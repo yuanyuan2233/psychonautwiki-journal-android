@@ -41,11 +41,14 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.input.pointer.pointerInput
+import android.content.Context
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextMeasurer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
+import com.isaakhanimann.journal.R
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
@@ -125,6 +128,7 @@ fun AllTimelines(
     modifier: Modifier = Modifier,
 ) {
     val isDarkTheme = isSystemInDarkTheme()
+    val context = LocalContext.current
     val density = LocalDensity.current
     val axisLabelSize = MaterialTheme.typography.labelMedium.fontSize
     val axisLabelTextPaint = remember(density) {
@@ -234,7 +238,8 @@ fun AllTimelines(
                     verticalDistanceFromFinger,
                     textMeasurer,
                     dragTimeTextSize,
-                    timeDisplayOption
+                    timeDisplayOption,
+                    context
                 )
             }
         }
@@ -259,6 +264,7 @@ private fun DrawScope.drawDragPointLineAndTimeLabel(
     textMeasurer: TextMeasurer,
     dragTimeTextSize: TextStyle,
     timeDisplayOption: TimeDisplayOption,
+    context: Context,
 ) {
     val horizontallyLimitedDragPoint = Offset(
         x = dragPoint.x.coerceIn(0f, canvasWidth),
@@ -279,7 +285,8 @@ private fun DrawScope.drawDragPointLineAndTimeLabel(
         dragLineColor,
         dragTimeTextSize,
         textColor,
-        timeDisplayOption
+        timeDisplayOption,
+        context
     )
 }
 
@@ -295,6 +302,7 @@ private fun DrawScope.drawDragTimeLabelWithBackground(
     dragTimeTextSize: TextStyle,
     textColor: Color,
     timeDisplayOption: TimeDisplayOption,
+    context: Context,
 ) {
     val secondsAtDragPoint = horizontallyLimitedDragPoint.x / pixelsPerSec
     val timeAtDragPoint = model.startTime.plusSeconds(secondsAtDragPoint.toLong())
@@ -303,18 +311,25 @@ private fun DrawScope.drawDragTimeLabelWithBackground(
         TimeDisplayOption.RELATIVE_TO_NOW -> {
             val now = Instant.now()
             val isInPast = timeAtDragPoint < now
+            val duration = getDurationText(fromInstant = timeAtDragPoint, toInstant = now, context = context)
             if (isInPast) {
-                getDurationText(fromInstant = timeAtDragPoint, toInstant = now) + " ago"
+                context.getString(R.string.journal_time_duration_ago, duration)
             } else {
-                "in " + getDurationText(fromInstant = timeAtDragPoint, toInstant = now)
+                context.getString(R.string.journal_time_in_duration, duration)
             }
         }
 
         TimeDisplayOption.RELATIVE_TO_START -> {
-            getDurationText(
+            val duration = getDurationText(
                 fromInstant = model.startTime,
-                toInstant = timeAtDragPoint
-            ) + " in"
+                toInstant = timeAtDragPoint,
+                context = context
+            )
+            if (timeAtDragPoint < model.startTime) {
+                context.getString(R.string.journal_time_before_start, duration)
+            } else {
+                context.getString(R.string.journal_time_duration_in, duration)
+            }
         }
 
         TimeDisplayOption.TIME_BETWEEN -> timeAtDragPoint.getShortTimeText()

@@ -50,12 +50,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedDescRes
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 
 @Composable
 fun ChooseRouteScreen(
@@ -129,13 +133,13 @@ fun ChooseRouteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("$substanceName route") },
+                title = { Text(stringResource(R.string.journal_substance_route, substanceName)) },
                 navigationIcon = {
                     if (showOtherRoutes && pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { onChangeOfShowOtherRoutes(false) }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back"
+                                contentDescription = stringResource(R.string.journal_action_back)
                             )
                         }
                     }
@@ -144,7 +148,7 @@ fun ChooseRouteScreen(
                     IconButton(onClick = navigateToRouteExplanationScreen) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
-                            contentDescription = "Administration routes info"
+                            contentDescription = stringResource(R.string.journal_routes_info)
                         )
                     }
                 }
@@ -193,17 +197,17 @@ fun InjectionDialog(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(imageVector = Icons.Default.Warning, contentDescription = "Warning")
+                Icon(imageVector = Icons.Default.Warning, contentDescription = stringResource(R.string.journal_action_warning))
                 Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
-                Text(text = "Safer injection", style = MaterialTheme.typography.headlineSmall)
+                Text(text = stringResource(R.string.journal_safer_injection), style = MaterialTheme.typography.headlineSmall)
             }
         },
         text = {
             Column {
-                Text("Using and sharing injection equipment is an extremely high-risk activity and is never truly safe to do in a non-medical context.")
-                Text("Read the safer injection guide:")
+                Text(stringResource(R.string.journal_injection_warning_1))
+                Text(stringResource(R.string.journal_read_safer_injection_guide))
                 SaferInjectionLink()
-                Text("This guide is provided for educational and harm reduction purposes only and we strongly discourage users from engaging in this activity.")
+                Text(stringResource(R.string.journal_injection_warning_2))
 
             }
 
@@ -215,14 +219,14 @@ fun InjectionDialog(
                     navigateToNext()
                 }
             ) {
-                Text("Continue")
+                Text(stringResource(R.string.journal_action_continue))
             }
         },
         dismissButton = {
             TextButton(
                 onClick = dismiss
             ) {
-                Text("Cancel")
+                Text(stringResource(R.string.journal_action_cancel))
             }
         }
     )
@@ -235,13 +239,13 @@ fun RouteBox(route: AdministrationRoute, titleStyle: TextStyle) {
     Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = route.displayText,
+                text = stringResource(route.getLocalizedNameRes()),
                 textAlign = TextAlign.Center,
                 style = titleStyle
             )
             if (screenHeightPx > 500) {
                 Text(
-                    text = route.description,
+                    text = stringResource(route.getLocalizedDescRes()),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.bodySmall
                 )
@@ -259,11 +263,11 @@ fun SaferInjectionLink() {
     }) {
         Icon(
             Icons.Outlined.OpenInBrowser,
-            contentDescription = "Open link",
+            contentDescription = stringResource(R.string.journal_action_open_link),
             modifier = Modifier.size(ButtonDefaults.IconSize),
         )
         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-        Text("Safer injection guide")
+        Text(stringResource(R.string.journal_safer_injection_guide))
     }
 }
 

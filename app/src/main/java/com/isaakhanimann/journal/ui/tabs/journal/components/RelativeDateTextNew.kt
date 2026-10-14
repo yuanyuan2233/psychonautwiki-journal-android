@@ -22,8 +22,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.R
 import kotlinx.coroutines.delay
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -46,13 +48,13 @@ fun RelativeDateTextNew(
     }
     val duration = Duration.between(dateTime, now.value)
     val relativeTime = when {
-        duration.toDays() > 500 -> "${roundToOneDecimal(duration.toDays().toDouble()/365.0)} years ago"
-        duration.toDays() > 60 -> "${roundToOneDecimal(duration.toDays().toDouble()/30.0)} months ago"
-        duration.toDays() > 20 -> "${roundToOneDecimal(duration.toDays().toDouble()/7.0)} weeks ago"
-        duration.toHours() > 24 -> "${roundToOneDecimal(duration.toHours().toDouble()/24.0)} days ago"
-        duration.toHours() > 0 -> "${roundToOneDecimal(duration.toMinutes().toDouble()/60.0)} hours ago"
-        duration.toMinutes() > 0 -> "${duration.toMinutes()} minutes ago"
-        else -> "just now"
+        duration.toDays() > 500 -> stringResource(R.string.journal_relative_time_years_ago, roundToOneDecimal(duration.toDays().toDouble()/365.0))
+        duration.toDays() > 60 -> stringResource(R.string.journal_relative_time_months_ago, roundToOneDecimal(duration.toDays().toDouble()/30.0))
+        duration.toDays() > 20 -> stringResource(R.string.journal_relative_time_weeks_ago, roundToOneDecimal(duration.toDays().toDouble()/7.0))
+        duration.toHours() > 24 -> stringResource(R.string.journal_relative_time_days_ago, roundToOneDecimal(duration.toHours().toDouble()/24.0))
+        duration.toHours() > 0 -> stringResource(R.string.journal_relative_time_hours_ago, roundToOneDecimal(duration.toMinutes().toDouble()/60.0))
+        duration.toMinutes() > 0 -> stringResource(R.string.journal_relative_time_minutes_ago, duration.toMinutes())
+        else -> stringResource(R.string.journal_relative_time_just_now)
     }
     Text(
         text = relativeTime,

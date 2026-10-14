@@ -50,12 +50,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.classes.SubstanceWithCategories
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
@@ -140,7 +142,7 @@ fun CheckInteractionsScreen(
     navigateToNext: () -> Unit
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("$substanceName interactions") }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.journal_substance_interactions, substanceName)) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
@@ -159,7 +161,7 @@ fun CheckInteractionsScreen(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text(text = "No interactions found... check other sources.")
+                    Text(text = stringResource(R.string.journal_no_interactions_found))
                 }
             } else {
                 val verticalPaddingInside = 4.dp
@@ -199,15 +201,15 @@ fun CheckInteractionsScreen(
                     onDismissRequest = dismissAlert,
                     title = {
                         val title = when (alertInteractionType) {
-                            InteractionType.DANGEROUS -> "Dangerous interaction!"
-                            InteractionType.UNSAFE -> "Unsafe interaction"
-                            InteractionType.UNCERTAIN -> "Uncertain interaction"
-                            else -> "Interaction"
+                            InteractionType.DANGEROUS -> stringResource(R.string.journal_interaction_alert_dangerous)
+                            InteractionType.UNSAFE -> stringResource(R.string.journal_interaction_alert_unsafe)
+                            InteractionType.UNCERTAIN -> stringResource(R.string.journal_interaction_alert_uncertain)
+                            else -> stringResource(R.string.journal_interaction_alert_general)
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(
                                 imageVector = Icons.Default.Warning,
-                                contentDescription = "Warning",
+                                contentDescription = stringResource(R.string.journal_action_warning),
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(text = title, style = MaterialTheme.typography.titleLarge)
@@ -225,7 +227,7 @@ fun CheckInteractionsScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 onClick = dismissAlert
                             ) {
-                                Text("Dismiss")
+                                Text(stringResource(R.string.journal_action_dismiss))
                             }
                         }
                     }
@@ -265,7 +267,7 @@ fun InteractionRow(
                 items(interactionType.dangerCount) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
-                        contentDescription = "Warning",
+                        contentDescription = stringResource(R.string.journal_action_warning),
                         tint = Color.Black,
                     )
                 }

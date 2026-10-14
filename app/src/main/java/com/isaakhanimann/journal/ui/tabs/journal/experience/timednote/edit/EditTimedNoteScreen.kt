@@ -31,7 +31,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.TimedNoteScreenContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,7 +45,7 @@ fun EditTimedNoteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit timed note") },
+                title = { Text(stringResource(R.string.journal_edit_timed_note)) },
                 actions = {
                     IconButton(
                         onClick = {
@@ -53,7 +55,7 @@ fun EditTimedNoteScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete note",
+                            contentDescription = stringResource(R.string.journal_action_delete_timed_note),
                         )
                     }
                     IconButton(onClick = {
@@ -62,7 +64,7 @@ fun EditTimedNoteScreen(
                     }) {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done icon"
+                            contentDescription = stringResource(R.string.journal_done_icon)
                         )
                     }
                 }

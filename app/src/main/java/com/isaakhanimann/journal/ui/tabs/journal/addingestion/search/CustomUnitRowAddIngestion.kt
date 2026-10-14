@@ -28,7 +28,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -45,12 +48,17 @@ fun CustomUnitRowAddIngestion(
             .padding(vertical = 10.dp, horizontal = horizontalPadding),
         horizontalAlignment = Alignment.Start
     ) {
+        val routeName = stringResource(customUnit.administrationRoute.getLocalizedNameRes())
         Text(
-            text = "${customUnit.substanceName} ${customUnit.administrationRoute.displayText.lowercase()}, ${customUnit.name}",
+            text = "${customUnit.substanceName} $routeName, ${customUnit.name}",
             style = MaterialTheme.typography.titleMedium
         )
         Text(
-            text = "${customUnit.getDoseOfOneUnitDescription()} per ${customUnit.unit}",
+            text = stringResource(
+                R.string.journal_custom_unit_per,
+                customUnit.getDoseOfOneUnitDescription(),
+                customUnit.unit
+            ),
             style = MaterialTheme.typography.titleSmall
         )
     }

@@ -38,11 +38,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 
 
 @Composable
@@ -95,13 +97,13 @@ fun EditExperienceScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit experience") },
+                title = { Text(stringResource(R.string.journal_edit_experience)) },
                 actions = {
                     if (isEnteredTitleOk) {
                         IconButton(onClick = onDoneTap) {
                             Icon(
                                 Icons.Filled.Done,
-                                contentDescription = "Done icon"
+                                contentDescription = stringResource(R.string.journal_action_done)
                             )
                         }
                     }
@@ -122,7 +124,7 @@ fun EditExperienceScreen(
                 value = enteredTitle,
                 onValueChange = onChangeOfEnteredTitle,
                 singleLine = true,
-                label = { Text(text = "Title") },
+                label = { Text(text = stringResource(R.string.journal_experience_title)) },
                 isError = !isEnteredTitleOk,
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions.Default.copy(
@@ -135,7 +137,7 @@ fun EditExperienceScreen(
                 value = location,
                 onValueChange = onLocationChange,
                 singleLine = true,
-                label = { Text(text = "Location") },
+                label = { Text(text = stringResource(R.string.journal_experience_location)) },
                 keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done,
@@ -146,7 +148,7 @@ fun EditExperienceScreen(
             OutlinedTextField(
                 value = text,
                 onValueChange = onTextChange,
-                label = { Text(text = "Notes") },
+                label = { Text(text = stringResource(R.string.journal_notes)) },
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Default,
                     capitalization = KeyboardCapitalization.Sentences

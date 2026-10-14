@@ -75,12 +75,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
@@ -224,14 +226,14 @@ fun EditIngestionScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit ingestion") },
+                title = { Text(stringResource(R.string.journal_edit_ingestion)) },
                 actions = {
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
                     AnimatedVisibility(visible = isShowingDeleteDialog) {
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete ingestion?")
+                                Text(text = stringResource(R.string.journal_delete_ingestion_title))
                             },
                             confirmButton = {
                                 TextButton(
@@ -241,14 +243,14 @@ fun EditIngestionScreen(
                                         navigateBack()
                                     }
                                 ) {
-                                    Text("Delete")
+                                    Text(stringResource(R.string.journal_action_delete))
                                 }
                             },
                             dismissButton = {
                                 TextButton(
                                     onClick = { isShowingDeleteDialog = false }
                                 ) {
-                                    Text("Cancel")
+                                    Text(stringResource(R.string.journal_action_cancel))
                                 }
                             }
                         )
@@ -258,7 +260,7 @@ fun EditIngestionScreen(
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete ingestion",
+                            contentDescription = stringResource(R.string.journal_action_delete_ingestion),
                         )
                     }
                 }
@@ -271,10 +273,10 @@ fun EditIngestionScreen(
                 icon = {
                     Icon(
                         Icons.Filled.Done,
-                        contentDescription = "Done icon"
+                        contentDescription = stringResource(R.string.journal_action_done)
                     )
                 },
-                text = { Text("Done") }
+                text = { Text(stringResource(R.string.journal_action_done)) }
             )
         }
     ) { padding ->
@@ -287,8 +289,8 @@ fun EditIngestionScreen(
             Spacer(modifier = Modifier.height(3.dp))
             val focusManager = LocalFocusManager.current
             val title = customUnit?.let {
-                "Dose ${it.name}"
-            } ?: "Dose"
+                stringResource(R.string.journal_dose_custom_unit, it.name)
+            } ?: stringResource(R.string.journal_dose)
             CardWithTitle(title = title) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -297,7 +299,7 @@ fun EditIngestionScreen(
                         .fillMaxWidth()
                 ) {
                     Checkbox(checked = isKnown, onCheckedChange = { toggleIsKnown() })
-                    Text("Dose is known")
+                    Text(stringResource(R.string.journal_dose_is_known))
                 }
                 AnimatedVisibility(visible = isKnown) {
                     Column {
@@ -305,7 +307,7 @@ fun EditIngestionScreen(
                             OutlinedTextField(
                                 value = units,
                                 onValueChange = onUnitsChange,
-                                label = { Text(text = "Units") },
+                                label = { Text(text = stringResource(R.string.journal_dose_units)) },
                                 modifier = Modifier.fillMaxWidth(),
                                 keyboardActions = KeyboardActions(onDone = {
                                     focusManager.clearFocus()
@@ -319,7 +321,7 @@ fun EditIngestionScreen(
                             onValueChange = {
                                 onDoseChange(it.replace(oldChar = ',', newChar = '.'))
                             },
-                            label = { Text(text = "Dose") },
+                            label = { Text(text = stringResource(R.string.journal_dose)) },
                             trailingIcon = { Text(text = units) },
                             modifier = Modifier.fillMaxWidth(),
                             keyboardActions = KeyboardActions(onDone = {
@@ -334,7 +336,7 @@ fun EditIngestionScreen(
                             horizontalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
                             Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                            Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                            Text(stringResource(R.string.journal_dose_estimate), style = MaterialTheme.typography.titleMedium)
                         }
                         AnimatedVisibility(visible = isEstimate) {
                             Column {
@@ -348,7 +350,7 @@ fun EditIngestionScreen(
                                             )
                                         )
                                     },
-                                    label = { Text("Estimated standard deviation") },
+                                    label = { Text(stringResource(R.string.journal_dose_estimated_sd)) },
                                     trailingIcon = {
                                         Text(
                                             text = units,
@@ -387,7 +389,10 @@ fun EditIngestionScreen(
                                     onClick = { isShowingDropDownMenu = true },
                                     modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Text(text = "Unit: ${customUnit?.name ?: "Default"}")
+                                    val unitText = customUnit?.let {
+                                        stringResource(R.string.journal_unit_prefix, it.name)
+                                    } ?: stringResource(R.string.journal_unit_prefix, stringResource(R.string.journal_unit_default))
+                                    Text(text = unitText)
                                 }
                                 DropdownMenu(
                                     expanded = isShowingDropDownMenu,
@@ -413,11 +418,11 @@ fun EditIngestionScreen(
                     }
                 }
             }
-            CardWithTitle(title = "Ingestion notes") {
+            CardWithTitle(title = stringResource(R.string.journal_ingestion_notes)) {
                 OutlinedTextField(
                     value = note,
                     onValueChange = onNoteChange,
-                    label = { Text(text = "Notes") },
+                    label = { Text(text = stringResource(R.string.journal_notes)) },
                     modifier = Modifier.fillMaxWidth(),
                     keyboardActions = KeyboardActions(onDone = {
                         focusManager.clearFocus()
@@ -429,7 +434,7 @@ fun EditIngestionScreen(
                     singleLine = true
                 )
             }
-            CardWithTitle(title = "Time") {
+            CardWithTitle(title = stringResource(R.string.journal_time)) {
                 Column(
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -453,7 +458,10 @@ fun EditIngestionScreen(
                             onClick = { isShowingDropDownMenu = true },
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(text = if (selectedOption?.title != null) "Part of " + selectedOption.title else "Part of unknown experience")
+                            val partOfText = selectedOption?.title?.let {
+                                stringResource(R.string.journal_part_of_experience, it)
+                            } ?: stringResource(R.string.journal_part_of_unknown_experience)
+                            Text(text = partOfText)
                         }
                         DropdownMenu(
                             expanded = isShowingDropDownMenu,
@@ -483,15 +491,16 @@ fun EditIngestionScreen(
                         vertical = 3.dp
                     )
                 ) {
+                    val displayName = consumerName.ifBlank { stringResource(R.string.journal_you) }
                     Text(
-                        text = "Consumed by: ${consumerName.ifBlank { YOU }}",
+                        text = stringResource(R.string.journal_consumed_by, displayName),
                         style = MaterialTheme.typography.titleMedium
                     )
                     if (consumerNamesSorted.isNotEmpty() || consumerName.isNotBlank()) {
                         TextButton(onClick = {
                             isPresentingBottomSheet = !isPresentingBottomSheet
                         }) {
-                            Text(text = "Choose other consumer")
+                            Text(text = stringResource(R.string.journal_choose_other_consumer))
                         }
                     }
                     var showNewConsumerTextField by remember { mutableStateOf(false) }
@@ -504,7 +513,7 @@ fun EditIngestionScreen(
                             onCheckedChange = {
                                 showNewConsumerTextField = !showNewConsumerTextField
                             })
-                        Text("Enter new consumer")
+                        Text(stringResource(R.string.journal_enter_new_consumer))
                     }
                     AnimatedVisibility(visible = showNewConsumerTextField) {
                         OutlinedTextField(
@@ -513,7 +522,7 @@ fun EditIngestionScreen(
                             leadingIcon = {
                                 Icon(
                                     imageVector = Icons.Default.Person,
-                                    contentDescription = "Consumer"
+                                    contentDescription = stringResource(R.string.journal_consumer)
                                 )
                             },
                             keyboardActions = KeyboardActions(onDone = {
@@ -523,7 +532,7 @@ fun EditIngestionScreen(
                                 imeAction = ImeAction.Done,
                                 capitalization = KeyboardCapitalization.Words
                             ),
-                            placeholder = { Text("New consumer name") },
+                            placeholder = { Text(stringResource(R.string.journal_new_consumer_name)) },
                             singleLine = true,
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -544,10 +553,10 @@ fun EditIngestionScreen(
                 ) {
                     TextButton(onClick = addIngestionWithClonedTime) {
                         Icon(
-                            Icons.Outlined.Add, contentDescription = "Add"
+                            Icons.Outlined.Add, contentDescription = stringResource(R.string.journal_action_add)
                         )
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(text = "Add ingestion at same time")
+                        Text(text = stringResource(R.string.journal_add_ingestion_at_same_time))
                     }
                 }
             }
@@ -561,11 +570,11 @@ fun EditIngestionScreen(
             LazyColumn {
                 item {
                     ListItem(
-                        headlineContent = { Text(YOU) },
+                        headlineContent = { Text(stringResource(R.string.journal_you)) },
                         leadingContent = {
                             Icon(
                                 Icons.Default.Person,
-                                contentDescription = "Consumer"
+                                contentDescription = stringResource(R.string.journal_consumer)
                             )
                         },
                         modifier = Modifier.clickable {
@@ -584,7 +593,7 @@ fun EditIngestionScreen(
                         leadingContent = {
                             Icon(
                                 Icons.Default.Person,
-                                contentDescription = "Consumer"
+                                contentDescription = stringResource(R.string.journal_consumer)
                             )
                         },
                         modifier = Modifier.clickable {

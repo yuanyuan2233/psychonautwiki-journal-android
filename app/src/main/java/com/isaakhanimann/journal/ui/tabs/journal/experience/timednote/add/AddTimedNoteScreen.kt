@@ -30,7 +30,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timednote.TimedNoteScreenContent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,7 +44,7 @@ fun AddTimedNoteScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add timed note") },
+                title = { Text(stringResource(R.string.journal_add_timed_note)) },
                 actions = {
                     IconButton(onClick = {
                         viewModel.onDoneTap()
@@ -50,7 +52,7 @@ fun AddTimedNoteScreen(
                     }) {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done icon"
+                            contentDescription = stringResource(R.string.journal_done_icon)
                         )
                     }
                 }

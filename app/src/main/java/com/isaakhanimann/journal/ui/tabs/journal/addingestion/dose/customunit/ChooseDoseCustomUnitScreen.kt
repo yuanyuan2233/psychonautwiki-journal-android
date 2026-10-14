@@ -55,17 +55,20 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.justUnit
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDosePreviewProvider
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.dose.RoaDoseView
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -200,10 +203,10 @@ fun ChooseDoseCustomUnitScreen(
                     icon = {
                         Icon(
                             Icons.AutoMirrored.Filled.NavigateNext,
-                            contentDescription = "Next"
+                            contentDescription = stringResource(R.string.journal_action_next)
                         )
                     },
-                    text = { Text("Next") },
+                    text = { Text(stringResource(R.string.journal_action_next)) },
                 )
             }
         }
@@ -233,7 +236,7 @@ fun ChooseDoseCustomUnitScreen(
                     )
                 ) {
                     Text(
-                        text = "${customUnit.substanceName} ${customUnit.administrationRoute.displayText}",
+                        text = "${customUnit.substanceName} ${stringResource(customUnit.administrationRoute.getLocalizedNameRes())}",
                         style = MaterialTheme.typography.titleLarge
                     )
                     if (!doseRemark.isNullOrBlank()) {
@@ -288,7 +291,7 @@ fun ChooseDoseCustomUnitScreen(
                             )
                         },
                         textStyle = textStyle,
-                        label = { Text("Dose", style = textStyle) },
+                        label = { Text(stringResource(R.string.journal_dose), style = textStyle) },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
@@ -311,7 +314,7 @@ fun ChooseDoseCustomUnitScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(R.string.journal_dose_estimate), style = MaterialTheme.typography.titleMedium)
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         Column {
@@ -326,7 +329,7 @@ fun ChooseDoseCustomUnitScreen(
                                     )
                                 },
                                 textStyle = textStyle,
-                                label = { Text("Estimated standard deviation", style = textStyle) },
+                                label = { Text(stringResource(R.string.journal_dose_estimated_sd), style = textStyle) },
                                 trailingIcon = {
                                     Text(
                                         text = pluralizableUnit.justUnit(estimatedDoseDeviation ?: 1.0),
@@ -359,7 +362,7 @@ fun ChooseDoseCustomUnitScreen(
                 }
             }
             TextButton(onClick = useUnknownDoseAndNavigate) {
-                Text(text = "Log unknown dose")
+                Text(text = stringResource(R.string.journal_log_unknown_dose))
             }
             TextButton(onClick = {
                 navigateToCreateCustomUnit(
@@ -367,7 +370,7 @@ fun ChooseDoseCustomUnitScreen(
                     customUnit.substanceName
                 )
             }) {
-                Text(text = "Create new unit")
+                Text(text = stringResource(R.string.journal_create_new_unit))
             }
         }
     }

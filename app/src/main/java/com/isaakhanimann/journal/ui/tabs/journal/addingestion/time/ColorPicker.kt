@@ -47,11 +47,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 
 @Preview
@@ -91,7 +93,7 @@ fun ColorPicker(
     ) {
         Icon(
             imageVector = Icons.Default.Edit,
-            contentDescription = "Edit color",
+            contentDescription = stringResource(R.string.journal_action_edit_color),
             modifier = Modifier.padding(15.dp),
         )
     }
@@ -130,16 +132,16 @@ fun ColorDialog(
     AlertDialog(
         onDismissRequest = dismiss,
         title = {
-            Text(text = "Pick a color", style = MaterialTheme.typography.titleLarge)
+            Text(text = stringResource(R.string.journal_pick_color), style = MaterialTheme.typography.titleLarge)
         },
         text = {
             Column(
                 modifier = Modifier.verticalScroll(rememberScrollState())
             ) {
                 if (otherColors.isEmpty()) {
-                    Text(text = "No unused colors")
+                    Text(text = stringResource(R.string.journal_color_no_unused))
                 } else {
-                    Text(text = "Not yet used")
+                    Text(text = stringResource(R.string.journal_color_not_used))
                     Spacer(modifier = Modifier.height(2.dp))
                     CircleColorButtons(colors = otherColors) {
                         onChangeOfColor(it)
@@ -148,7 +150,7 @@ fun ColorDialog(
                 }
                 if (alreadyUsedColors.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(5.dp))
-                    Text(text = "Already used")
+                    Text(text = stringResource(R.string.journal_color_already_used))
                     Spacer(modifier = Modifier.height(2.dp))
                     CircleColorButtons(colors = alreadyUsedColors) {
                         onChangeOfColor(it)
@@ -162,7 +164,7 @@ fun ColorDialog(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = dismiss
             ) {
-                Text("Cancel", textAlign = TextAlign.Center)
+                Text(stringResource(R.string.journal_action_cancel), textAlign = TextAlign.Center)
             }
         },
     )

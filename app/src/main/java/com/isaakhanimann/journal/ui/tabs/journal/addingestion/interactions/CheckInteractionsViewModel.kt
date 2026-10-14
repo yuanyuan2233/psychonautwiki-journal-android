@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions
 
+import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -25,14 +26,16 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.substances.classes.InteractionType
 import com.isaakhanimann.journal.data.substances.repositories.SubstanceRepository
 import com.isaakhanimann.journal.ui.main.navigation.graphs.CheckInteractionsRoute
+import com.isaakhanimann.journal.ui.tabs.journal.experience.components.getDurationText
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.CombinationSettingsStorage
-import com.isaakhanimann.journal.ui.utils.getTimeDifferenceText
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.time.Instant
@@ -41,6 +44,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CheckInteractionsViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
     substanceRepo: SubstanceRepository,
     private val experienceRepo: ExperienceRepository,
     private val combinationSettingsStorage: CombinationSettingsStorage,
@@ -101,37 +105,25 @@ class CheckInteractionsViewModel @Inject constructor(
             }
         val now = Instant.now()
         val messages = dangerousIngestions.map { ingestion ->
-            "Dangerous interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+            val timeDiff = getDurationText(fromInstant = ingestion.time, toInstant = now, context = context)
+            context.getString(R.string.journal_alert_dangerous_with_time, ingestion.substanceName, timeDiff)
         }.toMutableList()
         messages += dangerousExtras.map { extra ->
-            "Dangerous interaction with $extra."
+            context.getString(R.string.journal_alert_dangerous_extra, extra)
         }
         messages += unsafeIngestions.map { ingestion ->
-            "Unsafe interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+            val timeDiff = getDurationText(fromInstant = ingestion.time, toInstant = now, context = context)
+            context.getString(R.string.journal_alert_unsafe_with_time, ingestion.substanceName, timeDiff)
         }
         messages += unsafeExtras.map { extra ->
-            "Unsafe interaction with $extra."
+            context.getString(R.string.journal_alert_unsafe_extra, extra)
         }
         messages += uncertainIngestions.map { ingestion ->
-            "Uncertain interaction with ${ingestion.substanceName} (taken ${
-                getTimeDifferenceText(
-                    fromInstant = ingestion.time,
-                    toInstant = now
-                )
-            } ago)."
+            val timeDiff = getDurationText(fromInstant = ingestion.time, toInstant = now, context = context)
+            context.getString(R.string.journal_alert_uncertain_with_time, ingestion.substanceName, timeDiff)
         }
         messages += uncertainExtras.map { extra ->
-            "Uncertain interaction with $extra."
+            context.getString(R.string.journal_alert_uncertain_extra, extra)
         }
         alertText = messages.distinct().joinToString(separator = "\n")
         isShowingAlert = true

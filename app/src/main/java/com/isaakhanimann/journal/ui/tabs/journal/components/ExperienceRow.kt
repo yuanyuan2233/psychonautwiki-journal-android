@@ -45,10 +45,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCompanionAndCustomUnit
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -77,12 +79,13 @@ fun ExperienceRow(
         ColorRectangle(ingestions = ingestions)
         Column {
             Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                val localizedExperienceTitle = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(experience.title)
                 Text(
-                    text = experience.title,
+                    text = localizedExperienceTitle,
                     style = MaterialTheme.typography.titleMedium,
                 )
                 if (experience.isFavorite) {
-                    Icon(imageVector = Icons.Filled.Star, contentDescription = "Is favorite")
+                    Icon(imageVector = Icons.Filled.Star, contentDescription = stringResource(R.string.journal_action_is_favorite))
                 }
             }
             Row(
@@ -90,14 +93,15 @@ fun ExperienceRow(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 val substanceNames = remember(ingestions) {
-                    ingestions.map { it.ingestion.substanceName }.distinct()
-                        .joinToString(separator = ", ")
+                    ingestions.map {
+                        com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(it.ingestion.substanceName)
+                    }.distinct().joinToString(separator = ", ")
                 }
                 if (substanceNames.isNotEmpty()) {
                     Text(text = substanceNames)
                 } else {
                     Text(
-                        text = "No substance yet",
+                        text = stringResource(R.string.journal_experience_no_substance_yet),
                     )
                 }
                 val rating = experienceWithIngestionsCompanionsAndRatings.rating?.sign
@@ -110,7 +114,7 @@ fun ExperienceRow(
                     .joinToString(separator = ", ")
             }
             if (consumerNames.isNotEmpty()) {
-                Text(text = "With: $consumerNames", style = MaterialTheme.typography.labelSmall)
+                Text(text = stringResource(R.string.journal_experience_with_consumers, consumerNames), style = MaterialTheme.typography.labelSmall)
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,

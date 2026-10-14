@@ -53,11 +53,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.relations.ExperienceWithIngestionsCompanionsAndRatings
 import com.isaakhanimann.journal.ui.tabs.journal.components.ExperienceRow
@@ -71,6 +73,8 @@ import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.YearMonth
+import java.time.format.TextStyle
+import java.util.Locale
 
 @Preview
 @Composable
@@ -101,7 +105,7 @@ fun CalendarJournalScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Journal") },
+                title = { Text(stringResource(R.string.journal_title)) },
                 actions = {
                     val coroutineScope = rememberCoroutineScope()
                     TextButton(onClick = {
@@ -109,7 +113,7 @@ fun CalendarJournalScreen(
                             state.animateScrollToMonth(YearMonth.now().minusMonths(1))
                         }
                     }) {
-                        Text(text = "Today")
+                        Text(text = stringResource(R.string.journal_calendar_today))
                     }
                 }
             )
@@ -156,7 +160,11 @@ fun CalendarJournalScreen(
             contentPadding = PaddingValues(horizontalPadding),
             monthHeader = {
                 Text(
-                    text = "${it.yearMonth.month} ${it.yearMonth.year}",
+                    text = stringResource(
+                        R.string.journal_calendar_month_year,
+                        it.yearMonth.month.getDisplayName(TextStyle.FULL, Locale.getDefault()),
+                        it.yearMonth.year
+                    ),
                     style = MaterialTheme.typography.titleLarge
                 )
             }

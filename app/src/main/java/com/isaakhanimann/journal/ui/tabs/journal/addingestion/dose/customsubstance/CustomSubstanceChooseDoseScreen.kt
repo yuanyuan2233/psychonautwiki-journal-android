@@ -59,14 +59,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.PurityCalculation
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.StandardDeviationExplanation
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose.UnknownDoseDialog
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -166,13 +169,13 @@ fun CustomSubstanceChooseDoseScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(administrationRoute.displayText + " " + substanceName + " Dosage") },
+            TopAppBar(title = { Text(stringResource(R.string.journal_dose_title_format, substanceName, stringResource(administrationRoute.getLocalizedNameRes()))) },
                 actions = {
                     var isShowingUnknownDoseDialog by remember { mutableStateOf(false) }
                     IconButton(onClick = { isShowingUnknownDoseDialog = true }) {
                         Icon(
                             imageVector = Icons.Default.QuestionMark,
-                            contentDescription = "Log unknown dose"
+                            contentDescription = stringResource(R.string.journal_log_unknown_dose)
                         )
                     }
                     AnimatedVisibility(visible = isShowingUnknownDoseDialog) {
@@ -191,10 +194,10 @@ fun CustomSubstanceChooseDoseScreen(
                     icon = {
                         Icon(
                             Icons.AutoMirrored.Filled.NavigateNext,
-                            contentDescription = "Next"
+                            contentDescription = stringResource(R.string.journal_action_next)
                         )
                     },
-                    text = { Text("Next") },
+                    text = { Text(stringResource(R.string.journal_action_next)) },
                 )
             }
         }
@@ -234,7 +237,7 @@ fun CustomSubstanceChooseDoseScreen(
                             )
                         },
                         textStyle = textStyle,
-                        label = { Text("Pure dose", style = textStyle) },
+                        label = { Text(stringResource(R.string.journal_dose_pure), style = textStyle) },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
@@ -255,7 +258,7 @@ fun CustomSubstanceChooseDoseScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(R.string.journal_dose_estimate), style = MaterialTheme.typography.titleMedium)
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         Column {
@@ -270,7 +273,7 @@ fun CustomSubstanceChooseDoseScreen(
                                     )
                                 },
                                 textStyle = textStyle,
-                                label = { Text("Estimated standard deviation", style = textStyle) },
+                                label = { Text(stringResource(R.string.journal_dose_estimated_sd), style = textStyle) },
                                 isError = !isValidDose,
                                 trailingIcon = {
                                     Text(
@@ -301,7 +304,7 @@ fun CustomSubstanceChooseDoseScreen(
                         }
                     }
                     TextButton(onClick = navigateToCreateCustomUnit) {
-                        Text(text = "Create custom unit")
+                        Text(text = stringResource(R.string.journal_create_custom_unit))
                     }
                 }
             }
@@ -329,17 +332,17 @@ fun CustomSubstanceChooseDoseScreen(
             }
             if (administrationRoute == AdministrationRoute.INSUFFLATED) {
                 TextButton(onClick = navigateToSaferSniffingScreen) {
-                    Text(text = "Safer sniffing")
+                    Text(text = stringResource(R.string.journal_safer_sniffing))
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
                 val uriHandler = LocalUriHandler.current
                 TextButton(onClick = { uriHandler.openUri(AdministrationRoute.SAFER_PLUGGING_ARTICLE_URL) }) {
                     Icon(
                         Icons.Outlined.OpenInBrowser,
-                        contentDescription = "Open link"
+                        contentDescription = stringResource(R.string.journal_action_open_link)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Safer plugging")
+                    Text(stringResource(R.string.journal_safer_plugging))
                 }
             }
         }

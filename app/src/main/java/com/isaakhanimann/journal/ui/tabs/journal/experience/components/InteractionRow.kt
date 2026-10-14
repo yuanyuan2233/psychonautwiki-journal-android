@@ -33,8 +33,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.interactions.Interaction
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -53,7 +55,7 @@ fun InteractionRow(interaction: Interaction) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "${interaction.aName} and ${interaction.bName}",
+                text = stringResource(R.string.journal_interaction_and, interaction.aName, interaction.bName),
                 textAlign = TextAlign.Center,
                 color = Color.Black,
             )
@@ -62,7 +64,7 @@ fun InteractionRow(interaction: Interaction) {
                 items(interaction.interactionType.dangerCount) {
                     Icon(
                         imageVector = Icons.Outlined.WarningAmber,
-                        contentDescription = "Warning",
+                        contentDescription = stringResource(R.string.journal_action_warning),
                         tint = Color.Black,
                     )
                 }

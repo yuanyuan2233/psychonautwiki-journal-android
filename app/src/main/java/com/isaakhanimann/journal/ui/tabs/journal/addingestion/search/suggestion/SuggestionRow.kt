@@ -34,10 +34,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.ColorCircle
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.search.suggestion.models.Suggestion
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
@@ -97,8 +100,10 @@ fun PureSubstanceSuggestionRow(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             ColorCircle(adaptiveColor = pureSubstanceSuggestion.adaptiveColor)
+            val routeName = stringResource(pureSubstanceSuggestion.administrationRoute.getLocalizedNameRes())
+            val localizedName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(pureSubstanceSuggestion.substanceName)
             Text(
-                text = pureSubstanceSuggestion.substanceName + " " + pureSubstanceSuggestion.administrationRoute.displayText.lowercase(),
+                text = "$localizedName $routeName",
                 style = MaterialTheme.typography.titleMedium
             )
         }
@@ -134,7 +139,7 @@ fun PureSubstanceSuggestionRow(
                                 Text(text = description)
                             }
                         } else {
-                            Text(text = "Unknown")
+                            Text(text = stringResource(R.string.journal_dose_unknown))
                         }
                     },
                 )
@@ -145,11 +150,11 @@ fun PureSubstanceSuggestionRow(
                     pureSubstanceSuggestion.administrationRoute
                 )
             }, label = {
-                Text("Other dose")
+                Text(stringResource(R.string.journal_other_dose))
             }, icon = {
                 Icon(
                     imageVector = Icons.Default.Keyboard,
-                    contentDescription = "Keyboard"
+                    contentDescription = stringResource(R.string.journal_action_keyboard)
                 )
             })
         }
@@ -172,8 +177,9 @@ fun CustomUnitSuggestionRow(
         val customUnit = customUnitSuggestion.customUnit
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             ColorCircle(adaptiveColor = customUnitSuggestion.adaptiveColor)
+            val routeName = stringResource(customUnit.administrationRoute.getLocalizedNameRes())
             Text(
-                text = customUnit.substanceName + " " + customUnit.administrationRoute.displayText.lowercase() + ", " + customUnit.name,
+                text = "${customUnit.substanceName} $routeName, ${customUnit.name}",
                 style = MaterialTheme.typography.titleMedium
             )
         }
@@ -196,11 +202,11 @@ fun CustomUnitSuggestionRow(
             SuggestionChip(onClick = {
                 navigateToCustomUnitChooseDose(customUnit.id)
             }, label = {
-                Text(text = "Other dose")
+                Text(text = stringResource(R.string.journal_other_dose))
             }, icon = {
                 Icon(
                     imageVector = Icons.Default.Keyboard,
-                    contentDescription = "Keyboard"
+                    contentDescription = stringResource(R.string.journal_action_keyboard)
                 )
             })
         }
@@ -222,8 +228,9 @@ fun CustomSubstanceSuggestionRow(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             ColorCircle(adaptiveColor = customSubstanceSuggestion.adaptiveColor)
+            val routeName = stringResource(customSubstanceSuggestion.administrationRoute.getLocalizedNameRes())
             Text(
-                text = customSubstanceSuggestion.customSubstance.name + " " + customSubstanceSuggestion.administrationRoute.displayText.lowercase(),
+                text = "${customSubstanceSuggestion.customSubstance.name} $routeName",
                 style = MaterialTheme.typography.titleMedium
             )
         }
@@ -259,7 +266,7 @@ fun CustomSubstanceSuggestionRow(
                                 Text(text = description)
                             }
                         } else {
-                            Text(text = "Unknown")
+                            Text(text = stringResource(R.string.journal_dose_unknown))
                         }
                     },
                 )
@@ -270,11 +277,11 @@ fun CustomSubstanceSuggestionRow(
                     customSubstanceSuggestion.administrationRoute
                 )
             }, label = {
-                Text("Other dose")
+                Text(stringResource(R.string.journal_other_dose))
             }, icon = {
                 Icon(
                     imageVector = Icons.Default.Keyboard,
-                    contentDescription = "Keyboard"
+                    contentDescription = stringResource(R.string.journal_action_keyboard)
                 )
             })
         }

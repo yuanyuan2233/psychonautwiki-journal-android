@@ -31,9 +31,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 
@@ -51,7 +53,7 @@ fun RatingPickerSection(
     selectedRating: ShulginRatingOption,
     onRatingChange: (ShulginRatingOption) -> Unit
 ) {
-    CardWithTitle(title = "Shulgin rating") {
+    CardWithTitle(title = stringResource(R.string.journal_shulgin_ratings)) {
         val ratings = ShulginRatingOption.entries
         // Modifier.selectableGroup() is essential to ensure correct accessibility behavior
         Column(Modifier.selectableGroup()) {
@@ -78,7 +80,7 @@ fun RatingPickerSection(
                         modifier = Modifier.padding(start = 16.dp)
                     )
                     Text(
-                        text = oneRating.shortDescription,
+                        text = stringResource(oneRating.getLocalizedShortDescriptionRes()),
                         style = MaterialTheme.typography.labelSmall,
                         modifier = Modifier.padding(start = 16.dp)
                     )

@@ -36,9 +36,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingPickerSection
@@ -97,14 +99,14 @@ fun EditRatingScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Edit Shulgin rating") },
+                title = { Text(stringResource(R.string.journal_edit_shulgin_rating)) },
                 actions = {
                     IconButton(
                         onClick = { onDelete() },
                     ) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete rating",
+                            contentDescription = stringResource(R.string.journal_action_delete_rating),
                         )
                     }
                 }

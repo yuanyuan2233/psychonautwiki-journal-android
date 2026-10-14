@@ -40,9 +40,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.ShulginRatingOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.FloatingDoneButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.rating.RatingPickerSection
@@ -101,7 +103,7 @@ fun AddRatingScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add Shulgin rating") },
+                title = { Text(stringResource(R.string.journal_add_shulgin_rating)) },
             )
         },
         floatingActionButton = {
@@ -134,7 +136,7 @@ fun AddRatingScreen(
                             onCheckedChange = { onChangeIsOverallRating(it) }
                         )
                         Text(
-                            text = "Overall rating",
+                            text = stringResource(R.string.journal_rating_overall),
                             style = MaterialTheme.typography.titleMedium
                         )
                     }

@@ -25,6 +25,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.isaakhanimann.journal.R
 
 @Composable
 fun FloatingDoneButton(onDone: ()->Unit, modifier: Modifier = Modifier) {
@@ -34,9 +36,9 @@ fun FloatingDoneButton(onDone: ()->Unit, modifier: Modifier = Modifier) {
         icon = {
             Icon(
                 Icons.Filled.Done,
-                contentDescription = "Done"
+                contentDescription = stringResource(R.string.journal_action_done)
             )
         },
-        text = { Text("Done") }
+        text = { Text(stringResource(R.string.journal_action_done)) }
     )
 }

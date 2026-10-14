@@ -32,10 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
@@ -49,12 +51,12 @@ fun TimedNoteScreenContentPreview() {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Add timed note") },
+                title = { Text(stringResource(R.string.journal_add_timed_note)) },
                 actions = {
                     IconButton(onClick = { }) {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done Icon"
+                            contentDescription = stringResource(R.string.journal_done_icon)
                         )
                     }
                 }
@@ -113,7 +115,7 @@ fun TimedNoteScreenContent(
         OutlinedTextField(
             value = note,
             onValueChange = onNoteChange,
-            label = { Text(text = "Note") },
+            label = { Text(text = stringResource(R.string.journal_note_label)) },
             keyboardOptions = KeyboardOptions.Default.copy(
                 imeAction = ImeAction.Done,
                 capitalization = KeyboardCapitalization.Sentences
@@ -127,7 +129,7 @@ fun TimedNoteScreenContent(
                 .focusRequester(focusRequester)
         )
         Spacer(modifier = Modifier.height(5.dp))
-        CardWithTitle(title = "Show on timeline") {
+        CardWithTitle(title = stringResource(R.string.journal_show_on_timeline)) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,

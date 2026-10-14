@@ -36,8 +36,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 
 @Composable
@@ -127,7 +129,7 @@ fun AdministrationRoutePicker(
                         modifier = Modifier.fillMaxSize()
                     ) {
                         Text(
-                            text = "Other routes",
+                            text = stringResource(R.string.journal_other_routes),
                             style = MaterialTheme.typography.headlineSmall
                         )
                     }

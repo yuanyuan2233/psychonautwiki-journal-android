@@ -66,13 +66,16 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
 import com.isaakhanimann.journal.ui.DOSE_DISCLAIMER
@@ -228,7 +231,7 @@ fun ChooseDoseScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("$substanceName ${administrationRoute.displayText} dose") })
+            TopAppBar(title = { Text(stringResource(R.string.journal_dose_title_format, substanceName, stringResource(administrationRoute.getLocalizedNameRes()))) })
         },
         floatingActionButton = {
             if (isValidDose) {
@@ -238,10 +241,10 @@ fun ChooseDoseScreen(
                     icon = {
                         Icon(
                             Icons.AutoMirrored.Filled.NavigateNext,
-                            contentDescription = "Next"
+                            contentDescription = stringResource(R.string.journal_action_next)
                         )
                     },
-                    text = { Text("Next") },
+                    text = { Text(stringResource(R.string.journal_action_next)) },
                 )
             }
         }
@@ -283,7 +286,7 @@ fun ChooseDoseScreen(
                         if (!isDoseRemarkExpanded) {
                             Icon(
                                 imageVector = Icons.Default.Expand,
-                                contentDescription = "Expand"
+                                contentDescription = stringResource(R.string.journal_action_expand)
                             )
                         }
                     }
@@ -296,11 +299,11 @@ fun ChooseDoseScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Default.Warning,
-                                contentDescription = "Dosage warning"
+                                contentDescription = stringResource(R.string.journal_dosage_warning)
                             )
                             Spacer(modifier = Modifier.width(ButtonDefaults.IconSpacing))
                             Text(
-                                text = "There is no dosage info for this administration route. Research dosages somewhere else.",
+                                text = stringResource(R.string.journal_no_dose_info_for_route),
                             )
                         }
                     }
@@ -343,7 +346,7 @@ fun ChooseDoseScreen(
                             )
                         },
                         textStyle = textStyle,
-                        label = { Text("Pure Dose", style = textStyle) },
+                        label = { Text(stringResource(R.string.journal_dose_pure), style = textStyle) },
                         isError = !isValidDose,
                         trailingIcon = {
                             Text(
@@ -365,7 +368,7 @@ fun ChooseDoseScreen(
                         OutlinedTextField(
                             value = units,
                             onValueChange = onChangeOfUnits,
-                            label = { Text("Units") },
+                            label = { Text(stringResource(R.string.journal_dose_units)) },
                             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                             singleLine = true,
@@ -394,7 +397,7 @@ fun ChooseDoseScreen(
                         horizontalArrangement = Arrangement.spacedBy(10.dp),
                     ) {
                         Switch(checked = isEstimate, onCheckedChange = onChangeIsEstimate)
-                        Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(R.string.journal_dose_estimate), style = MaterialTheme.typography.titleMedium)
                     }
                     AnimatedVisibility(visible = isEstimate) {
                         Column {
@@ -409,7 +412,7 @@ fun ChooseDoseScreen(
                                     )
                                 },
                                 textStyle = textStyle,
-                                label = { Text("Estimated standard deviation", style = textStyle) },
+                                label = { Text(stringResource(R.string.journal_dose_estimated_sd), style = textStyle) },
                                 trailingIcon = {
                                     Text(
                                         text = units,
@@ -456,33 +459,33 @@ fun ChooseDoseScreen(
                         .fillMaxWidth()
                 ) {
                     if (substanceName == "Cannabis" && administrationRoute == AdministrationRoute.SMOKED) {
-                        Text("Prefer to log weight of bud, hash or log another unit related to joint, vaporizer or bong?")
+                        Text(stringResource(R.string.journal_custom_unit_cannabis_prompt))
                     } else if (substanceName == "Psilocybin mushrooms") {
-                        Text("Prefer to log weight of mushrooms instead of mg Psilocybin?")
+                        Text(stringResource(R.string.journal_custom_unit_shrooms_prompt))
                     } else if (substanceName == "Alcohol") {
-                        Text("Prefer to log number of drinks, beer or wine instead of g of Ethanol?")
+                        Text(stringResource(R.string.journal_custom_unit_alcohol_prompt))
                     } else if (substanceName == "Caffeine") {
-                        Text("Prefer to log coffee, tea or energy drink instead of mg Caffeine?")
+                        Text(stringResource(R.string.journal_custom_unit_caffeine_prompt))
                     } else {
                         val unitSuggestions = when (administrationRoute) {
-                            AdministrationRoute.ORAL -> "pills, capsules or raw powder weight"
-                            AdministrationRoute.SMOKED -> "hits"
-                            AdministrationRoute.INSUFFLATED -> "sprays, spoons, scoops, lines or raw powder weight"
-                            AdministrationRoute.BUCCAL -> "pouches"
-                            AdministrationRoute.TRANSDERMAL -> "patches"
-                            else -> "pills, sprays, spoons or powder weight"
+                            AdministrationRoute.ORAL -> stringResource(R.string.journal_custom_unit_oral_suggestions)
+                            AdministrationRoute.SMOKED -> stringResource(R.string.journal_custom_unit_smoked_suggestions)
+                            AdministrationRoute.INSUFFLATED -> stringResource(R.string.journal_custom_unit_insufflated_suggestions)
+                            AdministrationRoute.BUCCAL -> stringResource(R.string.journal_custom_unit_buccal_suggestions)
+                            AdministrationRoute.TRANSDERMAL -> stringResource(R.string.journal_custom_unit_transdermal_suggestions)
+                            else -> stringResource(R.string.journal_custom_unit_other_suggestions)
                         }
-                        Text(text = "Prefer to log with a different unit such as $unitSuggestions?")
+                        Text(text = stringResource(R.string.journal_custom_unit_prompt_format, unitSuggestions))
                     }
                     Spacer(modifier = Modifier.height(5.dp))
                     OutlinedButton(onClick = navigateToCreateCustomUnit) {
-                        Text("Create a custom unit")
+                        Text(stringResource(R.string.journal_create_custom_unit))
                     }
                 }
             }
             var isShowingUnknownDoseDialog by remember { mutableStateOf(false) }
             TextButton(onClick = { isShowingUnknownDoseDialog = true }) {
-                Text(text = "Log unknown dose")
+                Text(text = stringResource(R.string.journal_log_unknown_dose))
             }
             AnimatedVisibility(visible = isValidDose) {
                 ElevatedCard(
@@ -516,32 +519,32 @@ fun ChooseDoseScreen(
                 TextButton(onClick = navigateToSaferSniffingScreen) {
                     Icon(
                         Icons.Outlined.Info,
-                        contentDescription = "Info",
+                        contentDescription = stringResource(R.string.journal_action_info),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(text = "Safer sniffing")
+                    Text(text = stringResource(R.string.journal_safer_sniffing))
                 }
             } else if (administrationRoute == AdministrationRoute.RECTAL) {
                 val uriHandler = LocalUriHandler.current
                 TextButton(onClick = { uriHandler.openUri(AdministrationRoute.SAFER_PLUGGING_ARTICLE_URL) }) {
                     Icon(
                         Icons.Outlined.OpenInBrowser,
-                        contentDescription = "Open link"
+                        contentDescription = stringResource(R.string.journal_action_open_link)
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text("Safer plugging")
+                    Text(stringResource(R.string.journal_safer_plugging))
                 }
             }
             if (roaDose?.shouldUseVolumetricDosing == true) {
                 TextButton(onClick = navigateToVolumetricDosingScreen) {
                     Icon(
                         Icons.Outlined.Info,
-                        contentDescription = "Info",
+                        contentDescription = stringResource(R.string.journal_action_info),
                         modifier = Modifier.size(ButtonDefaults.IconSize),
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                    Text(text = "Volumetric liquid dosing")
+                    Text(text = stringResource(R.string.journal_volumetric_liquid_dosing))
                 }
             }
             if (administrationRoute == AdministrationRoute.SMOKED && substanceName != "Cannabis") {

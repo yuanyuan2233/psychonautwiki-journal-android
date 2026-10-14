@@ -62,11 +62,13 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomSubstance
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
@@ -139,7 +141,7 @@ fun AddIngestionSearchScreen(
         floatingActionButton = {
             if (!isFocused) {
                 FloatingActionButton(onClick = { focusRequester.requestFocus() }) {
-                    Icon(Icons.Default.Keyboard, contentDescription = "Keyboard")
+                    Icon(Icons.Default.Keyboard, contentDescription = stringResource(R.string.journal_action_keyboard))
                 }
             }
         }
@@ -160,11 +162,11 @@ fun AddIngestionSearchScreen(
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
                     }.clearAndSetSemantics {  },
-                placeholder = { Text(text = "Search substances") },
+                placeholder = { Text(text = stringResource(R.string.journal_search_substances)) },
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = "Search",
+                        contentDescription = stringResource(R.string.journal_action_search),
                     )
                 },
                 trailingIcon = {
@@ -175,7 +177,7 @@ fun AddIngestionSearchScreen(
                             }) {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = "Close",
+                                    contentDescription = stringResource(R.string.journal_action_close),
                                 )
                             }
                         }
@@ -192,7 +194,7 @@ fun AddIngestionSearchScreen(
             LazyColumn {
                 if (suggestions.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Quick logging")
+                        SectionHeader(title = stringResource(R.string.journal_section_quick_logging))
                     }
                 }
                 itemsIndexed(suggestions) { index, suggestion ->
@@ -209,7 +211,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredCustomSubstances.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Custom substances")
+                        SectionHeader(title = stringResource(R.string.journal_section_custom_substances))
                     }
                 }
                 itemsIndexed(filteredCustomSubstances) { index, customSubstance ->
@@ -228,7 +230,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredCustomUnits.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Custom units")
+                        SectionHeader(title = stringResource(R.string.journal_section_custom_units))
                     }
                 }
                 itemsIndexed(filteredCustomUnits) { index, customUnit ->
@@ -241,7 +243,7 @@ fun AddIngestionSearchScreen(
                 }
                 if (filteredSubstances.isNotEmpty()) {
                     stickyHeader {
-                        SectionHeader(title = "Substances")
+                        SectionHeader(title = stringResource(R.string.journal_section_substances))
                     }
                 }
                 items(filteredSubstances) { substance ->
@@ -263,16 +265,16 @@ fun AddIngestionSearchScreen(
                         modifier = Modifier.padding(horizontal = horizontalPadding)
                     ) {
                         Icon(
-                            Icons.Outlined.Add, contentDescription = "Add"
+                            Icons.Outlined.Add, contentDescription = stringResource(R.string.journal_action_add)
                         )
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(text = "Add custom substance")
+                        Text(text = stringResource(R.string.journal_add_custom_substance))
                     }
                     HorizontalDivider()
                 }
                 item {
                     if (filteredSubstances.isEmpty() && filteredCustomSubstances.isEmpty()) {
-                        Text("No matching substance found", modifier = Modifier.padding(10.dp))
+                        Text(stringResource(R.string.journal_no_matching_substance_found), modifier = Modifier.padding(10.dp))
                     }
                 }
             }

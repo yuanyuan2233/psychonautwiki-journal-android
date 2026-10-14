@@ -30,8 +30,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.NextFAB
 import com.isaakhanimann.journal.ui.tabs.search.substance.BulletPoints
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -44,7 +46,7 @@ fun CheckSaferUseScreen(
     viewModel: SaferUseViewModel = hiltViewModel()
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("${viewModel.substanceName} safer use") }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.journal_substance_safer_use, viewModel.substanceName)) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }

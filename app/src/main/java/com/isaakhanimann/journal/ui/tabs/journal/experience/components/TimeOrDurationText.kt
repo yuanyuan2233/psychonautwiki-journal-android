@@ -23,7 +23,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.utils.getShortTimeText
 import com.isaakhanimann.journal.ui.utils.getShortTimeWithWeekdayText
 import com.isaakhanimann.journal.ui.utils.getShortWeekdayText
@@ -68,29 +71,35 @@ fun IngestionTimeOrDurationText(
             } else {
                 val previousTime =
                     allTimesSortedMap[index - 1]
+                val context = LocalContext.current
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     if (endTime != null) {
                         Text(
                             text = getDurationText(
                                 fromInstant = previousTime,
-                                toInstant = time
+                                toInstant = time,
+                                context = context
                             ),
                             style = textStyle
                         )
                         Text(TIME_RANGE_SEPARATOR_TEXT)
+                        val endDuration = getDurationText(
+                            fromInstant = previousTime,
+                            toInstant = endTime,
+                            context = context
+                        )
                         Text(
-                            text = getDurationText(
-                                fromInstant = previousTime,
-                                toInstant = endTime
-                            ) + " after previous",
+                            text = stringResource(R.string.journal_time_after_previous, endDuration),
                             style = textStyle
                         )
                     } else {
+                        val duration = getDurationText(
+                            fromInstant = previousTime,
+                            toInstant = time,
+                            context = context
+                        )
                         Text(
-                            text = getDurationText(
-                                fromInstant = previousTime,
-                                toInstant = time
-                            ) + " after previous",
+                            text = stringResource(R.string.journal_time_after_previous, duration),
                             style = textStyle
                         )
                     }
@@ -102,6 +111,7 @@ fun IngestionTimeOrDurationText(
             if (isFirstIngestion) {
                 RegularTimeOrRangeText(time, endTime, textStyle)
             } else {
+                val context = LocalContext.current
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     val startTime = allTimesSortedMap.firstOrNull()
                         ?: Instant.now()
@@ -109,24 +119,29 @@ fun IngestionTimeOrDurationText(
                         Text(
                             text = getDurationText(
                                 fromInstant = startTime,
-                                toInstant = time
+                                toInstant = time,
+                                context = context
                             ),
                             style = textStyle
                         )
                         Text(TIME_RANGE_SEPARATOR_TEXT)
+                        val endDuration = getDurationText(
+                            fromInstant = startTime,
+                            toInstant = endTime,
+                            context = context
+                        )
                         Text(
-                            text = getDurationText(
-                                fromInstant = startTime,
-                                toInstant = endTime
-                            ) + " after start",
+                            text = stringResource(R.string.journal_time_after_start, endDuration),
                             style = textStyle
                         )
                     } else {
+                        val duration = getDurationText(
+                            fromInstant = startTime,
+                            toInstant = time,
+                            context = context
+                        )
                         Text(
-                            text = getDurationText(
-                                fromInstant = startTime,
-                                toInstant = time
-                            ) + " after start",
+                            text = stringResource(R.string.journal_time_after_start, duration),
                             style = textStyle
                         )
                     }
@@ -186,12 +201,19 @@ fun NoteOrRatingTimeOrDurationText(
         }
 
         TimeDisplayOption.RELATIVE_TO_START -> {
+            val context = LocalContext.current
             val durationText = getDurationText(
                 fromInstant = firstIngestionTime,
-                toInstant = time
-            ) + if (firstIngestionTime < time) " after start" else "before start"
+                toInstant = time,
+                context = context
+            )
+            val text = if (firstIngestionTime < time) {
+                stringResource(R.string.journal_time_after_start, durationText)
+            } else {
+                stringResource(R.string.journal_time_before_start, durationText)
+            }
             Text(
-                text = durationText,
+                text = text,
                 style = textStyle
             )
         }

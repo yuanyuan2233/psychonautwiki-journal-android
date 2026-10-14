@@ -30,15 +30,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.DotRows
 import com.isaakhanimann.journal.ui.tabs.journal.experience.models.IngestionElement
+import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 
 @Preview(showBackground = true)
 @Composable
@@ -74,10 +77,11 @@ fun IngestionRow(
         VerticalLine(color = ingestionWithCompanionAndCustomUnit.substanceCompanion?.color ?: AdaptiveColor.RED)
         Column {
             time()
+            val localizedSubstanceName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(ingestion.substanceName)
             val title = if (customUnit != null) {
-                "${ingestion.substanceName}, ${customUnit.name}"
+                "${localizedSubstanceName}, ${customUnit.name}"
             } else {
-                ingestion.substanceName
+                localizedSubstanceName
             }
             Text(
                 modifier = Modifier.weight(1f),
@@ -88,16 +92,17 @@ fun IngestionRow(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
+                val routeName = stringResource(ingestion.administrationRoute.getLocalizedNameRes())
                 val text = buildAnnotatedString {
                     append(ingestionWithCompanionAndCustomUnit.doseDescription)
                     withStyle(style = SpanStyle(color = Color.Gray)) {
                         if (customUnit == null) {
-                            append(" " + ingestion.administrationRoute.displayText.lowercase())
+                            append(" $routeName")
                         } else {
                             ingestionWithCompanionAndCustomUnit.customUnitDose?.calculatedDoseDescription?.let {
-                                append(" = $it ${ingestion.administrationRoute.displayText.lowercase()}")
+                                append(" " + stringResource(R.string.journal_calculated_dose_with_route, it, routeName))
                             } ?: run {
-                                append(" = unknown dose ${ingestion.administrationRoute.displayText.lowercase()}")
+                                append(" " + stringResource(R.string.journal_unknown_dose_with_route, routeName))
                             }
                         }
                     }

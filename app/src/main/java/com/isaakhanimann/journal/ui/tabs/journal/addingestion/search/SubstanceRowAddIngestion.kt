@@ -46,6 +46,15 @@ fun SubstanceRowAddIngestion(
     substanceModel: SubstanceModel,
     onTap: (substanceName: String) -> Unit
 ) {
+    val displayName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(
+        substanceModel.name,
+        substanceModel.commonNames
+    )
+    val secondaryText = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceSecondaryText(
+        substanceModel.name,
+        substanceModel.commonNames,
+        displayName
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,12 +64,11 @@ fun SubstanceRowAddIngestion(
             .padding(horizontal = horizontalPadding, vertical = 8.dp),
     ) {
         Text(
-            text = substanceModel.name,
+            text = displayName,
             style = MaterialTheme.typography.titleMedium,
         )
-        if (substanceModel.commonNames.isNotEmpty()) {
-            val commaSeparatedNames = substanceModel.commonNames.joinToString(separator = ", ")
-            Text(text = commaSeparatedNames, style = MaterialTheme.typography.bodySmall)
+        if (secondaryText.isNotEmpty()) {
+            Text(text = secondaryText, style = MaterialTheme.typography.bodySmall)
         }
     }
 }

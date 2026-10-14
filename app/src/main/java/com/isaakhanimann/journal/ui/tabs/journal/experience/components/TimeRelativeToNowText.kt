@@ -26,8 +26,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.R
 import kotlinx.coroutines.delay
 import java.time.Instant
 import java.time.temporal.ChronoUnit
@@ -45,10 +48,12 @@ fun TimeRelativeToNowText(
         }
     }
     val isInPast = time < now.value
+    val context = LocalContext.current
+    val durationText = getDurationText(fromInstant = time, toInstant = now.value, context = context)
     val relativeTime = if (isInPast) {
-        getDurationText(fromInstant = time, toInstant = now.value) + " ago"
+        stringResource(R.string.journal_time_duration_ago, durationText)
     } else {
-        "in " + getDurationText(fromInstant = time, toInstant = now.value)
+        stringResource(R.string.journal_time_in_duration, durationText)
     }
     Text(
         text = relativeTime,

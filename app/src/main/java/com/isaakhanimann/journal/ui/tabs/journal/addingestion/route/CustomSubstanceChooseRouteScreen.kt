@@ -35,8 +35,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 
 @Preview
@@ -50,7 +52,7 @@ fun CustomChooseRouteScreenPreview() {
 fun CustomSubstanceChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Route") })
+            TopAppBar(title = { Text(stringResource(R.string.journal_route)) })
         }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {

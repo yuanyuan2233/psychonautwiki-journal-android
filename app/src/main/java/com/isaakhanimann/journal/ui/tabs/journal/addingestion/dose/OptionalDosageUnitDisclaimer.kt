@@ -20,12 +20,14 @@ package com.isaakhanimann.journal.ui.tabs.journal.addingestion.dose
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.isaakhanimann.journal.R
 
 @Composable
 fun OptionalDosageUnitDisclaimer(substanceName: String) {
     when (substanceName) {
         "Alcohol" -> {
-            Text(text = "The dosages are given in mg of pure Ethanol.")
+            Text(text = stringResource(R.string.journal_alcohol_dosage_disclaimer))
         }
     }
 }

@@ -33,6 +33,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import com.isaakhanimann.journal.R
 import java.time.LocalDateTime
@@ -66,7 +67,7 @@ fun TimePickerButton(
         OutlinedButton(onClick = timePickerDialog::show, modifier = modifier.clearAndSetSemantics {  }) {
             Icon(
                 Icons.Outlined.Schedule,
-                contentDescription = "Open time picker"
+                contentDescription = stringResource(R.string.journal_action_open_time_picker)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
             Text(timeString)
@@ -75,7 +76,7 @@ fun TimePickerButton(
         TextButton(onClick = timePickerDialog::show, modifier = modifier.clearAndSetSemantics {  }) {
             Icon(
                 Icons.Outlined.Schedule,
-                contentDescription = "Open time picker"
+                contentDescription = stringResource(R.string.journal_action_open_time_picker)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
             Text(timeString)

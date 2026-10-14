@@ -24,7 +24,8 @@ import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-
+import androidx.compose.ui.res.stringResource
+import com.isaakhanimann.journal.R
 
 @Composable
 fun NextFAB(navigateToNext: () -> Unit) {
@@ -33,9 +34,9 @@ fun NextFAB(navigateToNext: () -> Unit) {
         icon = {
             Icon(
                 Icons.AutoMirrored.Filled.NavigateNext,
-                contentDescription = "Next"
+                contentDescription = stringResource(R.string.journal_action_next)
             )
         },
-        text = { Text("Next") },
+        text = { Text(stringResource(R.string.journal_action_next)) },
     )
 }
