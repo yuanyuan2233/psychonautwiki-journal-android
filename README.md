@@ -2,7 +2,7 @@
 
 PsychonautWiki Journal 是一个基于 [Jetpack Compose](https://developer.android.com/jetpack/compose) 开发的 Android 本地应用，旨在从风险减害（Harm Reduction）视角为物质使用提供科学的记录管理与药学参考。
 
-本项目为原作者在闭源前的最后一个开源版本（v11.11 / Build 62）的独立分支，当前主线演进至大版本 v12.0.0 (Build 63)，遵循 GNU GPL-3.0 协议继续维护与本地化。
+本项目为原作者在闭源前的最后一个开源版本（v11.11 / Build 62）的独立维护分支，遵循 GNU GPL-3.0 协议继续维护与本地化。
 
 ---
 
@@ -39,16 +39,10 @@ PsychonautWiki Journal 原由 Isaak Hanimann 开源维护。原作者于 2024 �
 
 ## 下载与安装
 
-已编译完成的 Android 安装包（APK）提供以下多种获取方式：
+从 [GitHub releases](https://github.com/yuanyuan2233/psychonautwiki-journal-android/releases/latest) 下载最新版本。
 
-- **📦 最新安装包直接下载（APK 直链）**：[PsychonautWiki-Journal-v12.0.0-zh.apk](https://github.com/yuanyuan2233/psychonautwiki-journal-android/releases/download/v12.0.0-zh/PsychonautWiki-Journal-v12.0.0-zh.apk)
-- **🏷️ 最新版本发布说明**：[Release v12.0.0-zh](https://github.com/yuanyuan2233/psychonautwiki-journal-android/releases/tag/v12.0.0-zh)
-- **📜 所有历史版本 Releases 列表**：[GitHub Releases 汇总](https://github.com/yuanyuan2233/psychonautwiki-journal-android/releases)
-- **📂 仓库内嵌直存副本**：[项目根目录 release/ 归档文件夹](https://github.com/yuanyuan2233/psychonautwiki-journal-android/tree/main/release)（无需依赖 Releases 页面，可在代码仓库树中直接获取）
-
-### 运行环境与安装说明
-- **系统要求**：Android 8.0 (API 26) 及以上版本
-- **应用包名**：已配置独立包名（`com.isaakhanimann.journal.zh`），当前大版本为 `12.0.0 (Build 63)`，可与官方原版直接共存，无须卸载已有应用。
+- **运行环境**：Android 8.0 (API 26) 及以上版本
+- **安装包说明**：已配置独立包名（`com.isaakhanimann.journal.zh`），可与官方原版共存安装。
 
 ---
 
