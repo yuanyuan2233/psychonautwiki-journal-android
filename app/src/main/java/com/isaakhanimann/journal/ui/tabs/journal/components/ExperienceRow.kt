@@ -56,6 +56,10 @@ import com.isaakhanimann.journal.data.room.experiences.relations.IngestionWithCo
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
 
+import androidx.compose.material3.Surface
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+
 @Preview(showBackground = true)
 @Composable
 fun ExperienceRow(
@@ -90,7 +94,8 @@ fun ExperienceRow(
             }
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 val substanceNames = remember(ingestions) {
                     ingestions.map {
@@ -98,15 +103,48 @@ fun ExperienceRow(
                     }.distinct().joinToString(separator = ", ")
                 }
                 if (substanceNames.isNotEmpty()) {
-                    Text(text = substanceNames)
+                    Text(
+                        text = substanceNames,
+                        modifier = Modifier.weight(1f, fill = false),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 } else {
                     Text(
                         text = stringResource(R.string.journal_experience_no_substance_yet),
+                        modifier = Modifier.weight(1f, fill = false)
                     )
                 }
+                
+                val doseText = remember(ingestions) {
+                    ExperienceDoseHelper.formatExperienceDose(ingestions)
+                }
                 val rating = experienceWithIngestionsCompanionsAndRatings.rating?.sign
-                if (rating != null) {
-                    Text(text = rating)
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                ) {
+                    if (doseText != null) {
+                        Surface(
+                            shape = RoundedCornerShape(12.dp),
+                            color = MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.7f),
+                            modifier = Modifier.padding(vertical = 1.dp)
+                        ) {
+                            Text(
+                                text = doseText,
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
+                                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                modifier = Modifier.padding(horizontal = 7.dp, vertical = 2.dp)
+                            )
+                        }
+                    }
+                    if (rating != null) {
+                        Text(
+                            text = rating,
+                            style = MaterialTheme.typography.titleMedium
+                        )
+                    }
                 }
             }
             val consumerNames = remember(ingestions) {

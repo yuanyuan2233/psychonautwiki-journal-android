@@ -22,7 +22,7 @@
     <string name="settings_import_btn">导入</string>
     <string name="settings_delete_everything">清空所有数据</string>
     <string name="settings_delete_everything_dialog_title">清空所有数据？</string>
-    <string name="settings_delete_everything_dialog_text">这将永久删除您所有的体验记录、摄入记录以及自定义物质。</string>
+    <string name="settings_delete_everything_dialog_text">这将永久删除您所有的用药记录、摄入记录以及自定义物质。</string>
     <string name="settings_delete_btn">删除</string>
     <string name="settings_deleted_everything_snackbar">已清空所有数据</string>
     <string name="settings_file_not_found">未找到文件</string>
@@ -169,11 +169,11 @@
     <string name="stats_range_half_year">半年</string>
     <string name="stats_range_last_year">最近一年</string>
     <string name="stats_range_10_years">10年</string>
-    <string name="stats_experiences_since">自 %1$s 以来的体验记录</string>
-    <string name="stats_substance_counted_once">同一体验内相同物质仅计数一次</string>
+    <string name="stats_experiences_since">自 %1$s 以来的用药记录</string>
+    <string name="stats_substance_counted_once">同一用药记录内相同物质仅计数一次</string>
     <string name="stats_now">现在</string>
-    <string name="stats_experience_count">%1$d 次体验</string>
-    <string name="stats_experience_count_singular">1 次体验</string>
+    <string name="stats_experience_count">%1$d 次用药</string>
+    <string name="stats_experience_count_singular">1 次用药</string>
     <string name="stats_total_dose_estimate_deviation">总量 %1$s±%2$s %3$s</string>
     <string name="stats_total_dose_estimate">总量 ~%1$s %2$s</string>
     <string name="stats_total_dose">总量 %1$s %2$s</string>
