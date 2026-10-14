@@ -8,4 +8,11 @@
 .externalNativeBuild
 .cxx
 local.properties
-release
+
+# Workspace scratch and output directories
+/outputs/
+/work/
+
+# Python cache
+__pycache__/
+*.py[cod]
