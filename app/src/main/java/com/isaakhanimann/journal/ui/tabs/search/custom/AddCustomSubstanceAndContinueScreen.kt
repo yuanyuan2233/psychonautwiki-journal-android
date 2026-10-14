@@ -30,7 +30,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -44,7 +46,7 @@ fun AddCustomSubstanceAndContinueScreen(
     }
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Add custom substance") })
+            TopAppBar(title = { Text(stringResource(R.string.drugs_add_custom_substance)) })
         },
         floatingActionButton = {
             if (viewModel.isValid) {
@@ -58,10 +60,10 @@ fun AddCustomSubstanceAndContinueScreen(
                     icon = {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done"
+                            contentDescription = stringResource(R.string.drugs_done)
                         )
                     },
-                    text = { Text("Done") },
+                    text = { Text(stringResource(R.string.drugs_done)) },
                 )
             }
         }

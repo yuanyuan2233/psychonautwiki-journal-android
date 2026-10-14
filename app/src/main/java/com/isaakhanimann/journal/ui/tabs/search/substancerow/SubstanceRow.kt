@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.ui.tabs.search.CategoryModel
 import com.isaakhanimann.journal.ui.tabs.search.SubstanceModel
+import com.isaakhanimann.journal.ui.tabs.search.getCategoryDisplayName
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Preview(showBackground = true)
@@ -55,6 +56,15 @@ fun SubstanceRow(
     substanceModel: SubstanceModel,
     onTap: (substanceName: String) -> Unit
 ) {
+    val displayName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(
+        substanceModel.name,
+        substanceModel.commonNames
+    )
+    val secondaryText = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceSecondaryText(
+        substanceModel.name,
+        substanceModel.commonNames,
+        displayName
+    )
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -64,12 +74,11 @@ fun SubstanceRow(
             .padding(horizontal = horizontalPadding, vertical = 3.dp),
     ) {
         Text(
-            text = substanceModel.name,
+            text = displayName,
             style = MaterialTheme.typography.titleMedium,
         )
-        if (substanceModel.commonNames.isNotEmpty()) {
-            val commaSeparatedNames = substanceModel.commonNames.joinToString(separator = ", ")
-            Text(text = commaSeparatedNames, style = MaterialTheme.typography.bodySmall)
+        if (secondaryText.isNotEmpty()) {
+            Text(text = secondaryText, style = MaterialTheme.typography.bodySmall)
         }
         FlowRow(
             horizontalArrangement = Arrangement.spacedBy(3.dp),
@@ -94,6 +103,6 @@ fun CategoryChipStatic(categoryModel: CategoryModel) {
             .padding(vertical = 2.dp, horizontal = 8.dp)
 
     ) {
-        Text(text = categoryModel.name, style = MaterialTheme.typography.bodySmall)
+        Text(text = getCategoryDisplayName(categoryModel.name), style = MaterialTheme.typography.bodySmall)
     }
 }

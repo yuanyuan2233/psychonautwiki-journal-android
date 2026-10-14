@@ -36,10 +36,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Preview
@@ -77,7 +79,7 @@ fun AddOrEditCustomSubstanceContent(
         OutlinedTextField(
             value = name,
             onValueChange = onNameChange,
-            label = { Text("Name") },
+            label = { Text(stringResource(R.string.drugs_custom_name)) },
             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
@@ -89,7 +91,7 @@ fun AddOrEditCustomSubstanceContent(
         OutlinedTextField(
             value = units,
             onValueChange = onUnitsChange,
-            label = { Text("Units") },
+            label = { Text(stringResource(R.string.drugs_custom_units)) },
             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             singleLine = true,
@@ -115,7 +117,7 @@ fun AddOrEditCustomSubstanceContent(
         OutlinedTextField(
             value = description,
             onValueChange = onDescriptionChange,
-            label = { Text("Description") },
+            label = { Text(stringResource(R.string.drugs_custom_description)) },
             keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,

@@ -46,9 +46,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 
 @Composable
 fun SearchField(
@@ -66,11 +68,11 @@ fun SearchField(
             onChange(value)
         },
         modifier = modifier,
-        placeholder = { Text(text = "Search substances") },
+        placeholder = { Text(text = stringResource(R.string.drugs_search_substances)) },
         leadingIcon = {
             Icon(
                 Icons.Default.Search,
-                contentDescription = "Search",
+                contentDescription = stringResource(R.string.drugs_search),
             )
         },
         trailingIcon = {
@@ -82,7 +84,7 @@ fun SearchField(
                     }) {
                         Icon(
                             Icons.Default.Close,
-                            contentDescription = "Close",
+                            contentDescription = stringResource(R.string.drugs_close),
                         )
                     }
                 }
@@ -99,7 +101,8 @@ fun SearchField(
                             }
                         }) {
                         Icon(
-                            Icons.Default.FilterList, contentDescription = "Filter"
+                            Icons.Default.FilterList,
+                            contentDescription = stringResource(R.string.drugs_filter)
                         )
                     }
                     DropdownMenu(
@@ -107,13 +110,13 @@ fun SearchField(
                         onDismissRequest = { isExpanded = false },
                     ) {
                         categories.forEach { categoryChipModel ->
-                            DropdownMenuItem(text = { Text(categoryChipModel.chipName) },
+                            DropdownMenuItem(text = { Text(getCategoryDisplayName(categoryChipModel.chipName)) },
                                 onClick = { onFilterTapped(categoryChipModel.chipName) },
                                 leadingIcon = {
                                     if (categoryChipModel.isActive) {
                                         Icon(
                                             Icons.Filled.Check,
-                                            contentDescription = "Check",
+                                            contentDescription = stringResource(R.string.drugs_check),
                                             modifier = Modifier.size(ButtonDefaults.IconSize)
                                         )
                                     }

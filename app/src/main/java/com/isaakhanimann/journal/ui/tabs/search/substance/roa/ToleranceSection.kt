@@ -26,8 +26,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 
 @Preview(showBackground = true)
@@ -55,13 +57,13 @@ fun ToleranceSection(
     if (tolerance != null || crossTolerances.isNotEmpty()) {
         Column(modifier) {
             if (tolerance != null) {
-                val labelWidth = 40.dp
+                val labelWidth = 55.dp
                 Row(
                     verticalAlignment = Alignment.Top
                 ) {
                     if (tolerance.full != null) {
                         Text(
-                            text = "full:",
+                            text = stringResource(R.string.drugs_tolerance_full),
                             modifier = Modifier.width(labelWidth)
                         )
                         Text(text = tolerance.full)
@@ -72,7 +74,7 @@ fun ToleranceSection(
                 ) {
                     if (tolerance.half != null) {
                         Text(
-                            text = "half:",
+                            text = stringResource(R.string.drugs_tolerance_half),
                             modifier = Modifier.width(labelWidth)
                         )
                         Text(text = tolerance.half)
@@ -83,18 +85,18 @@ fun ToleranceSection(
                 ) {
                     if (tolerance.zero != null) {
                         Text(
-                            text = "zero:",
+                            text = stringResource(R.string.drugs_tolerance_zero),
                             modifier = Modifier.width(labelWidth)
                         )
                         Text(text = tolerance.zero)
                     }
                 }
-                Text(text = "* zero is the time until tolerance is like the first time.", style = MaterialTheme.typography.bodySmall)
+                Text(text = stringResource(R.string.drugs_tolerance_zero_explanation), style = MaterialTheme.typography.bodySmall)
             }
             if (crossTolerances.isNotEmpty()) {
                 val names = crossTolerances.map { it }.distinct()
                     .joinToString(separator = ", ")
-                Text(text = "Cross tolerance with $names.")
+                Text(text = stringResource(R.string.drugs_cross_tolerance_with, names))
             }
         }
 

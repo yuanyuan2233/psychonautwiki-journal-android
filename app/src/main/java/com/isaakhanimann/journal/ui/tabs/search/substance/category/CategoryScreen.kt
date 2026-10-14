@@ -28,11 +28,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.classes.Category
+import com.isaakhanimann.journal.ui.tabs.search.getCategoryDisplayName
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -62,21 +65,21 @@ fun CategoryPreview() {
 fun CategoryScreen(category: Category?) {
     if (category == null) {
         EmptyScreenDisclaimer(
-            title = "Category not found",
-            description = "An error happened, please navigate back."
+            title = stringResource(R.string.drugs_category_not_found),
+            description = stringResource(R.string.drugs_category_error_navigate_back)
         )
     } else {
         val uriHandler = LocalUriHandler.current
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(category.name.replaceFirstChar { it.uppercase() }) },
+                    title = { Text(getCategoryDisplayName(category.name)) },
                     actions = {
                         if (category.url != null) {
                             TextButton(
                                 onClick = { uriHandler.openUri(category.url) },
                             ) {
-                                Text("Article")
+                                Text(stringResource(R.string.drugs_article))
                             }
                         }
                     }

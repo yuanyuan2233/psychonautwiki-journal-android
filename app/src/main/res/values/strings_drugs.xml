@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Search Tab & General -->
+    <string name="drugs_remove">Remove</string>
+    <string name="drugs_search_substances">Search substances</string>
+    <string name="drugs_search">Search</string>
+    <string name="drugs_close">Close</string>
+    <string name="drugs_filter">Filter</string>
+    <string name="drugs_check">Check</string>
+    <string name="drugs_keyboard">Keyboard</string>
+    <string name="drugs_no_matching_substance_found">No matching substance found</string>
+    <string name="drugs_no_matching_substance_with_tag_found">No matching substance with the tag \'%1$s\' found</string>
+    <string name="drugs_no_matching_substance_with_tags_found">No matching substance with tags \'%1$s\' found</string>
+    <string name="drugs_add">Add</string>
+    <string name="drugs_add_custom_substance">Add custom substance</string>
+
+    <!-- Custom Substance -->
+    <string name="drugs_custom_name">Name</string>
+    <string name="drugs_custom_units">Units</string>
+    <string name="drugs_custom_description">Description</string>
+    <string name="drugs_edit_custom_substance">Edit custom substance</string>
+    <string name="drugs_delete_substance">Delete substance</string>
+    <string name="drugs_delete_substance_question">Delete substance?</string>
+    <string name="drugs_delete">Delete</string>
+    <string name="drugs_cancel">Cancel</string>
+    <string name="drugs_done">Done</string>
+
+    <!-- Category Screen -->
+    <string name="drugs_category_not_found">Category not found</string>
+    <string name="drugs_category_error_navigate_back">An error happened, please navigate back.</string>
+    <string name="drugs_article">Article</string>
+
+    <!-- Class Section -->
+    <string name="drugs_class_membership">Class membership</string>
+    <string name="drugs_psychoactive">Psychoactive</string>
+    <string name="drugs_chemical">Chemical</string>
+
+    <!-- Tolerance Section -->
+    <string name="drugs_tolerance_full">full:</string>
+    <string name="drugs_tolerance_half">half:</string>
+    <string name="drugs_tolerance_zero">zero:</string>
+    <string name="drugs_tolerance_zero_explanation">* zero is the time until tolerance is like the first time.</string>
+    <string name="drugs_cross_tolerance_with">Cross tolerance with %1$s.</string>
+
+    <!-- Dose Classification -->
+    <string name="drugs_dose_threshold">"thresh  "</string>
+    <string name="drugs_dose_light">light</string>
+    <string name="drugs_dose_common">common</string>
+    <string name="drugs_dose_strong">strong</string>
+    <string name="drugs_dose_heavy">heavy</string>
+
+    <!-- Duration -->
+    <string name="drugs_duration_onset">onset</string>
+    <string name="drugs_duration_comeup">comeup</string>
+    <string name="drugs_duration_peak">peak</string>
+    <string name="drugs_duration_offset">offset</string>
+    <string name="drugs_duration_total">total: %1$s</string>
+    <string name="drugs_duration_afterglow">after effects: %1$s</string>
+
+    <!-- Interactions -->
+    <string name="drugs_open_link">Open link</string>
+    <string name="drugs_interactions_explanations">Explanations</string>
+    <string name="drugs_warning">Warning</string>
+
+    <!-- Safer Sniffing -->
+    <string name="drugs_safer_sniffing_title">Safer sniffing</string>
+    <string name="drugs_safer_sniffing_intro">The nose is a sensitive organ: fine hairs protect the nasal mucous membranes from external impurities (dust, pollen, etc.). If a foreign substance is now ingested through the nose, this and its mucous membranes are subjected to above-average stress. This can lead to disturbances in smelling or even to holes in the nasal mucous membranes. If sniffing utensils are shared, there is also a risk of bacteria and viruses being transmitted. If the utensils are contaminated with blood, the worst case scenario is the transmission of hepatitis C viruses. If the nasal mucous membranes are irritated and injured, the probability of such transmission is all the higher. Therefore, when you have a cold, it is important to give the sensitive organ of the nose the care it needs.</string>
+    <string name="drugs_safer_sniffing_hygiene_title">Hygiene first</string>
+    <string name="drugs_safer_sniffing_hygiene_text">Pay attention to hygiene in general, wash your hands before and after consumption and always use a clean, dry and smooth surface (mirror or similar). Do not snort on/from dirty surfaces such as toilets.</string>
+    <string name="drugs_safer_sniffing_mine_is_mine_title">Mine is mine</string>
+    <string name="drugs_safer_sniffing_mine_is_mine_text">Always use your personal sniffing utensil (sniffing tube or sniffing utensil). Do not share utensils as this is unhygienic and can transmit diseases. Banknotes are not suitable as they are often carriers of bacteria and viruses (they pass through many hands) and are sometimes printed with inks containing heavy metals. Hard plastic tubes carry the risk of a nose injury (sharp edge), the same applies to thin paper. Non-printed, slightly thicker paper (100 mg) with a smooth surface is best.</string>
+    <string name="drugs_safer_sniffing_powder_title">Powder is not just powder</string>
+    <string name="drugs_safer_sniffing_powder_text">Crush the powder as finely as possible and dose low! The active ingredient content can vary greatly from time to time, even if the substance comes from the same source. The quality of a powder cannot be determined visually, by taste or smell. Even a gum test for cocaine says nothing about the quality of the powder.</string>
+    <string name="drugs_safer_sniffing_care_nose_title">Take care of your nose</string>
+    <string name="drugs_safer_sniffing_care_nose_text">Blow your nose before sniffling and for about 10 minutes afterwards! The nasal septum, nasal mucous membranes and olfactory cells can be severely irritated and dried out by sniffing and this can lead to inflammation, boils and even dead tissue on the nasal septum. That is why you should rinse your nose after consumption or at the latest the next day and care for it with a moisturising/fatty cream.</string>
+    <string name="drugs_safer_sniffing_rinsing_title">Nasal rinsing</string>
+    <string name="drugs_safer_sniffing_rinsing_text">To do this, you need 2.5 grams of nasal rinsing salt (available in pharmacies; pure sea salt is also sufficient. 2.5 grams correspond to about half a teaspoon - if you are unsure, it is better to use a little more than less. It should not burn!) and dissolve it in 2.5 decilitres of lukewarm water. You can also buy ready-made sea salt nasal sprays at the pharmacy/drugstore - do not use nasal sprays for colds, as these lead to additional drying of the nasal mucous membranes. You can either buy a nasal douche or run the saline solution from a cup or your hand into your nose, pull and let it run out again. It is best to \"flow\" into one nostril and \"drain\" out through the other.</string>
+
+    <!-- Safer Stimulants -->
+    <string name="drugs_safer_stimulant_use_title">Safer stimulant use</string>
+    <string name="drugs_safer_stimulant_use_text">Consider how long you want to stay awake. Don\'t suppress your need for sleep.\n\nDrink enough non-alcoholic drinks (3 - 5 dl per hour) and take breaks in the fresh air.\n\nEat healthy before and after consumption and do not consume on an empty stomach.\n\nPeople with psychological disorders, pre-existing cardiovascular conditions, asthma, liver and kidney disorders or diabetes, hyperthyroidism and pregnant women are particulary discouraged from taking stimulants.\n\nTake vitamin C and D and minerals (iron, calcium and magnesium) with frequent use.\n\nIt is better not to wear headgear (danger of overheating).</string>
+
+    <!-- Substance Detail Screen -->
+    <string name="drugs_verified">Verified</string>
+    <string name="drugs_info_not_approved">Info is not approved</string>
+    <string name="drugs_dosage">Dosage</string>
+    <string name="drugs_no_dosage_info">No dosage info</string>
+    <string name="drugs_bioavailability">Bioavailability: %1$s-%2$s%%</string>
+    <string name="drugs_dose_disclaimer">Always start with lower doses due to differences between individual body weight, tolerance, metabolism, and personal sensitivity.</string>
+    <string name="drugs_info">Info</string>
+    <string name="drugs_volumetric_dosing">Volumetric dosing</string>
+    <string name="drugs_dosage_classification">Dosage classification</string>
+    <string name="drugs_tolerance">Tolerance</string>
+    <string name="drugs_toxicity">Toxicity</string>
+    <string name="drugs_duration">Duration</string>
+    <string name="drugs_start">Start:</string>
+    <string name="drugs_reset_to_now">Reset to now</string>
+    <string name="drugs_timeline_disclaimer">Timeline disclaimer</string>
+    <string name="drugs_no_duration_info">No duration info</string>
+    <string name="drugs_full_stomach_disclaimer">A full stomach may delay the onset of oral ingestions by approx. 3 hours.</string>
+    <string name="drugs_interactions">Interactions</string>
+    <string name="drugs_effects">Effects</string>
+    <string name="drugs_risks">Risks</string>
+    <string name="drugs_long_term">Long-term</string>
+    <string name="drugs_safer_use">Safer use</string>
+    <string name="drugs_addiction_potential">Addiction potential</string>
+    <string name="drugs_see_also">See also</string>
+    <string name="drugs_safer_hallucinogen_use">Safer hallucinogen use</string>
+    <string name="drugs_safer_stimulant_use">Safer stimulant use</string>
+    <string name="drugs_go_to">Go to</string>
+
+    <!-- Categories -->
+    <string name="drugs_category_common">common</string>
+    <string name="drugs_category_psychedelic">psychedelic</string>
+    <string name="drugs_category_stimulant">stimulant</string>
+    <string name="drugs_category_entactogen">entactogen</string>
+    <string name="drugs_category_depressant">depressant</string>
+    <string name="drugs_category_opioid">opioid</string>
+    <string name="drugs_category_habit_forming">habit-forming</string>
+    <string name="drugs_category_research_chemical">research-chemical</string>
+    <string name="drugs_category_tentative">tentative</string>
+    <string name="drugs_category_dissociative">dissociative</string>
+    <string name="drugs_category_benzodiazepine">benzodiazepine</string>
+    <string name="drugs_category_cannabinoid">cannabinoid</string>
+    <string name="drugs_category_nootropic">nootropic</string>
+    <string name="drugs_category_deliriant">deliriant</string>
+    <string name="drugs_category_barbiturate">barbiturate</string>
+    <string name="drugs_category_eugeroic">eugeroic</string>
+    <string name="drugs_category_hallucinogen">hallucinogen</string>
+    <string name="drugs_category_oneirogen">oneirogen</string>
+    <string name="drugs_category_antipsychotic">antipsychotic</string>
+    <string name="drugs_category_antidepressant">antidepressant</string>
+    <string name="drugs_category_hypnotic">hypnotic</string>
+    <string name="drugs_category_custom">custom</string>
+</resources>

@@ -27,8 +27,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.R
 
 @Preview(showBackground = true)
 @Composable
@@ -48,14 +50,14 @@ fun ClassSection(
 ) {
     if (psychoactiveClasses.isNotEmpty() || chemicalClasses.isNotEmpty()) {
         Column {
-            Text(text = "Class membership", style = titleStyle)
+            Text(text = stringResource(R.string.drugs_class_membership), style = titleStyle)
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 if (psychoactiveClasses.isNotEmpty()) {
                     Column {
-                        Text(text = "Psychoactive")
+                        Text(text = stringResource(R.string.drugs_psychoactive))
                         psychoactiveClasses.forEach {
                             Text(text = it)
                         }
@@ -63,7 +65,7 @@ fun ClassSection(
                 }
                 if (chemicalClasses.isNotEmpty()) {
                     Column {
-                        Text(text = "Chemical")
+                        Text(text = stringResource(R.string.drugs_chemical))
                         chemicalClasses.forEach {
                             Text(text = it)
                         }

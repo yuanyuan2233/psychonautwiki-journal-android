@@ -38,7 +38,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -48,21 +50,21 @@ fun EditCustomSubstanceScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Edit custom substance") }, actions = {
+            TopAppBar(title = { Text(stringResource(R.string.drugs_edit_custom_substance)) }, actions = {
                 var isShowingDeleteDialog by remember { mutableStateOf(false) }
                 IconButton(
                     onClick = { isShowingDeleteDialog = true },
                 ) {
                     Icon(
                         Icons.Default.Delete,
-                        contentDescription = "Delete substance",
+                        contentDescription = stringResource(R.string.drugs_delete_substance),
                     )
                 }
                 AnimatedVisibility(visible = isShowingDeleteDialog) {
                     AlertDialog(
                         onDismissRequest = { isShowingDeleteDialog = false },
                         title = {
-                            Text(text = "Delete substance?")
+                            Text(text = stringResource(R.string.drugs_delete_substance_question))
                         },
                         confirmButton = {
                             TextButton(
@@ -72,14 +74,14 @@ fun EditCustomSubstanceScreen(
                                     navigateBack()
                                 }
                             ) {
-                                Text("Delete")
+                                Text(stringResource(R.string.drugs_delete))
                             }
                         },
                         dismissButton = {
                             TextButton(
                                 onClick = { isShowingDeleteDialog = false }
                             ) {
-                                Text("Cancel")
+                                Text(stringResource(R.string.drugs_cancel))
                             }
                         }
                     )
@@ -97,10 +99,10 @@ fun EditCustomSubstanceScreen(
                     icon = {
                         Icon(
                             Icons.Filled.Done,
-                            contentDescription = "Done"
+                            contentDescription = stringResource(R.string.drugs_done)
                         )
                     },
-                    text = { Text("Done") },
+                    text = { Text(stringResource(R.string.drugs_done)) },
                 )
             }
         }

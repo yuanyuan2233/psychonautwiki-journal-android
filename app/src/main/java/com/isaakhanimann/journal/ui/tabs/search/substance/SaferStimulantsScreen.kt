@@ -31,8 +31,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -41,7 +43,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 fun SaferStimulantsScreen() {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Safer stimulant use") })
+            TopAppBar(title = { Text(stringResource(R.string.drugs_safer_stimulant_use_title)) })
         },
     ) { padding ->
         Column(
@@ -52,21 +54,7 @@ fun SaferStimulantsScreen() {
                 .verticalScroll(rememberScrollState())
         ) {
             Spacer(modifier = Modifier.height(10.dp))
-            Text(
-                text = """
-                Consider how long you want to stay awake. Don't suppress your need for sleep.
-                
-                Drink enough non-alcoholic drinks (3 - 5 dl per hour) and take breaks in the fresh air.
-                
-                Eat healthy before and after consumption and do not consume on an empty stomach.
-                
-                People with psychological disorders, pre-existing cardiovascular conditions, asthma, liver and kidney disorders or diabetes, hyperthyroidism and pregnant women are particulary discouraged from taking stimulants.
-                
-                Take vitamin C and D and minerals (iron, calcium and magnesium) with frequent use.
-                
-                It is better not to wear headgear (danger of overheating).
-            """.trimIndent()
-            )
+            Text(text = stringResource(R.string.drugs_safer_stimulant_use_text))
             Spacer(modifier = Modifier.height(10.dp))
         }
     }

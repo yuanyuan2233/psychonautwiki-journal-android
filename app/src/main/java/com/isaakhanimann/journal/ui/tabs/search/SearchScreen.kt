@@ -48,11 +48,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -70,7 +73,7 @@ fun SearchScreen(
             if (!isFocused) {
                 FloatingActionButton(
                     onClick = { focusRequester.requestFocus() }) {
-                    Icon(Icons.Default.Keyboard, contentDescription = "Keyboard")
+                    Icon(Icons.Default.Keyboard, contentDescription = stringResource(R.string.drugs_keyboard))
                 }
             }
         },
@@ -119,19 +122,19 @@ fun SearchScreen(
             }
             if (filteredSubstances.isEmpty() && filteredCustomSubstances.isEmpty()) {
                 Column {
-                    val activeCategoryNames =
-                        activeFilters.filter { it.isActive }.map { it.chipName }
-                    if (activeCategoryNames.isEmpty()) {
-                        Text("No matching substance found", modifier = Modifier.padding(10.dp))
-                    } else if (activeCategoryNames.size == 1) {
+                    val activeCategoryDisplayNames =
+                        activeFilters.filter { it.isActive }.map { getCategoryDisplayName(it.chipName) }
+                    if (activeCategoryDisplayNames.isEmpty()) {
+                        Text(stringResource(R.string.drugs_no_matching_substance_found), modifier = Modifier.padding(10.dp))
+                    } else if (activeCategoryDisplayNames.size == 1) {
                         Text(
-                            "No matching substance with the tag '${activeCategoryNames[0]}' found",
+                            stringResource(R.string.drugs_no_matching_substance_with_tag_found, activeCategoryDisplayNames[0]),
                             modifier = Modifier.padding(10.dp)
                         )
                     } else {
-                        val names = activeCategoryNames.joinToString(separator = "', '")
+                        val names = activeCategoryDisplayNames.joinToString(separator = "', '")
                         Text(
-                            "No matching substance with tags '$names' found",
+                            stringResource(R.string.drugs_no_matching_substance_with_tags_found, names),
                             modifier = Modifier.padding(10.dp)
                         )
                     }
@@ -140,10 +143,10 @@ fun SearchScreen(
                         modifier = Modifier.padding(horizontal = horizontalPadding)
                     ) {
                         Icon(
-                            Icons.Outlined.Add, contentDescription = "Add"
+                            Icons.Outlined.Add, contentDescription = stringResource(R.string.drugs_add)
                         )
                         Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-                        Text(text = "Add custom substance")
+                        Text(text = stringResource(R.string.drugs_add_custom_substance))
                     }
                 }
             } else {
@@ -172,7 +175,7 @@ fun SearchScreen(
                     }
 
                     item {
-                        val addCustomSubstanceText = "Add custom substance"
+                        val addCustomSubstanceText = stringResource(R.string.drugs_add_custom_substance)
                         TextButton(
                             onClick = navigateToAddCustomSubstanceScreen,
                             modifier = Modifier
@@ -180,7 +183,7 @@ fun SearchScreen(
                                 .semantics { contentDescription = addCustomSubstanceText }
                         ) {
                             Icon(
-                                Icons.Outlined.Add, contentDescription = "Add"
+                                Icons.Outlined.Add, contentDescription = stringResource(R.string.drugs_add)
                             )
                             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                             Text(text = addCustomSubstanceText)

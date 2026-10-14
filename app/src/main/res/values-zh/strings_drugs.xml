@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 搜索标签页与通用 -->
+    <string name="drugs_remove">移除</string>
+    <string name="drugs_search_substances">搜索物质</string>
+    <string name="drugs_search">搜索</string>
+    <string name="drugs_close">清除</string>
+    <string name="drugs_filter">筛选</string>
+    <string name="drugs_check">已选</string>
+    <string name="drugs_keyboard">键盘</string>
+    <string name="drugs_no_matching_substance_found">未找到匹配的物质</string>
+    <string name="drugs_no_matching_substance_with_tag_found">未找到带有“%1$s”标签的物质</string>
+    <string name="drugs_no_matching_substance_with_tags_found">未找到带有“%1$s”标签的物质</string>
+    <string name="drugs_add">添加</string>
+    <string name="drugs_add_custom_substance">添加自定义物质</string>
+
+    <!-- 自定义物质 -->
+    <string name="drugs_custom_name">名称</string>
+    <string name="drugs_custom_units">单位</string>
+    <string name="drugs_custom_description">说明</string>
+    <string name="drugs_edit_custom_substance">编辑自定义物质</string>
+    <string name="drugs_delete_substance">删除物质</string>
+    <string name="drugs_delete_substance_question">删除此物质？</string>
+    <string name="drugs_delete">删除</string>
+    <string name="drugs_cancel">取消</string>
+    <string name="drugs_done">完成</string>
+
+    <!-- 分类详情页面 -->
+    <string name="drugs_category_not_found">未找到分类</string>
+    <string name="drugs_category_error_navigate_back">发生错误，请返回。</string>
+    <string name="drugs_article">百科词条</string>
+
+    <!-- 分类归属 -->
+    <string name="drugs_class_membership">分类归属</string>
+    <string name="drugs_psychoactive">精神活性分类</string>
+    <string name="drugs_chemical">化学分类</string>
+
+    <!-- 耐受性 -->
+    <string name="drugs_tolerance_full">完全：</string>
+    <string name="drugs_tolerance_half">减半：</string>
+    <string name="drugs_tolerance_zero">归零：</string>
+    <string name="drugs_tolerance_zero_explanation">* 归零是指耐受性恢复到初次使用水平所需的时间。</string>
+    <string name="drugs_cross_tolerance_with">与 %1$s 存在交叉耐受。</string>
+
+    <!-- 剂量分级 -->
+    <string name="drugs_dose_threshold">阈值</string>
+    <string name="drugs_dose_light">轻度</string>
+    <string name="drugs_dose_common">常规</string>
+    <string name="drugs_dose_strong">强效</string>
+    <string name="drugs_dose_heavy">极重</string>
+
+    <!-- 药效时长 -->
+    <string name="drugs_duration_onset">起效期</string>
+    <string name="drugs_duration_comeup">爬升期</string>
+    <string name="drugs_duration_peak">峰值期</string>
+    <string name="drugs_duration_offset">退去期</string>
+    <string name="drugs_duration_total">总时长：%1$s</string>
+    <string name="drugs_duration_afterglow">后效期：%1$s</string>
+
+    <!-- 相互作用 -->
+    <string name="drugs_open_link">打开链接</string>
+    <string name="drugs_interactions_explanations">相互作用说明</string>
+    <string name="drugs_warning">警告</string>
+
+    <!-- 鼻吸减害指南 -->
+    <string name="drugs_safer_sniffing_title">鼻吸减害指南</string>
+    <string name="drugs_safer_sniffing_intro">鼻腔是一个敏感的器官：细小的鼻毛保护鼻黏膜免受外部杂质（灰尘、花粉等）的侵害。如果通过鼻腔摄入异物，鼻腔及其黏膜将承受超出常态的压力。这可能导致嗅觉障碍甚至鼻中隔穿孔。如果共用鼻吸工具，还存在传播细菌和病毒的风险；若工具沾染血液，严重时可能导致丙型肝炎病毒传播。如果鼻黏膜受刺激或受损，此类传播概率会更高。因此，即便只是感冒时，也要为敏感的鼻腔器官提供必要护理。</string>
+    <string name="drugs_safer_sniffing_hygiene_title">卫生第一</string>
+    <string name="drugs_safer_sniffing_hygiene_text">总体上注意个人卫生，使用前后务必洗手，并始终使用干净、干燥且光滑的表面（如镜子等）。切勿在马桶等不洁表面上进行鼻吸操作。</string>
+    <string name="drugs_safer_sniffing_mine_is_mine_title">专人专用</string>
+    <string name="drugs_safer_sniffing_mine_is_mine_text">务必使用个人专属的鼻吸工具（吸管或吸食器材）。切勿与他人共用工具，这极不卫生且可能传播疾病。纸币绝不适合作为吸管，因为纸币经过多人流通，通常携带大量细菌和病毒，且有时印刷油墨中含有重金属。硬塑料吸管边缘锋利有划伤鼻腔的风险，过薄的纸张也是如此。表面光滑、未经印刷且稍厚的纸张（约 100g 纸质）是较好的选择。</string>
+    <string name="drugs_safer_sniffing_powder_title">粉末不只是粉末</string>
+    <string name="drugs_safer_sniffing_powder_text">尽可能将粉末研磨至极细，并从小剂量开始！即使来自同一来源，批次间的有效成分纯度也可能差异巨大。肉眼观察、品尝或闻气味都无法准确判断粉末纯度与品质；即使用牙龈测试可卡因也说明不了粉末的真实品质。</string>
+    <string name="drugs_safer_sniffing_care_nose_title">呵护鼻腔</string>
+    <string name="drugs_safer_sniffing_care_nose_text">鼻吸前及使用约 10 分钟后请擤净鼻涕！鼻中隔、鼻黏膜和嗅觉细胞会因鼻吸而受到严重刺激和脱水干燥，这可能引发炎症、脓肿，甚至导致鼻中隔组织坏死。因此，使用后或最迟在次日应冲洗鼻腔，并涂抹保湿或滋润药膏进行护理。</string>
+    <string name="drugs_safer_sniffing_rinsing_title">鼻腔冲洗</string>
+    <string name="drugs_safer_sniffing_rinsing_text">冲洗时需要 2.5 克洗鼻盐（药店有售；纯海盐亦可，2.5 克约半茶匙——如果不确定，宁多勿少，冲洗时不应产生刺痛感！），将其溶解在 2.5 分升（250毫升）温水中。也可以在药房购买现成的海盐鼻腔喷雾剂——切勿使用感冒用减充血鼻喷剂，因为它们会导致鼻黏膜进一步干燥。可以使用洗鼻器，或者从杯中/掌心将盐水吸入鼻孔后再自然流出。最佳方式是从一侧鼻孔注入，从另一侧鼻孔流出。</string>
+
+    <!-- 中枢兴奋剂安全使用指南 -->
+    <string name="drugs_safer_stimulant_use_title">中枢兴奋剂安全使用指南</string>
+    <string name="drugs_safer_stimulant_use_text">合理规划清醒时间，切勿强行压制睡眠需求。\n\n摄入充足的无酒精饮品（建议每小时 300 - 500 毫升），并定时到新鲜空气中休息。\n\n使用前后保持健康饮食，切勿空腹使用。\n\n患有心理障碍、心血管既往病史、哮喘、肝肾疾病、糖尿病、甲亢以及孕妇群体，尤其应避免使用中枢兴奋剂。\n\n若使用频次较高，请及时补充维生素 C、维生素 D 以及矿物质（铁、钙、镁）。\n\n尽量不要佩戴保暖帽具（以防体温过高/中暑风险）。</string>
+
+    <!-- 物质详情页面 -->
+    <string name="drugs_verified">认证状态</string>
+    <string name="drugs_info_not_approved">信息未经审核确认</string>
+    <string name="drugs_dosage">剂量</string>
+    <string name="drugs_no_dosage_info">暂无剂量信息</string>
+    <string name="drugs_bioavailability">生物利用度：%1$s-%2$s%%</string>
+    <string name="drugs_dose_disclaimer">鉴于个人体重、耐受性、代谢速率以及个体敏感性的差异，请务必从较低剂量开始。</string>
+    <string name="drugs_info">信息</string>
+    <string name="drugs_volumetric_dosing">容积法微量配液</string>
+    <string name="drugs_dosage_classification">剂量分级</string>
+    <string name="drugs_tolerance">耐受性</string>
+    <string name="drugs_toxicity">毒性</string>
+    <string name="drugs_duration">持续时间</string>
+    <string name="drugs_start">开始时间：</string>
+    <string name="drugs_reset_to_now">重置为当前时间</string>
+    <string name="drugs_timeline_disclaimer">时间线说明</string>
+    <string name="drugs_no_duration_info">暂无持续时间信息</string>
+    <string name="drugs_full_stomach_disclaimer">饱腹状态可能会使口服起效时间延迟约 3 小时。</string>
+    <string name="drugs_interactions">相互作用</string>
+    <string name="drugs_effects">效应</string>
+    <string name="drugs_risks">风险</string>
+    <string name="drugs_long_term">长期风险</string>
+    <string name="drugs_safer_use">安全使用</string>
+    <string name="drugs_addiction_potential">成瘾性</string>
+    <string name="drugs_see_also">另请参阅</string>
+    <string name="drugs_safer_hallucinogen_use">致幻剂安全使用</string>
+    <string name="drugs_safer_stimulant_use">中枢兴奋剂安全使用</string>
+    <string name="drugs_go_to">前往</string>
+
+    <!-- 分类 -->
+    <string name="drugs_category_common">常用</string>
+    <string name="drugs_category_psychedelic">致幻剂</string>
+    <string name="drugs_category_stimulant">中枢兴奋剂</string>
+    <string name="drugs_category_entactogen">促共情剂</string>
+    <string name="drugs_category_depressant">中枢抑制剂</string>
+    <string name="drugs_category_opioid">阿片类</string>
+    <string name="drugs_category_habit_forming">易成瘾</string>
+    <string name="drugs_category_research_chemical">探索性化学品</string>
+    <string name="drugs_category_tentative">试验性</string>
+    <string name="drugs_category_dissociative">解离剂</string>
+    <string name="drugs_category_benzodiazepine">苯二氮䓬类</string>
+    <string name="drugs_category_cannabinoid">大麻素类</string>
+    <string name="drugs_category_nootropic">促智药</string>
+    <string name="drugs_category_deliriant">谵妄剂</string>
+    <string name="drugs_category_barbiturate">巴比妥类</string>
+    <string name="drugs_category_eugeroic">促醒剂</string>
+    <string name="drugs_category_hallucinogen">幻觉剂</string>
+    <string name="drugs_category_oneirogen">助梦剂</string>
+    <string name="drugs_category_antipsychotic">抗精神病药</string>
+    <string name="drugs_category_antidepressant">抗抑郁药</string>
+    <string name="drugs_category_hypnotic">催眠药</string>
+    <string name="drugs_category_custom">自定义</string>
+</resources>

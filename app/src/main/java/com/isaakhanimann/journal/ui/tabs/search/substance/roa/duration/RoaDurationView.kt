@@ -25,9 +25,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.classes.roa.DurationRange
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDuration
 import com.isaakhanimann.journal.ui.theme.JournalTheme
@@ -56,10 +58,10 @@ fun RoaDurationView(roaDuration: RoaDuration) {
             val comeup = roaDuration.comeup
             val peak = roaDuration.peak
             val offset = roaDuration.offset
-            TimeSurface(durationRange = onset, name = "onset")
-            TimeSurface(durationRange = comeup, name = "comeup")
-            TimeSurface(durationRange = peak, name = "peak")
-            TimeSurface(durationRange = offset, name = "offset")
+            TimeSurface(durationRange = onset, name = stringResource(R.string.drugs_duration_onset))
+            TimeSurface(durationRange = comeup, name = stringResource(R.string.drugs_duration_comeup))
+            TimeSurface(durationRange = peak, name = stringResource(R.string.drugs_duration_peak))
+            TimeSurface(durationRange = offset, name = stringResource(R.string.drugs_duration_offset))
         }
         if (total != null || afterglow != null) {
             Row(
@@ -67,10 +69,10 @@ fun RoaDurationView(roaDuration: RoaDuration) {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 if (total != null) {
-                    Text("total: ${total.text}")
+                    Text(stringResource(R.string.drugs_duration_total, total.text))
                 }
                 if (afterglow != null) {
-                    Text("after effects: ${afterglow.text}")
+                    Text(stringResource(R.string.drugs_duration_afterglow, afterglow.text))
                 }
             }
         }

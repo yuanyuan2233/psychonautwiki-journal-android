@@ -29,7 +29,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.toReadableString
 
@@ -78,11 +80,11 @@ fun DoseClassificationRow(
             )
         ) {
             Text(text = lightMin?.toReadableString() ?: "..", style = numberStyle)
-            Text("thresh  ", style = labelStyle)
+            Text(stringResource(R.string.drugs_dose_threshold), style = labelStyle)
         }
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("-", color = lightColor)
-            Text("light", style = labelStyle, color = lightColor)
+            Text(stringResource(R.string.drugs_dose_light), style = labelStyle, color = lightColor)
         }
         Text(
             text = commonMin?.toReadableString() ?: "..",
@@ -97,7 +99,7 @@ fun DoseClassificationRow(
         )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("-", color = commonColor, style = numberStyle)
-            Text("common", style = labelStyle, color = commonColor)
+            Text(stringResource(R.string.drugs_dose_common), style = labelStyle, color = commonColor)
         }
         Text(
             text = strongMin?.toReadableString() ?: "..",
@@ -112,7 +114,7 @@ fun DoseClassificationRow(
         )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("-", color = strongColor, style = numberStyle)
-            Text("strong", style = labelStyle, color = strongColor)
+            Text(stringResource(R.string.drugs_dose_strong), style = labelStyle, color = strongColor)
         }
         Text(
             text = heavyMin?.toReadableString() ?: "..",
@@ -127,7 +129,7 @@ fun DoseClassificationRow(
         )
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text("-", color = heavyColor, style = numberStyle)
-            Text("heavy", style = labelStyle, color = heavyColor)
+            Text(stringResource(R.string.drugs_dose_heavy), style = labelStyle, color = heavyColor)
         }
         Text(text = unit, style = numberStyle)
     }
