@@ -1,21 +1,86 @@
-<!--
-  ~ Copyright (c) 2022-2023. Isaak Hanimann.
-  ~ This file is part of PsychonautWiki Journal.
-  ~
-  ~ PsychonautWiki Journal is free software: you can redistribute it and/or modify
-  ~ it under the terms of the GNU General Public License as published by
-  ~ the Free Software Foundation, either version 3 of the License, or (at
-  ~ your option) any later version.
-  ~
-  ~ PsychonautWiki Journal is distributed in the hope that it will be useful,
-  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
-  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  ~ GNU General Public License for more details.
-  ~
-  ~ You should have received a copy of the GNU General Public License
-  ~ along with PsychonautWiki Journal.  If not, see https://www.gnu.org/licenses/gpl-3.0.en.html.
-  -->
-
 <resources>
     <string name="app_name">Journal</string>
+
+    <!-- Navigation -->
+    <string name="nav_stats">Stats</string>
+    <string name="nav_journal">Journal</string>
+    <string name="nav_drugs">Drugs</string>
+    <string name="nav_safer">Safer</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Disclaimer / Accept Conditions -->
+    <string name="disclaimer_responsibility">I acknowledge that I am the only one responsible for my actions, especially when deciding to use drugs.</string>
+    <string name="disclaimer_mitigate_risks">I\'m going to use this app for mitigating the risks of my or somebody else’s substance use.</string>
+    <string name="disclaimer_incomplete_data">I acknowledge that the data in this app might be inaccurate or incomplete.</string>
+    <string name="disclaimer_professional_help">I’m going to seek professional help before attempting to self-medicate.</string>
+    <string name="disclaimer_local_data_notice">Your data always stays on this device</string>
+    <string name="btn_continue">Continue</string>
+
+    <!-- Administration Routes (ROA) -->
+    <string name="route_oral">Oral</string>
+    <string name="route_oral_desc">Swallowed</string>
+    <string name="route_sublingual">Sublingual</string>
+    <string name="route_sublingual_desc">Under tongue</string>
+    <string name="route_buccal">Buccal</string>
+    <string name="route_buccal_desc">Between gums and cheek</string>
+    <string name="route_insufflated">Insufflated</string>
+    <string name="route_insufflated_desc">Sniffed</string>
+    <string name="route_rectal">Rectal</string>
+    <string name="route_rectal_desc">Boofing / Plugging</string>
+    <string name="route_transdermal">Transdermal</string>
+    <string name="route_transdermal_desc">Through skin</string>
+    <string name="route_subcutaneous">Subcutaneous</string>
+    <string name="route_subcutaneous_desc">Injected between skin and muscle</string>
+    <string name="route_intramuscular">Intramuscular</string>
+    <string name="route_intramuscular_desc">Injected into muscle tissue</string>
+    <string name="route_intravenous">Intravenous</string>
+    <string name="route_intravenous_desc">Injected into vein</string>
+    <string name="route_smoked">Smoked</string>
+    <string name="route_smoked_desc">Inhaling with heat source</string>
+    <string name="route_inhaled">Inhaled</string>
+    <string name="route_inhaled_desc">Inhaling without heat source</string>
+
+    <!-- Stomach Fullness -->
+    <string name="stomach_empty">Empty</string>
+    <string name="stomach_quarter_full">Quarter full</string>
+    <string name="stomach_half_full">Half full</string>
+    <string name="stomach_full">Full</string>
+    <string name="stomach_very_full">Very full</string>
+
+    <!-- Shulgin Rating -->
+    <string name="shulgin_minus">no effects</string>
+    <string name="shulgin_plus_minus">maybe false positive</string>
+    <string name="shulgin_plus">certainly active, nature not yet apparent</string>
+    <string name="shulgin_two_plus">nature apparent, effects may be repressible</string>
+    <string name="shulgin_three_plus">totally engaged, ignoring no longer an option</string>
+    <string name="shulgin_four_plus">rare and precious transcendental state</string>
+
+    <!-- Pharmacokinetics Timeline Phases -->
+    <string name="phase_onset">Onset</string>
+    <string name="phase_comeup">Comeup</string>
+    <string name="phase_peak">Peak</string>
+    <string name="phase_offset">Offset</string>
+    <string name="phase_total">Total</string>
+    <string name="phase_afterglow">Afterglow</string>
+
+    <!-- Dose Classification -->
+    <string name="dose_threshold">Threshold</string>
+    <string name="dose_light">Light</string>
+    <string name="dose_common">Common</string>
+    <string name="dose_strong">Strong</string>
+    <string name="dose_heavy">Heavy</string>
+
+    <!-- Interaction Severity -->
+    <string name="interaction_dangerous">Dangerous</string>
+    <string name="interaction_unsafe">Unsafe</string>
+    <string name="interaction_uncertain">Uncertain</string>
+
+    <!-- Common UI Actions -->
+    <string name="action_done">Done</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_add">Add</string>
+    <string name="action_search">Search</string>
 </resources>

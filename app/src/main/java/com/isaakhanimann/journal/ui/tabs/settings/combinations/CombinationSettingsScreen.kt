@@ -43,6 +43,8 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.res.stringResource
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -87,7 +89,7 @@ fun CombinationSettingsScreen(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Combinations") })
+            TopAppBar(title = { Text(stringResource(R.string.settings_combinations_title)) })
         }
     ) { padding ->
         Column(
@@ -104,24 +106,41 @@ fun CombinationSettingsScreen(
                     )
                 ) {
                     Text(
-                        text = "Interaction alerts",
+                        text = stringResource(R.string.settings_interaction_alerts),
                         style = MaterialTheme.typography.titleMedium
                     )
                     Text(
-                        text = "Get warnings about interactions with following substances, even if you haven't logged them.",
+                        text = stringResource(R.string.settings_interaction_alerts_desc),
                         style = MaterialTheme.typography.bodySmall
                     )
                     substanceInteractions.forEach { substanceInteraction ->
+                        val displayName = when (substanceInteraction.name) {
+                            "Alcohol" -> stringResource(R.string.settings_combo_substance_alcohol)
+                            "Caffeine" -> stringResource(R.string.settings_combo_substance_caffeine)
+                            "Cannabis" -> stringResource(R.string.settings_combo_substance_cannabis)
+                            "Grapefruit" -> stringResource(R.string.settings_combo_substance_grapefruit)
+                            "Hormonal birth control" -> stringResource(R.string.settings_combo_substance_hormonal_birth_control)
+                            "Nicotine" -> stringResource(R.string.settings_combo_substance_nicotine)
+                            "Lithium" -> stringResource(R.string.settings_combo_substance_lithium)
+                            "MAOI" -> stringResource(R.string.settings_combo_substance_maoi)
+                            "SSRIs" -> stringResource(R.string.settings_combo_substance_ssris)
+                            "SNRIs" -> stringResource(R.string.settings_combo_substance_snris)
+                            "5-Hydroxytryptophan" -> stringResource(R.string.settings_combo_substance_5htp)
+                            "Tricyclic antidepressants" -> stringResource(R.string.settings_combo_substance_tca)
+                            "Antibiotics" -> stringResource(R.string.settings_combo_substance_antibiotics)
+                            "Antihistamine" -> stringResource(R.string.settings_combo_substance_antihistamine)
+                            else -> substanceInteraction.name
+                        }
                         Row(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(text = substanceInteraction.name)
+                            Text(text = displayName)
                             Switch(
                                 checked = substanceInteraction.isOn,
                                 onCheckedChange = { substanceInteraction.toggle() },
-                                modifier = Modifier.semantics { contentDescription = substanceInteraction.name }
+                                modifier = Modifier.semantics { contentDescription = displayName }
                             )
                         }
                     }

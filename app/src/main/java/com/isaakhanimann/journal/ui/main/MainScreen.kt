@@ -24,6 +24,7 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -56,10 +57,10 @@ fun MainScreen(
                         icon = {
                             Icon(
                                 if (selected) topLevelRoute.filledIcon else topLevelRoute.outlinedIcon,
-                                contentDescription = topLevelRoute.name
+                                contentDescription = stringResource(topLevelRoute.nameRes)
                             )
                         },
-                        label = { Text(topLevelRoute.name) },
+                        label = { Text(stringResource(topLevelRoute.nameRes)) },
                         selected = selected,
                         onClick = {
                             if (selected) {

@@ -35,7 +35,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.isaakhanimann.journal.R
 
 @Composable
 fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
@@ -173,7 +175,7 @@ fun BarChart(buckets: List<List<ColorCount>>, startDateText: String) {
                 style = style,
             )
             Text(
-                text = "Now",
+                text = stringResource(R.string.stats_now),
                 style = style,
             )
         }

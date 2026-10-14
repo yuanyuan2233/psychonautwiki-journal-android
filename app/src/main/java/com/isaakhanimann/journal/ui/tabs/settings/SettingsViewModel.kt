@@ -18,14 +18,17 @@
 
 package com.isaakhanimann.journal.ui.tabs.settings
 
+import android.content.Context
 import android.net.Uri
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.ui.tabs.settings.combinations.UserPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -39,6 +42,7 @@ class SettingsViewModel @Inject constructor(
     private val experienceRepository: ExperienceRepository,
     private val fileSystemConnection: FileSystemConnection,
     private val userPreferences: UserPreferences,
+    @ApplicationContext private val context: Context,
 ) : ViewModel() {
 
     fun saveDosageDotsAreHidden(value: Boolean) = viewModelScope.launch {
@@ -78,7 +82,7 @@ class SettingsViewModel @Inject constructor(
             val text = fileSystemConnection.getTextFromUri(uri)
             if (text == null) {
                 snackbarHostState.showSnackbar(
-                    message = "File not found",
+                    message = context.getString(R.string.settings_file_not_found),
                     duration = SnackbarDuration.Short
                 )
             } else {
@@ -88,13 +92,13 @@ class SettingsViewModel @Inject constructor(
                     experienceRepository.deleteEverything()
                     experienceRepository.insertEverything(journalExport)
                     snackbarHostState.showSnackbar(
-                        message = "Import successful",
+                        message = context.getString(R.string.settings_import_successful),
                         duration = SnackbarDuration.Short
                     )
                 } catch (e: Exception) {
                     println("Error when decoding: ${e.message}")
                     snackbarHostState.showSnackbar(
-                        message = "Decoding file failed",
+                        message = context.getString(R.string.settings_decoding_file_failed),
                         duration = SnackbarDuration.Short
                     )
                 }
@@ -185,12 +189,12 @@ class SettingsViewModel @Inject constructor(
                 val jsonList = Json.encodeToString(journalExport)
                 fileSystemConnection.saveTextInUri(uri, text = jsonList)
                 snackbarHostState.showSnackbar(
-                    message = "Export successful",
+                    message = context.getString(R.string.settings_export_successful),
                     duration = SnackbarDuration.Short
                 )
             } catch (_: Exception) {
                 snackbarHostState.showSnackbar(
-                    message = "Export failed",
+                    message = context.getString(R.string.settings_export_failed),
                     duration = SnackbarDuration.Short
                 )
             }

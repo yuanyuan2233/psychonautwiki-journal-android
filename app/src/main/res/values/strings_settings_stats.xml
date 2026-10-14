@@ -1,0 +1,186 @@
+<resources>
+    <!-- Settings: Main Screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_section_ui">UI</string>
+    <string name="settings_custom_units">Custom units</string>
+    <string name="settings_substance_colors">Substance colors</string>
+    <string name="settings_interaction_settings">Interaction settings</string>
+    <string name="settings_hide_dosage_dots">Hide dosage dots</string>
+    <string name="settings_hide_timeline">Hide timeline</string>
+    <string name="settings_independent_substance_heights">Independent substance heights</string>
+    <string name="settings_independent_substance_heights_desc">Enable this setting if you want the timeline of different substances and routes of administration (roas) to be independent. Then ingestions of different substances and roas will always take the full height of the timeline.\n\nIf this setting is disabled then timelines of different substances have a height relative to each other. In that case the average of the common dose is used as the point to compare it to.\nE.g. if the oral average common dose of MDMA is 100mg and the average common dose of insufflated MDMA is 50mg then the timeline for 100mg of oral MDMA is the same height as for 50mg of insufflated MDMA.\nThis is also applied across substances. E.g. if the common dose of oral 2C-B is 20mg then the timeline of 40mg oral 2C-B will be twice as high as 100mg of oral MDMA.</string>
+    <string name="settings_show_more_info">Show more info</string>
+    <string name="settings_section_app_data">App data</string>
+    <string name="settings_export_file">Export File</string>
+    <string name="settings_export_dialog_title">Export?</string>
+    <string name="settings_export_dialog_text">This will export all your data from the app into a file so you can send it to someone or import it again on a new phone</string>
+    <string name="settings_export_btn">Export</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="settings_import_file">Import file</string>
+    <string name="settings_import_dialog_title">Import file?</string>
+    <string name="settings_import_dialog_text">Import a file that was exported before. Note that this will delete the data that you already have in the app.</string>
+    <string name="settings_import_btn">Import</string>
+    <string name="settings_delete_everything">Delete everything</string>
+    <string name="settings_delete_everything_dialog_title">Delete everything?</string>
+    <string name="settings_delete_everything_dialog_text">This will delete all your experiences, ingestions and custom substances.</string>
+    <string name="settings_delete_btn">Delete</string>
+    <string name="settings_deleted_everything_snackbar">Deleted everything</string>
+    <string name="settings_file_not_found">File not found</string>
+    <string name="settings_import_successful">Import successful</string>
+    <string name="settings_decoding_file_failed">Decoding file failed</string>
+    <string name="settings_export_successful">Export successful</string>
+    <string name="settings_export_failed">Export failed</string>
+    <string name="settings_section_feedback">Feedback</string>
+    <string name="settings_faq">FAQ</string>
+    <string name="settings_question_bug_report">Question, bug report</string>
+    <string name="settings_donate">Donate</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_source_code">Source Code</string>
+    <string name="settings_share">Share</string>
+    <string name="settings_version">Version %1$s</string>
+
+    <!-- Settings: Donate -->
+    <string name="settings_donate_title">Donate</string>
+    <string name="settings_donate_buy_me_a_coffee">Buy me a coffee</string>
+    <string name="settings_donate_paypal">Paypal donate</string>
+
+    <!-- Settings: FAQ -->
+    <string name="settings_faq_title">FAQ</string>
+    <string name="settings_faq_q_sources">Where does the information come from?</string>
+    <string name="settings_faq_a_sources">Dosages, durations, interactions, tolerance, common names, psychoactive classes, toxicity and addiction potential come from PsychonautWiki. Substance summaries and additional categories come from Tripsit. Effects, dosage remarks, general &amp; long term risks and safer use come from the DIZ (drug information center of Zurich).</string>
+    <string name="settings_faq_q_interactions">When does the app detect interactions?</string>
+    <string name="settings_faq_a_interactions">If there is an interaction with a substance you ingested less than 2 days ago. It checks interaction both ways and checks if a substance is indirectly mentioned through its psychoactive class.</string>
+    <string name="settings_faq_q_edit_info">How can the information be changed or added?</string>
+    <string name="settings_faq_a_edit_info">Edit the article in PsychonautWiki so your edit might get approved by one of the PsychonautWiki moderators, especially if you can reference good sources. The changed information will come in the next update of the app. If the information to be changed comes from another source than PsychonautWiki contact support.</string>
+    <string name="settings_faq_q_timeline_independent">Why does the timeline treat every ingestion independently?</string>
+    <string name="settings_faq_a_timeline_independent">Because the information on tolerance and cross tolerance does not yet allow to do this reliably.</string>
+    <string name="settings_faq_q_dots_meaning">What do the dots next to the dose of the ingestion mean?</string>
+    <string name="settings_faq_a_dots_meaning">0 dots means that the dose is less than threshold, 1: light, 2: common, 3: strong, 4: heavy. More than 4 dots means that the heavy dose is subtracted and the remainder is again classified in terms of light, common and strong.</string>
+
+    <!-- Settings: Combinations -->
+    <string name="settings_combinations_title">Combinations</string>
+    <string name="settings_interaction_alerts">Interaction alerts</string>
+    <string name="settings_interaction_alerts_desc">Get warnings about interactions with following substances, even if you haven\'t logged them.</string>
+    <string name="settings_combo_substance_alcohol">Alcohol</string>
+    <string name="settings_combo_substance_caffeine">Caffeine</string>
+    <string name="settings_combo_substance_cannabis">Cannabis</string>
+    <string name="settings_combo_substance_grapefruit">Grapefruit</string>
+    <string name="settings_combo_substance_hormonal_birth_control">Hormonal birth control</string>
+    <string name="settings_combo_substance_nicotine">Nicotine</string>
+    <string name="settings_combo_substance_lithium">Lithium</string>
+    <string name="settings_combo_substance_maoi">MAOI</string>
+    <string name="settings_combo_substance_ssris">SSRIs</string>
+    <string name="settings_combo_substance_snris">SNRIs</string>
+    <string name="settings_combo_substance_5htp">5-Hydroxytryptophan</string>
+    <string name="settings_combo_substance_tca">Tricyclic antidepressants</string>
+    <string name="settings_combo_substance_antibiotics">Antibiotics</string>
+    <string name="settings_combo_substance_antihistamine">Antihistamine</string>
+
+    <!-- Settings: Custom Units -->
+    <string name="settings_custom_units_title">Custom units</string>
+    <string name="settings_custom_units_go_to_archive">Go to archive</string>
+    <string name="settings_custom_units_add">Add custom unit</string>
+    <string name="settings_custom_units_fab">Custom unit</string>
+    <string name="settings_search_placeholder">Search</string>
+    <string name="settings_search">Search</string>
+    <string name="settings_close">Close</string>
+    <string name="settings_keyboard">Keyboard</string>
+    <string name="settings_custom_units_empty_title">No custom units yet</string>
+    <string name="settings_custom_units_empty_desc">Add your first unit</string>
+    <string name="settings_custom_units_not_found_title">No custom units found</string>
+    <string name="settings_custom_units_not_found_desc">No custom unit matches your search</string>
+    <string name="settings_custom_units_dose_per_unit">%1$s per %2$s</string>
+    <string name="settings_search_substances">Search substances</string>
+    <string name="settings_no_matching_substance_found">No matching substance found</string>
+    <string name="settings_choose_route_title">%1$s route</string>
+    <string name="settings_back">Back</string>
+    <string name="settings_substance_unit_title">%1$s unit</string>
+    <string name="settings_custom_unit_ingestions_affected">%1$d ingestions are affected by this edit</string>
+    <string name="settings_custom_unit_no_ingestions_using">No ingestions are using this unit yet</string>
+    <string name="settings_custom_unit_cannabis_joint_hint" formatted="false">When smoking a joint about 23% of the THC in the bud is inhaled. So if you smoke a joint with 300mg of a bud that has 20% THC then you inhale 300mg * 20/100 * 23/100 = 13.8mg THC.</string>
+    <string name="settings_custom_unit_cannabis_bong_hint" formatted="false">When smoking with a bong about 40% of the THC in the bud is inhaled. So if you smoke 300mg of a bud that has 20% THC then you inhale 300mg * 20/100 * 40/100 = 24mg THC.</string>
+    <string name="settings_custom_unit_cannabis_vape_hint" formatted="false">When smoking with a vaporizer about 70% of the THC in the bud is inhaled. So if you smoke 300mg of a bud that has 20% THC then you inhale 300mg * 20/100 * 70/100 = 42mg THC.</string>
+    <string name="settings_custom_unit_shrooms_dried_hint" formatted="false">Dried Psilocybe cubensis contain around 1% of Psilocybin.</string>
+    <string name="settings_custom_unit_shrooms_fresh_hint" formatted="false">Fresh Psilocybe cubensis contain around 0.1% of Psilocybin.</string>
+    <string name="settings_custom_unit_shrooms_research_hint">Research the strain of mushroom you have to be able to estimate the amount of Psilocybin it contains.</string>
+    <string name="settings_custom_unit_alcohol_hint" formatted="false">1 ml of Ethanol is 0.8g. So if you are e.g. consuming 200ml of a spirit with 40% of Alcohol you are consuming 200ml * 40/100 * 0.8 = 64g Ethanol.</string>
+    <string name="settings_custom_unit_prompt_cannabis_name" formatted="false">e.g. Joint weed 20%, Bong weed 15%, Vaporizer</string>
+    <string name="settings_custom_unit_prompt_cannabis_unit">mg, joint, hit</string>
+    <string name="settings_custom_unit_prompt_cannabis_unit_plural">mg, joints, hits</string>
+    <string name="settings_custom_unit_prompt_shrooms_name">Mushroom strain</string>
+    <string name="settings_custom_unit_prompt_shrooms_unit">g</string>
+    <string name="settings_custom_unit_prompt_shrooms_unit_plural">g</string>
+    <string name="settings_custom_unit_prompt_alcohol_name">e.g. beer, wine, spirit</string>
+    <string name="settings_custom_unit_prompt_alcohol_unit">e.g. ml, cup</string>
+    <string name="settings_custom_unit_prompt_alcohol_unit_plural">ml, cups</string>
+    <string name="settings_custom_unit_prompt_caffeine_name">e.g. coffee, tea, energy drink</string>
+    <string name="settings_custom_unit_prompt_caffeine_unit">e.g. cup, can</string>
+    <string name="settings_custom_unit_prompt_caffeine_unit_plural">cups, cans</string>
+    <string name="settings_custom_unit_prompt_oral_name" formatted="false">e.g. Blue rocket, 85% powder</string>
+    <string name="settings_custom_unit_prompt_oral_unit">e.g. pill, capsule, mg</string>
+    <string name="settings_custom_unit_prompt_oral_unit_plural">e.g. pills, capsules, mg</string>
+    <string name="settings_custom_unit_prompt_smoked_name" formatted="false">e.g. 85% powder</string>
+    <string name="settings_custom_unit_prompt_smoked_unit">e.g. mg, hit</string>
+    <string name="settings_custom_unit_prompt_smoked_unit_plural">e.g. mg, hits</string>
+    <string name="settings_custom_unit_prompt_insufflated_name">e.g. Nasal solution, Blue dispenser</string>
+    <string name="settings_custom_unit_prompt_insufflated_unit">e.g. spray, spoon, scoop, line</string>
+    <string name="settings_custom_unit_prompt_insufflated_unit_plural">e.g. sprays, spoons, scoops, lines</string>
+    <string name="settings_custom_unit_prompt_brand_name">e.g. Brand name</string>
+    <string name="settings_custom_unit_prompt_buccal_unit">e.g. pouch</string>
+    <string name="settings_custom_unit_prompt_buccal_unit_plural">pouches</string>
+    <string name="settings_custom_unit_prompt_transdermal_unit">e.g. patch</string>
+    <string name="settings_custom_unit_prompt_transdermal_unit_plural">patches</string>
+    <string name="settings_custom_unit_prompt_default_name" formatted="false">e.g. 85% powder, blue rocket</string>
+    <string name="settings_custom_unit_prompt_default_unit">e.g. pill, spray, spoon</string>
+    <string name="settings_custom_unit_prompt_default_unit_plural">e.g. pills, sprays, spoons</string>
+    <string name="settings_custom_unit_label_name">Name</string>
+    <string name="settings_custom_unit_label_unit_singular">Unit singular</string>
+    <string name="settings_custom_unit_label_unit_plural">Unit plural</string>
+    <string name="settings_custom_unit_label_note">Note</string>
+    <string name="settings_custom_unit_label_dose_per_unit">Dose per %1$s</string>
+    <string name="settings_custom_unit_label_units">Units</string>
+    <string name="settings_custom_unit_is_estimate">Estimate</string>
+    <string name="settings_custom_unit_label_std_dev">Estimated standard deviation per %1$s</string>
+    <string name="settings_custom_unit_preview_title">Ingestion sample preview:</string>
+    <string name="settings_custom_unit_archive">Archive</string>
+    <string name="settings_custom_unit_archive_desc">Archived custom units don\'t show up when adding ingestions</string>
+    <string name="settings_custom_units_delete">Delete custom unit</string>
+    <string name="settings_custom_units_delete_dialog_title">Delete custom unit?</string>
+    <string name="settings_custom_units_delete_dialog_text">This will affect all ingestions that are using it. Consider archiving it instead.</string>
+    <string name="settings_custom_unit_archive_title">Custom unit archive</string>
+    <string name="settings_custom_unit_no_archived_title">No archived units yet</string>
+    <string name="settings_custom_unit_no_archived_desc">Archived units don\'t show up when adding ingestions</string>
+
+    <!-- Stats -->
+    <string name="stats_title">Statistics</string>
+    <string name="stats_title_for_consumer">Statistics for %1$s</string>
+    <string name="stats_consumer">Consumer</string>
+    <string name="stats_consumer_you">You</string>
+    <string name="stats_check">Check</string>
+    <string name="stats_empty_title">Nothing to show yet</string>
+    <string name="stats_empty_desc">Start logging your ingestions to see an overview of your consumption pattern.</string>
+    <string name="stats_tab_7d">7D</string>
+    <string name="stats_tab_30d">30D</string>
+    <string name="stats_tab_26w">26W</string>
+    <string name="stats_tab_12m">12M</string>
+    <string name="stats_tab_10y">10Y</string>
+    <string name="stats_range_last_week">Last week</string>
+    <string name="stats_range_last_month">Last month</string>
+    <string name="stats_range_half_year">Half year</string>
+    <string name="stats_range_last_year">Last year</string>
+    <string name="stats_range_10_years">10 years</string>
+    <string name="stats_experiences_since">Experiences since %1$s</string>
+    <string name="stats_substance_counted_once">Substance counted once per experience</string>
+    <string name="stats_now">Now</string>
+    <string name="stats_experience_count">%1$d experiences</string>
+    <string name="stats_experience_count_singular">1 experience</string>
+    <string name="stats_total_dose_estimate_deviation">total %1$s±%2$s %3$s</string>
+    <string name="stats_total_dose_estimate">total ~%1$s %2$s</string>
+    <string name="stats_total_dose">total %1$s %2$s</string>
+    <string name="stats_total_dose_unknown">total dose unknown</string>
+    <string name="stats_route_count">%1$s %2$dx </string>
+    <string name="stats_no_ingestions_since">No ingestions since %1$s</string>
+    <string name="stats_choose_longer_range">Choose a longer duration range to see statistics.</string>
+    <string name="stats_tolerance">Tolerance</string>
+    <string name="stats_dose_unknown">Unknown dose</string>
+</resources>

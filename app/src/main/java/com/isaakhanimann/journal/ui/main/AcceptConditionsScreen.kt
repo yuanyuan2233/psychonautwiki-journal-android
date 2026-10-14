@@ -42,6 +42,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
@@ -96,7 +97,7 @@ fun AcceptConditionsScreen(
                 verticalArrangement = Arrangement.spacedBy(5.dp)
             ) {
                 val responsibilityText =
-                    "I acknowledge that I am the only one responsible for my actions, especially when deciding to use drugs."
+                    stringResource(R.string.disclaimer_responsibility)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
@@ -113,7 +114,7 @@ fun AcceptConditionsScreen(
                     Text(text = responsibilityText)
                 }
                 val mitigateRisksText =
-                    "I'm going to use this app for mitigating the risks of my or somebody else’s substance use."
+                    stringResource(R.string.disclaimer_mitigate_risks)
                 Row(verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .clickable {
@@ -129,7 +130,7 @@ fun AcceptConditionsScreen(
                     Text(text = mitigateRisksText)
                 }
                 val incompleteDataText =
-                    "I acknowledge that the data in this app might be inaccurate or incomplete."
+                    stringResource(R.string.disclaimer_incomplete_data)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
@@ -147,7 +148,7 @@ fun AcceptConditionsScreen(
                     Text(text = incompleteDataText)
                 }
                 val professionalHelpText =
-                    "I’m going to seek professional help before attempting to self-medicate."
+                    stringResource(R.string.disclaimer_professional_help)
                 Row(verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier
                         .clickable {
@@ -164,12 +165,12 @@ fun AcceptConditionsScreen(
                 }
             }
             Text(
-                text = "Your data always stays on this device",
+                text = stringResource(R.string.disclaimer_local_data_notice),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(horizontal = 15.dp, vertical = 20.dp)
             )
             Button(onClick = onTapAccept, enabled = allIsChecked) {
-                Text(text = "Continue")
+                Text(text = stringResource(R.string.btn_continue))
             }
         }
     }

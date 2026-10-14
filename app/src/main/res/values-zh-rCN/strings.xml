@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Journal</string>
+
+    <!-- Navigation -->
+    <string name="nav_stats">统计</string>
+    <string name="nav_journal">日记</string>
+    <string name="nav_drugs">物质</string>
+    <string name="nav_safer">安全</string>
+    <string name="nav_settings">设置</string>
+
+    <!-- Disclaimer / Accept Conditions -->
+    <string name="disclaimer_responsibility">我明确知悉并认可，我必须对自己的所有行为承担全部责任，尤其是在决定使用任何精神活性物质时。</string>
+    <string name="disclaimer_mitigate_risks">我使用本应用仅用于个人或他人物质使用的风险减害（Harm Reduction）与安全参考。</string>
+    <string name="disclaimer_incomplete_data">我知悉本应用内包含的数据可能存在误差、局限或不完整。</string>
+    <string name="disclaimer_professional_help">在尝试任何形式的自我治疗前，我应当主动寻求专业医疗人员的协助与诊断。</string>
+    <string name="disclaimer_local_data_notice">您的数据始终完全加密保存在本地设备上</string>
+    <string name="btn_continue">继续</string>
+
+    <!-- Administration Routes (ROA) -->
+    <string name="route_oral">口服</string>
+    <string name="route_oral_desc">吞服</string>
+    <string name="route_sublingual">舌下含服</string>
+    <string name="route_sublingual_desc">舌下黏膜吸收</string>
+    <string name="route_buccal">颊囊含服</string>
+    <string name="route_buccal_desc">牙龈与面颊间吸收</string>
+    <string name="route_insufflated">鼻吸</string>
+    <string name="route_insufflated_desc">鼻腔黏膜吸收</string>
+    <string name="route_rectal">直肠给药</string>
+    <string name="route_rectal_desc">直肠塞入（Boofing / 栓剂）</string>
+    <string name="route_transdermal">透皮贴剂</string>
+    <string name="route_transdermal_desc">经皮肤缓慢吸收</string>
+    <string name="route_subcutaneous">皮下注射</string>
+    <string name="route_subcutaneous_desc">注射于皮肤与肌肉之间</string>
+    <string name="route_intramuscular">肌肉注射</string>
+    <string name="route_intramuscular_desc">注射入肌肉深层组织</string>
+    <string name="route_intravenous">静脉注射</string>
+    <string name="route_intravenous_desc">直接推注入静脉血管</string>
+    <string name="route_smoked">燃烧吸食</string>
+    <string name="route_smoked_desc">配合热源点燃吸入烟雾</string>
+    <string name="route_inhaled">常温吸入</string>
+    <string name="route_inhaled_desc">无须外部热源吸入挥发气体</string>
+
+    <!-- Stomach Fullness -->
+    <string name="stomach_empty">空腹</string>
+    <string name="stomach_quarter_full">1/4 饱</string>
+    <string name="stomach_half_full">半饱</string>
+    <string name="stomach_full">饱腹</string>
+    <string name="stomach_very_full">极饱</string>
+
+    <!-- Shulgin Rating -->
+    <string name="shulgin_minus">无可感知效应</string>
+    <string name="shulgin_plus_minus">临界效应（疑似假阳性）</string>
+    <string name="shulgin_plus">明确起效，但具体特征尚不明显</string>
+    <string name="shulgin_two_plus">效应显著且特征明确，但仍可被理性克制</string>
+    <string name="shulgin_three_plus">完全沉浸于体验中，已无法被忽略</string>
+    <string name="shulgin_four_plus">极其罕见的峰值/超验神秘体验</string>
+
+    <!-- Pharmacokinetics Timeline Phases -->
+    <string name="phase_onset">起效期</string>
+    <string name="phase_comeup">爬升期</string>
+    <string name="phase_peak">峰值期</string>
+    <string name="phase_offset">退去期</string>
+    <string name="phase_total">总时长</string>
+    <string name="phase_afterglow">后效期</string>
+
+    <!-- Dose Classification -->
+    <string name="dose_threshold">阈值剂量</string>
+    <string name="dose_light">轻度剂量</string>
+    <string name="dose_common">常规剂量</string>
+    <string name="dose_strong">强效剂量</string>
+    <string name="dose_heavy">极重剂量</string>
+
+    <!-- Interaction Severity -->
+    <string name="interaction_dangerous">危险</string>
+    <string name="interaction_unsafe">不安全</string>
+    <string name="interaction_uncertain">不确定</string>
+
+    <!-- Common UI Actions -->
+    <string name="action_done">完成</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_edit">编辑</string>
+    <string name="action_add">添加</string>
+    <string name="action_search">搜索</string>
+</resources>

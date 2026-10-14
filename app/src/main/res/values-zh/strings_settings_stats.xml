@@ -1,0 +1,186 @@
+<resources>
+    <!-- Settings: Main Screen -->
+    <string name="settings_title">设置</string>
+    <string name="settings_section_ui">界面</string>
+    <string name="settings_custom_units">自定义单位</string>
+    <string name="settings_substance_colors">物质颜色</string>
+    <string name="settings_interaction_settings">相互作用设置</string>
+    <string name="settings_hide_dosage_dots">隐藏剂量圆点</string>
+    <string name="settings_hide_timeline">隐藏时间线</string>
+    <string name="settings_independent_substance_heights">物质高度独立</string>
+    <string name="settings_independent_substance_heights_desc">启用此设置后，不同物质及不同给药途径（ROA）的时间线高度将互相独立。此时，各物质及给药途径的摄入记录都将铺满时间线的完整高度。\n\n若停用此设置，不同物质的时间线高度将根据相对药效剂量成比例显示。此时将以常规剂量的平均值作为基准参考点进行折算对比。\n例如：若口服 MDMA 的平均常规剂量为 100mg，而鼻吸 MDMA 的平均常规剂量为 50mg，则 100mg 口服 MDMA 与 50mg 鼻吸 MDMA 在时间线上的高度一致。\n此规则同样适用于跨物质对比。例如：若口服 2C-B 的常规剂量为 20mg，则 40mg 口服 2C-B 的时间线高度将是 100mg 口服 MDMA 的两倍。</string>
+    <string name="settings_show_more_info">显示更多信息</string>
+    <string name="settings_section_app_data">应用数据</string>
+    <string name="settings_export_file">导出文件</string>
+    <string name="settings_export_dialog_title">导出数据？</string>
+    <string name="settings_export_dialog_text">这将把应用内的所有数据导出为一个备份文件，便于发送给他人或在新设备上重新导入。</string>
+    <string name="settings_export_btn">导出</string>
+    <string name="settings_cancel">取消</string>
+    <string name="settings_import_file">导入文件</string>
+    <string name="settings_import_dialog_title">导入文件？</string>
+    <string name="settings_import_dialog_text">导入此前导出的备份文件。请注意，这将覆盖并删除应用中现有的全部数据。</string>
+    <string name="settings_import_btn">导入</string>
+    <string name="settings_delete_everything">清空所有数据</string>
+    <string name="settings_delete_everything_dialog_title">清空所有数据？</string>
+    <string name="settings_delete_everything_dialog_text">这将永久删除您所有的体验记录、摄入记录以及自定义物质。</string>
+    <string name="settings_delete_btn">删除</string>
+    <string name="settings_deleted_everything_snackbar">已清空所有数据</string>
+    <string name="settings_file_not_found">未找到文件</string>
+    <string name="settings_import_successful">导入成功</string>
+    <string name="settings_decoding_file_failed">文件解析失败，请检查文件格式</string>
+    <string name="settings_export_successful">导出成功</string>
+    <string name="settings_export_failed">导出失败</string>
+    <string name="settings_section_feedback">反馈与支持</string>
+    <string name="settings_faq">常见问题 (FAQ)</string>
+    <string name="settings_question_bug_report">提问 / 缺陷反馈</string>
+    <string name="settings_donate">赞助支持</string>
+    <string name="settings_section_app">关于应用</string>
+    <string name="settings_source_code">源代码</string>
+    <string name="settings_share">分享应用</string>
+    <string name="settings_version">版本 %1$s</string>
+
+    <!-- Settings: Donate -->
+    <string name="settings_donate_title">赞助与捐赠</string>
+    <string name="settings_donate_buy_me_a_coffee">请我喝杯咖啡 (Buy Me a Coffee)</string>
+    <string name="settings_donate_paypal">通过 PayPal 捐赠</string>
+
+    <!-- Settings: FAQ -->
+    <string name="settings_faq_title">常见问题</string>
+    <string name="settings_faq_q_sources">应用中的信息来源于何处？</string>
+    <string name="settings_faq_a_sources">剂量、持续时间、药物相互作用、耐受性、常用别名、精神活性分类、毒性与成瘾潜力数据均来源于 PsychonautWiki。物质概述与额外分类信息来源于 TripSit。效应表现、剂量注意事项、普遍与长期风险以及减害安全指南来源于苏黎世药物信息中心（DIZ）。</string>
+    <string name="settings_faq_q_interactions">应用在何时会检测药物相互作用？</string>
+    <string name="settings_faq_a_interactions">当您摄入某种物质，且距上一次摄入其他物质不足 2 天时，如果二者存在已知相互作用，应用便会发出警报。相互作用为双向检测，并会自动检查物质是否通过其所属的精神活性分类间接发生相互作用。</string>
+    <string name="settings_faq_q_edit_info">如何修改或新增物质信息？</string>
+    <string name="settings_faq_a_edit_info">您可以在 PsychonautWiki 上直接编辑对应词条；若能提供可靠的参考文献，修改将更容易通过词条审核员的批准。更新后的数据将在本应用的下一次版本更新中同步。如果需要修改的信息来自 PsychonautWiki 以外的其他数据源，请直接联系开发者支持。</string>
+    <string name="settings_faq_q_timeline_independent">为什么时间线将每一次摄入都独立计算？</string>
+    <string name="settings_faq_a_timeline_independent">因为目前的耐受性与交叉耐受性科学数据尚不足以可靠、精确地模拟复杂的重叠药效动力学曲线。</string>
+    <string name="settings_faq_q_dots_meaning">摄入剂量旁边的圆点代表什么含义？</string>
+    <string name="settings_faq_a_dots_meaning">0 个圆点表示剂量低于阈值（Threshold）；1 个点：轻度（Light）；2 个点：常规（Common）；3 个点：强效（Strong）；4 个点：重度（Heavy）。超过 4 个点表示扣除重度剂量基准后，剩余部分再次按轻度、常规和强效继续累加分级。</string>
+
+    <!-- Settings: Combinations -->
+    <string name="settings_combinations_title">相互作用组合</string>
+    <string name="settings_interaction_alerts">相互作用警报</string>
+    <string name="settings_interaction_alerts_desc">即使未在日记中记录下列物质，也会针对它们显示相互作用警告。</string>
+    <string name="settings_combo_substance_alcohol">酒精 (Alcohol)</string>
+    <string name="settings_combo_substance_caffeine">咖啡因 (Caffeine)</string>
+    <string name="settings_combo_substance_cannabis">大麻 (Cannabis)</string>
+    <string name="settings_combo_substance_grapefruit">西柚 / 葡萄柚 (Grapefruit)</string>
+    <string name="settings_combo_substance_hormonal_birth_control">激素类避孕药 (Hormonal birth control)</string>
+    <string name="settings_combo_substance_nicotine">尼古丁 (Nicotine)</string>
+    <string name="settings_combo_substance_lithium">锂盐 (Lithium)</string>
+    <string name="settings_combo_substance_maoi">单胺氧化酶抑制剂 (MAOI)</string>
+    <string name="settings_combo_substance_ssris">选择性5-羟色胺再摄取抑制剂 (SSRIs)</string>
+    <string name="settings_combo_substance_snris">5-羟色胺与去甲肾上腺素再摄取抑制剂 (SNRIs)</string>
+    <string name="settings_combo_substance_5htp">5-羟色氨酸 (5-HTP)</string>
+    <string name="settings_combo_substance_tca">三环类抗抑郁药 (TCAs)</string>
+    <string name="settings_combo_substance_antibiotics">抗生素 (Antibiotics)</string>
+    <string name="settings_combo_substance_antihistamine">抗组胺药 (Antihistamines)</string>
+
+    <!-- Settings: Custom Units -->
+    <string name="settings_custom_units_title">自定义单位</string>
+    <string name="settings_custom_units_go_to_archive">前往归档</string>
+    <string name="settings_custom_units_add">添加自定义单位</string>
+    <string name="settings_custom_units_fab">自定义单位</string>
+    <string name="settings_search_placeholder">搜索</string>
+    <string name="settings_search">搜索</string>
+    <string name="settings_close">清除</string>
+    <string name="settings_keyboard">键盘</string>
+    <string name="settings_custom_units_empty_title">暂无自定义单位</string>
+    <string name="settings_custom_units_empty_desc">添加您的首个自定义单位</string>
+    <string name="settings_custom_units_not_found_title">未找到自定义单位</string>
+    <string name="settings_custom_units_not_found_desc">未找到符合搜索条件的自定义单位</string>
+    <string name="settings_custom_units_dose_per_unit">每 %2$s 含 %1$s</string>
+    <string name="settings_search_substances">搜索物质</string>
+    <string name="settings_no_matching_substance_found">未找到匹配的物质</string>
+    <string name="settings_choose_route_title">%1$s 给药途径</string>
+    <string name="settings_back">返回</string>
+    <string name="settings_substance_unit_title">%1$s 单位</string>
+    <string name="settings_custom_unit_ingestions_affected">本次修改将影响 %1$d 条摄入记录</string>
+    <string name="settings_custom_unit_no_ingestions_using">尚无摄入记录使用该单位</string>
+    <string name="settings_custom_unit_cannabis_joint_hint" formatted="false">抽卷烟（Joint）时，花苞中约 23% 的 THC 会被吸入。例如：如果您抽了一根含有 300mg、THC 含量为 20% 花苞的卷烟，实际吸入量为 300mg * 20/100 * 23/100 = 13.8mg THC。</string>
+    <string name="settings_custom_unit_cannabis_bong_hint" formatted="false">使用水烟壶（Bong）吸食时，花苞中约 40% 的 THC 会被吸入。例如：使用 300mg、THC 含量为 20% 的花苞，实际吸入量为 300mg * 20/100 * 40/100 = 24mg THC。</string>
+    <string name="settings_custom_unit_cannabis_vape_hint" formatted="false">使用雾化器（Vaporizer）吸入时，花苞中约 70% 的 THC 会被吸入。例如：雾化 300mg、THC 含量为 20% 的花苞，实际吸入量为 300mg * 20/100 * 70/100 = 42mg THC。</string>
+    <string name="settings_custom_unit_shrooms_dried_hint" formatted="false">干燥的古巴裸盖菇（Psilocybe cubensis）约含有 1% 的裸盖菇素（Psilocybin）。</string>
+    <string name="settings_custom_unit_shrooms_fresh_hint" formatted="false">新鲜的古巴裸盖菇约含有 0.1% 的裸盖菇素。</string>
+    <string name="settings_custom_unit_shrooms_research_hint">建议核实您所持有的具体蘑菇品种，以便更准确地估算其裸盖菇素含量。</string>
+    <string name="settings_custom_unit_alcohol_hint" formatted="false">1 毫升乙醇约为 0.8 克。例如：若饮用 200 毫升酒精度为 40% 的烈酒，实际纯乙醇摄入量为 200ml * 40/100 * 0.8 = 64g。</string>
+    <string name="settings_custom_unit_prompt_cannabis_name" formatted="false">例如：卷烟 20%、水烟筒 15%、雾化器</string>
+    <string name="settings_custom_unit_prompt_cannabis_unit">mg、支、口</string>
+    <string name="settings_custom_unit_prompt_cannabis_unit_plural">mg、支、口</string>
+    <string name="settings_custom_unit_prompt_shrooms_name">蘑菇品种</string>
+    <string name="settings_custom_unit_prompt_shrooms_unit">g</string>
+    <string name="settings_custom_unit_prompt_shrooms_unit_plural">g</string>
+    <string name="settings_custom_unit_prompt_alcohol_name">例如：啤酒、红酒、烈酒</string>
+    <string name="settings_custom_unit_prompt_alcohol_unit">例如：ml、杯</string>
+    <string name="settings_custom_unit_prompt_alcohol_unit_plural">ml、杯</string>
+    <string name="settings_custom_unit_prompt_caffeine_name">例如：咖啡、茶、能量饮料</string>
+    <string name="settings_custom_unit_prompt_caffeine_unit">例如：杯、罐</string>
+    <string name="settings_custom_unit_prompt_caffeine_unit_plural">杯、罐</string>
+    <string name="settings_custom_unit_prompt_oral_name" formatted="false">例如：蓝色火箭药片、85% 纯度粉末</string>
+    <string name="settings_custom_unit_prompt_oral_unit">例如：片、粒、胶囊、mg</string>
+    <string name="settings_custom_unit_prompt_oral_unit_plural">例如：片、粒、胶囊、mg</string>
+    <string name="settings_custom_unit_prompt_smoked_name" formatted="false">例如：85% 纯度粉末</string>
+    <string name="settings_custom_unit_prompt_smoked_unit">例如：mg、口</string>
+    <string name="settings_custom_unit_prompt_smoked_unit_plural">例如：mg、口</string>
+    <string name="settings_custom_unit_prompt_insufflated_name">例如：鼻喷溶液、蓝色分装瓶</string>
+    <string name="settings_custom_unit_prompt_insufflated_unit">例如：喷、勺、匙、道 (line)</string>
+    <string name="settings_custom_unit_prompt_insufflated_unit_plural">例如：喷、勺、匙、道 (line)</string>
+    <string name="settings_custom_unit_prompt_brand_name">例如：品牌商品名</string>
+    <string name="settings_custom_unit_prompt_buccal_unit">例如：袋、含片</string>
+    <string name="settings_custom_unit_prompt_buccal_unit_plural">袋、含片</string>
+    <string name="settings_custom_unit_prompt_transdermal_unit">例如：贴剂</string>
+    <string name="settings_custom_unit_prompt_transdermal_unit_plural">贴剂</string>
+    <string name="settings_custom_unit_prompt_default_name" formatted="false">例如：85% 粉末、蓝色火箭</string>
+    <string name="settings_custom_unit_prompt_default_unit">例如：片、喷、勺</string>
+    <string name="settings_custom_unit_prompt_default_unit_plural">例如：片、喷、勺</string>
+    <string name="settings_custom_unit_label_name">名称</string>
+    <string name="settings_custom_unit_label_unit_singular">单位单数形式</string>
+    <string name="settings_custom_unit_label_unit_plural">单位复数形式</string>
+    <string name="settings_custom_unit_label_note">备注</string>
+    <string name="settings_custom_unit_label_dose_per_unit">每 %1$s 包含的有效剂量</string>
+    <string name="settings_custom_unit_label_units">原始剂量单位</string>
+    <string name="settings_custom_unit_is_estimate">估算剂量</string>
+    <string name="settings_custom_unit_label_std_dev">每 %1$s 估算标准差</string>
+    <string name="settings_custom_unit_preview_title">摄入记录样本预览：</string>
+    <string name="settings_custom_unit_archive">归档</string>
+    <string name="settings_custom_unit_archive_desc">已归档的自定义单位在添加摄入记录时将不再显示</string>
+    <string name="settings_custom_units_delete">删除自定义单位</string>
+    <string name="settings_custom_units_delete_dialog_title">删除自定义单位？</string>
+    <string name="settings_custom_units_delete_dialog_text">此操作将影响所有关联该单位的历史摄入记录。建议优先考虑将其归档。</string>
+    <string name="settings_custom_unit_archive_title">自定义单位归档</string>
+    <string name="settings_custom_unit_no_archived_title">暂无已归档的单位</string>
+    <string name="settings_custom_unit_no_archived_desc">已归档的单位在添加摄入记录时将不再显示</string>
+
+    <!-- Stats -->
+    <string name="stats_title">统计</string>
+    <string name="stats_title_for_consumer">%1$s 的统计</string>
+    <string name="stats_consumer">记录使用者</string>
+    <string name="stats_consumer_you">您</string>
+    <string name="stats_check">选中</string>
+    <string name="stats_empty_title">暂无统计数据</string>
+    <string name="stats_empty_desc">开始记录您的摄入数据，以查看物质使用模式与概览。</string>
+    <string name="stats_tab_7d">7天</string>
+    <string name="stats_tab_30d">30天</string>
+    <string name="stats_tab_26w">26周</string>
+    <string name="stats_tab_12m">12月</string>
+    <string name="stats_tab_10y">10年</string>
+    <string name="stats_range_last_week">最近一周</string>
+    <string name="stats_range_last_month">最近一月</string>
+    <string name="stats_range_half_year">半年</string>
+    <string name="stats_range_last_year">最近一年</string>
+    <string name="stats_range_10_years">10年</string>
+    <string name="stats_experiences_since">自 %1$s 以来的体验记录</string>
+    <string name="stats_substance_counted_once">同一体验内相同物质仅计数一次</string>
+    <string name="stats_now">现在</string>
+    <string name="stats_experience_count">%1$d 次体验</string>
+    <string name="stats_experience_count_singular">1 次体验</string>
+    <string name="stats_total_dose_estimate_deviation">总量 %1$s±%2$s %3$s</string>
+    <string name="stats_total_dose_estimate">总量 ~%1$s %2$s</string>
+    <string name="stats_total_dose">总量 %1$s %2$s</string>
+    <string name="stats_total_dose_unknown">总量未知</string>
+    <string name="stats_route_count">%1$s %2$d次 </string>
+    <string name="stats_no_ingestions_since">自 %1$s 以来无摄入记录</string>
+    <string name="stats_choose_longer_range">请选择更长的时间跨度以查看统计数据。</string>
+    <string name="stats_tolerance">耐受性</string>
+    <string name="stats_dose_unknown">剂量未知</string>
+</resources>

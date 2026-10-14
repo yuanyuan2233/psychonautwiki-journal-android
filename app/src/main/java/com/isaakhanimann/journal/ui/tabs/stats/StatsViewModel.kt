@@ -18,8 +18,10 @@
 
 package com.isaakhanimann.journal.ui.tabs.stats
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.ExperienceRepository
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
@@ -270,8 +272,11 @@ data class TotalDose(
     val estimatedDoseStandardDeviation: Double?
 )
 
-enum class TimePickerOption {
-    DAYS_7 {
+enum class TimePickerOption(
+    @StringRes val displayTextRes: Int,
+    @StringRes val longDisplayTextRes: Int
+) {
+    DAYS_7(R.string.stats_tab_7d, R.string.stats_range_last_week) {
         override val displayText = "7D"
         override val longDisplayText = "Last week"
         override val tabIndex = 0
@@ -279,7 +284,7 @@ enum class TimePickerOption {
         override val oneBucketSize: Period = Period.ofDays(1)
         override val allBucketSizes: Period = Period.ofDays(7)
     },
-    DAYS_30 {
+    DAYS_30(R.string.stats_tab_30d, R.string.stats_range_last_month) {
         override val displayText = "30D"
         override val longDisplayText = "Last month"
         override val tabIndex = 1
@@ -287,7 +292,7 @@ enum class TimePickerOption {
         override val oneBucketSize: Period = Period.ofDays(1)
         override val allBucketSizes: Period = Period.ofDays(30)
     },
-    WEEKS_26 {
+    WEEKS_26(R.string.stats_tab_26w, R.string.stats_range_half_year) {
         override val displayText = "26W"
         override val longDisplayText = "Half year"
         override val tabIndex = 2
@@ -296,7 +301,7 @@ enum class TimePickerOption {
             Period.ofDays(7) // the max time unit that can be used for subtraction is days
         override val allBucketSizes: Period = Period.ofDays(7 * bucketCount)
     },
-    MONTHS_12 {
+    MONTHS_12(R.string.stats_tab_12m, R.string.stats_range_last_year) {
         override val displayText = "12M"
         override val longDisplayText = "Last year"
         override val tabIndex = 3
@@ -304,7 +309,7 @@ enum class TimePickerOption {
         override val oneBucketSize: Period = Period.ofDays(30)
         override val allBucketSizes: Period = Period.ofDays(30 * bucketCount)
     },
-    YEARS_10 {
+    YEARS_10(R.string.stats_tab_10y, R.string.stats_range_10_years) {
         override val displayText = "10Y"
         override val longDisplayText = "10 years"
         override val tabIndex = 4
