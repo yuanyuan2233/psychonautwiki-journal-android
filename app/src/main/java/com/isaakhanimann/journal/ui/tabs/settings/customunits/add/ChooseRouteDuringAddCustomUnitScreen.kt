@@ -30,7 +30,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.AdministrationRoutePicker
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteViewModel
@@ -44,13 +46,13 @@ fun ChooseRouteDuringAddCustomUnitScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("${viewModel.substanceName} route") },
+                title = { Text(stringResource(R.string.settings_choose_route_title, viewModel.substanceName)) },
                 navigationIcon = {
                     if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
                         IconButton(onClick = { viewModel.showOtherRoutes = false }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back"
+                                contentDescription = stringResource(R.string.settings_back)
                             )
                         }
                     }

@@ -50,6 +50,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.ImeAction
@@ -59,6 +60,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.room.experiences.entities.Ingestion
 import com.isaakhanimann.journal.data.room.experiences.entities.PluralizableUnit
@@ -175,7 +177,10 @@ private fun FinishAddCustomUnitScreenContent(
     onChangeOfIsArchived: (Boolean) -> Unit,
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text("$substanceName unit") }) },
+        topBar = {
+            val localizedSubstanceName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substanceName)
+            TopAppBar(title = { Text(stringResource(R.string.settings_substance_unit_title, localizedSubstanceName)) })
+        },
         floatingActionButton = {
             FloatingDoneButton(
                 onDone = dismiss,
@@ -273,17 +278,14 @@ fun EditCustomUnitSections(
                         verticalArrangement = Arrangement.spacedBy(5.dp)
                     ) {
                         if (numberOfIngestionsWithThisCustomUnit > 0) {
-                            val pluralizableUnit =
-                                PluralizableUnit(singular = "ingestion", plural = "ingestions")
                             Text(
-                                "${
-                                    numberOfIngestionsWithThisCustomUnit.toStringWith(
-                                        pluralizableUnit
-                                    )
-                                } are affected by this edit"
+                                stringResource(
+                                    R.string.settings_custom_unit_ingestions_affected,
+                                    numberOfIngestionsWithThisCustomUnit
+                                )
                             )
                         } else {
-                            Text("No ingestions are using this unit yet")
+                            Text(stringResource(R.string.settings_custom_unit_no_ingestions_using))
                         }
                     }
                 }
@@ -304,9 +306,9 @@ fun EditCustomUnitSections(
                     ),
                     verticalArrangement = Arrangement.spacedBy(5.dp)
                 ) {
-                    Text("When smoking a joint about 23% of the THC in the bud is inhaled. So if you smoke a joint with 300mg of a bud that has 20% THC then you inhale 300mg * 20/100 * 23/100 = 13.8mg THC.")
-                    Text("When smoking with a bong about 40% of the THC in the bud is inhaled. So if you smoke 300mg of a bud that has 20% THC then you inhale 300mg * 20/100 * 40/100 = 24mg THC.")
-                    Text("When smoking with a vaporizer about 70% of the THC in the bud is inhaled. So if you smoke 300mg of a bud that has 20% THC then you inhale 300mg * 20/100 * 70/100 = 42mg THC.")
+                    Text(stringResource(R.string.settings_custom_unit_cannabis_joint_hint))
+                    Text(stringResource(R.string.settings_custom_unit_cannabis_bong_hint))
+                    Text(stringResource(R.string.settings_custom_unit_cannabis_vape_hint))
                 }
             }
         } else if (substanceName == "Psilocybin mushrooms") {
@@ -323,9 +325,9 @@ fun EditCustomUnitSections(
                     ),
                     verticalArrangement = Arrangement.spacedBy(5.dp)
                 ) {
-                    Text("Dried Psilocybe cubensis contain around 1% of Psilocybin.")
-                    Text("Fresh Psilocybe cubensis contain around 0.1% of Psilocybin.")
-                    Text("Research the strain of mushroom you have to be able to estimate the amount of Psilocybin it contains.")
+                    Text(stringResource(R.string.settings_custom_unit_shrooms_dried_hint))
+                    Text(stringResource(R.string.settings_custom_unit_shrooms_fresh_hint))
+                    Text(stringResource(R.string.settings_custom_unit_shrooms_research_hint))
                 }
             }
         } else if (substanceName == "Alcohol") {
@@ -341,77 +343,81 @@ fun EditCustomUnitSections(
                         vertical = 10.dp
                     )
                 ) {
-                    Text("1 ml of Ethanol is 0.8g. So if you are e.g. consuming 200ml of a spirit with 40% of Alcohol you are consuming 200ml * 40/100 * 0.8 = 64g Ethanol.")
+                    Text(stringResource(R.string.settings_custom_unit_alcohol_hint))
                 }
             }
         }
         ElevatedCard(modifier = Modifier.padding(horizontal = horizontalPadding, vertical = 4.dp)) {
             val prompt = when (substanceName) {
                 "Cannabis" -> Prompt(
-                    name = "e.g. Joint weed 20%, Bong weed 15%, Vaporizer",
-                    unit = "mg, joint, hit",
-                    unitPlural = "mg, joints, hits"
+                    name = stringResource(R.string.settings_custom_unit_prompt_cannabis_name),
+                    unit = stringResource(R.string.settings_custom_unit_prompt_cannabis_unit),
+                    unitPlural = stringResource(R.string.settings_custom_unit_prompt_cannabis_unit_plural)
                 )
 
                 "Psilocybin mushrooms" ->
-                    Prompt(name = "Mushroom strain", unit = "g", unitPlural = "g")
+                    Prompt(
+                        name = stringResource(R.string.settings_custom_unit_prompt_shrooms_name),
+                        unit = stringResource(R.string.settings_custom_unit_prompt_shrooms_unit),
+                        unitPlural = stringResource(R.string.settings_custom_unit_prompt_shrooms_unit_plural)
+                    )
 
                 "Alcohol" ->
                     Prompt(
-                        name = "e.g. beer, wine, spirit",
-                        unit = "e.g. ml, cup",
-                        unitPlural = "ml, cups"
+                        name = stringResource(R.string.settings_custom_unit_prompt_alcohol_name),
+                        unit = stringResource(R.string.settings_custom_unit_prompt_alcohol_unit),
+                        unitPlural = stringResource(R.string.settings_custom_unit_prompt_alcohol_unit_plural)
                     )
 
                 "Caffeine" ->
                     Prompt(
-                        name = "e.g. coffee, tea, energy drink",
-                        unit = "e.g. cup, can",
-                        unitPlural = "cups, cans"
+                        name = stringResource(R.string.settings_custom_unit_prompt_caffeine_name),
+                        unit = stringResource(R.string.settings_custom_unit_prompt_caffeine_unit),
+                        unitPlural = stringResource(R.string.settings_custom_unit_prompt_caffeine_unit_plural)
                     )
 
                 else ->
                     when (administrationRoute) {
                         AdministrationRoute.ORAL ->
                             Prompt(
-                                name = "e.g. Blue rocket, 85% powder",
-                                unit = "e.g. pill, capsule, mg",
-                                unitPlural = "e.g. pills, capsules, mg"
+                                name = stringResource(R.string.settings_custom_unit_prompt_oral_name),
+                                unit = stringResource(R.string.settings_custom_unit_prompt_oral_unit),
+                                unitPlural = stringResource(R.string.settings_custom_unit_prompt_oral_unit_plural)
                             )
 
                         AdministrationRoute.SMOKED ->
                             Prompt(
-                                name = "e.g. 85% powder",
-                                unit = "e.g. mg, hit",
-                                unitPlural = "e.g. mg, hits"
+                                name = stringResource(R.string.settings_custom_unit_prompt_smoked_name),
+                                unit = stringResource(R.string.settings_custom_unit_prompt_smoked_unit),
+                                unitPlural = stringResource(R.string.settings_custom_unit_prompt_smoked_unit_plural)
                             )
 
                         AdministrationRoute.INSUFFLATED ->
                             Prompt(
-                                name = "e.g. Nasal solution, Blue dispenser",
-                                unit = "e.g. spray, spoon, scoop, line",
-                                unitPlural = "e.g. sprays, spoons, scoops, lines"
+                                name = stringResource(R.string.settings_custom_unit_prompt_insufflated_name),
+                                unit = stringResource(R.string.settings_custom_unit_prompt_insufflated_unit),
+                                unitPlural = stringResource(R.string.settings_custom_unit_prompt_insufflated_unit_plural)
                             )
 
                         AdministrationRoute.BUCCAL ->
                             Prompt(
-                                name = "e.g. Brand name",
-                                unit = "e.g. pouch",
-                                unitPlural = "pouches"
+                                name = stringResource(R.string.settings_custom_unit_prompt_brand_name),
+                                unit = stringResource(R.string.settings_custom_unit_prompt_buccal_unit),
+                                unitPlural = stringResource(R.string.settings_custom_unit_prompt_buccal_unit_plural)
                             )
 
                         AdministrationRoute.TRANSDERMAL ->
                             Prompt(
-                                name = "e.g. brand name",
-                                unit = "e.g. patch",
-                                unitPlural = "patches"
+                                name = stringResource(R.string.settings_custom_unit_prompt_brand_name),
+                                unit = stringResource(R.string.settings_custom_unit_prompt_transdermal_unit),
+                                unitPlural = stringResource(R.string.settings_custom_unit_prompt_transdermal_unit_plural)
                             )
 
                         else ->
                             Prompt(
-                                name = "e.g. 85% powder, blue rocket",
-                                unit = "e.g. pill, spray, spoon",
-                                unitPlural = "e.g. pills, sprays, spoons"
+                                name = stringResource(R.string.settings_custom_unit_prompt_default_name),
+                                unit = stringResource(R.string.settings_custom_unit_prompt_default_unit),
+                                unitPlural = stringResource(R.string.settings_custom_unit_prompt_default_unit_plural)
                             )
                     }
             }
@@ -426,7 +432,7 @@ fun EditCustomUnitSections(
                     onValueChange = onChangeOfName,
                     textStyle = textStyle,
                     singleLine = true,
-                    label = { Text(text = "Name") },
+                    label = { Text(text = stringResource(R.string.settings_custom_unit_label_name)) },
                     placeholder = {
                         Text(prompt.name)
                     },
@@ -445,7 +451,7 @@ fun EditCustomUnitSections(
                     onValueChange = onChangeOfUnits,
                     textStyle = textStyle,
                     singleLine = true,
-                    label = { Text(text = "Unit singular") },
+                    label = { Text(text = stringResource(R.string.settings_custom_unit_label_unit_singular)) },
                     placeholder = {
                         Text(prompt.unit)
                     },
@@ -463,7 +469,7 @@ fun EditCustomUnitSections(
                     onValueChange = onChangeOfUnitPlural,
                     textStyle = textStyle,
                     singleLine = true,
-                    label = { Text(text = "Unit plural") },
+                    label = { Text(text = stringResource(R.string.settings_custom_unit_label_unit_plural)) },
                     placeholder = {
                         Text(prompt.unitPlural)
                     },
@@ -479,7 +485,7 @@ fun EditCustomUnitSections(
                 OutlinedTextField(
                     value = note,
                     onValueChange = onChangeOfNote,
-                    label = { Text(text = "Note") },
+                    label = { Text(text = stringResource(R.string.settings_custom_unit_label_note)) },
                     keyboardActions = KeyboardActions(onNext = { focusRequesterDose.requestFocus() }),
                     keyboardOptions = KeyboardOptions.Default.copy(
                         imeAction = ImeAction.Next,
@@ -517,7 +523,7 @@ fun EditCustomUnitSections(
                         )
                     },
                     textStyle = textStyle,
-                    label = { Text("Dose per $unit", style = textStyle) },
+                    label = { Text(stringResource(R.string.settings_custom_unit_label_dose_per_unit, unit), style = textStyle) },
                     trailingIcon = {
                         Text(
                             text = originalUnit,
@@ -539,7 +545,7 @@ fun EditCustomUnitSections(
                     OutlinedTextField(
                         value = originalUnit,
                         onValueChange = onChangeOfOriginalUnit,
-                        label = { Text("Units") },
+                        label = { Text(stringResource(R.string.settings_custom_unit_label_units)) },
                         keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                         singleLine = true,
@@ -571,7 +577,7 @@ fun EditCustomUnitSections(
                         checked = isEstimate,
                         onCheckedChange = onChangeIsEstimate,
                         modifier = Modifier.semantics { contentDescription = "Is an estimate" })
-                    Text("Estimate", style = MaterialTheme.typography.titleMedium)
+                    Text(stringResource(R.string.settings_custom_unit_is_estimate), style = MaterialTheme.typography.titleMedium)
                 }
                 AnimatedVisibility(visible = isEstimate) {
                     Column {
@@ -588,7 +594,7 @@ fun EditCustomUnitSections(
                             textStyle = textStyle,
                             label = {
                                 Text(
-                                    "Estimated standard deviation per $unit",
+                                    stringResource(R.string.settings_custom_unit_label_std_dev, unit),
                                     style = textStyle
                                 )
                             },
@@ -634,7 +640,7 @@ fun EditCustomUnitSections(
                     verticalArrangement = Arrangement.spacedBy(5.dp)
                 ) {
                     Text(
-                        "Ingestion sample preview:",
+                        stringResource(R.string.settings_custom_unit_preview_title),
                         style = MaterialTheme.typography.titleMedium,
                         modifier = Modifier.padding(horizontal = horizontalPadding)
                     )
@@ -709,9 +715,9 @@ fun EditCustomUnitSections(
                         checked = isArchived,
                         onCheckedChange = onChangeOfIsArchived,
                         modifier = Modifier.semantics { contentDescription = "Archive this unit" })
-                    Text("Archive", style = MaterialTheme.typography.titleMedium)
+                    Text(stringResource(R.string.settings_custom_unit_archive), style = MaterialTheme.typography.titleMedium)
                 }
-                Text("Archived custom units don't show up when adding ingestions")
+                Text(stringResource(R.string.settings_custom_unit_archive_desc))
             }
         }
     }

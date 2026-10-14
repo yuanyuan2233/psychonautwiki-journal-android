@@ -48,11 +48,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -103,10 +105,10 @@ fun CustomUnitsScreenContent(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("Custom units") },
+                title = { Text(stringResource(R.string.settings_custom_units_title)) },
                 actions = {
                     IconButton(onClick = navigateToCustomUnitArchive) {
-                        Icon(Icons.Default.Inventory, contentDescription = "Go to archive")
+                        Icon(Icons.Default.Inventory, contentDescription = stringResource(R.string.settings_custom_units_go_to_archive))
                     }
                 })
         },
@@ -115,10 +117,10 @@ fun CustomUnitsScreenContent(
                 modifier = Modifier.imePadding(),
                 onClick = navigateToAddCustomUnit,
                 icon = {
-                    Icon(Icons.Default.Add, contentDescription = "Add custom unit")
+                    Icon(Icons.Default.Add, contentDescription = stringResource(R.string.settings_custom_units_add))
                 },
                 text = {
-                    Text(text = "Custom unit")
+                    Text(text = stringResource(R.string.settings_custom_units_fab))
                 }
             )
         }
@@ -131,11 +133,11 @@ fun CustomUnitsScreenContent(
                 onValueChange = { value ->
                     onSearch(value)
                 },
-                placeholder = { Text(text = "Search") },
+                placeholder = { Text(text = stringResource(R.string.settings_search_placeholder)) },
                 leadingIcon = {
                     Icon(
                         Icons.Default.Search,
-                        contentDescription = "Search",
+                        contentDescription = stringResource(R.string.settings_search),
                     )
                 },
                 trailingIcon = {
@@ -147,7 +149,7 @@ fun CustomUnitsScreenContent(
                             }) {
                                 Icon(
                                     Icons.Default.Close,
-                                    contentDescription = "Close",
+                                    contentDescription = stringResource(R.string.settings_close),
                                 )
                             }
                         }
@@ -164,13 +166,13 @@ fun CustomUnitsScreenContent(
             if (filteredUnits.isEmpty()) {
                 if(searchText.isEmpty()) {
                     EmptyScreenDisclaimer(
-                        title = "No custom units yet",
-                        description = "Add your first unit"
+                        title = stringResource(R.string.settings_custom_units_empty_title),
+                        description = stringResource(R.string.settings_custom_units_empty_desc)
                     )
                 } else {
                     EmptyScreenDisclaimer(
-                        title = "No custom units found",
-                        description = "No custom unit matches your search"
+                        title = stringResource(R.string.settings_custom_units_not_found_title),
+                        description = stringResource(R.string.settings_custom_units_not_found_desc)
                     )
                 }
             } else {
@@ -202,12 +204,17 @@ fun CustomUnitRow(
             .padding(vertical = 10.dp, horizontal = horizontalPadding),
         horizontalAlignment = Alignment.Start
     ) {
+        val localizedSubstanceName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(customUnit.substanceName)
         Text(
-            text = "${customUnit.substanceName}, ${customUnit.name}",
+            text = "$localizedSubstanceName, ${customUnit.name}",
             style = MaterialTheme.typography.titleMedium
         )
         Text(
-            text = "${customUnit.getDoseOfOneUnitDescription()} per ${customUnit.unit}",
+            text = stringResource(
+                R.string.settings_custom_units_dose_per_unit,
+                customUnit.getDoseOfOneUnitDescription(),
+                customUnit.unit
+            ),
             style = MaterialTheme.typography.titleSmall
         )
         if (customUnit.note.isNotBlank()) {

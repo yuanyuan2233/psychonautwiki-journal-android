@@ -36,9 +36,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.data.substances.classes.roa.DoseClass
 import com.isaakhanimann.journal.data.substances.classes.roa.RoaDose
@@ -154,24 +156,25 @@ private fun EditCustomUnitScreenContent(
 ) {
     Scaffold(
         topBar = {
+            val localizedSubstanceName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substanceName)
             TopAppBar(
-                title = { Text("$substanceName unit") },
+                title = { Text(stringResource(R.string.settings_substance_unit_title, localizedSubstanceName)) },
                 actions = {
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
                     IconButton(onClick = { isShowingDeleteDialog = true }) {
                         Icon(
                             Icons.Default.Delete,
-                            contentDescription = "Delete custom unit"
+                            contentDescription = stringResource(R.string.settings_custom_units_delete)
                         )
                     }
                     AnimatedVisibility(visible = isShowingDeleteDialog) {
                         AlertDialog(
                             onDismissRequest = { isShowingDeleteDialog = false },
                             title = {
-                                Text(text = "Delete custom unit?")
+                                Text(text = stringResource(R.string.settings_custom_units_delete_dialog_title))
                             },
                             text = {
-                                Text("This will affect all ingestions that are using it. Consider archiving it instead.")
+                                Text(stringResource(R.string.settings_custom_units_delete_dialog_text))
                             },
                             confirmButton = {
                                 TextButton(
@@ -180,14 +183,14 @@ private fun EditCustomUnitScreenContent(
                                         onDelete()
                                     }
                                 ) {
-                                    Text("Delete")
+                                    Text(stringResource(R.string.settings_delete_btn))
                                 }
                             },
                             dismissButton = {
                                 TextButton(
                                     onClick = { isShowingDeleteDialog = false }
                                 ) {
-                                    Text("Cancel")
+                                    Text(stringResource(R.string.settings_cancel))
                                 }
                             }
                         )

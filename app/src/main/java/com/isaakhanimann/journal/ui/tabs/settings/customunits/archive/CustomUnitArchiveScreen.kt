@@ -32,8 +32,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.CustomUnitRow
@@ -94,7 +96,7 @@ fun CustomUnitArchiveScreenContent(
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Custom unit archive") })
+            TopAppBar(title = { Text(stringResource(R.string.settings_custom_unit_archive_title)) })
         }
     ) { padding ->
         Box(
@@ -117,8 +119,8 @@ fun CustomUnitArchiveScreenContent(
             }
             if (customUnits.isEmpty()) {
                 EmptyScreenDisclaimer(
-                    title = "No archived units yet",
-                    description = "Archived units don't show up when adding ingestions"
+                    title = stringResource(R.string.settings_custom_unit_no_archived_title),
+                    description = stringResource(R.string.settings_custom_unit_no_archived_desc)
                 )
             }
         }

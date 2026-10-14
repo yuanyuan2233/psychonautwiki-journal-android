@@ -40,6 +40,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
@@ -47,7 +48,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
+import com.isaakhanimann.journal.ui.utils.titleRes
 import com.isaakhanimann.journal.data.substances.classes.Tolerance
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.CardWithTitle
 import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
@@ -108,10 +111,11 @@ fun SubstanceCompanionScreen(
 ) {
     Scaffold(
         topBar = {
+            val displayName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substanceCompanion.substanceName)
             val title = if (consumerName == null) {
-                substanceCompanion.substanceName
+                displayName
             } else {
-                "${substanceCompanion.substanceName} ($consumerName)"
+                "$displayName ($consumerName)"
             }
             TopAppBar(title = { Text(title) })
         }
@@ -125,14 +129,14 @@ fun SubstanceCompanionScreen(
         ) {
             item {
                 if (tolerance != null || crossTolerances.isNotEmpty()) {
-                    CardWithTitle(title = "Tolerance", modifier = Modifier.fillMaxWidth()) {
+                    CardWithTitle(title = stringResource(R.string.stats_tolerance), modifier = Modifier.fillMaxWidth()) {
                         ToleranceSection(
                             tolerance = tolerance,
                             crossTolerances = crossTolerances
                         )
                     }
                 }
-                Text(text = "Now")
+                Text(text = stringResource(R.string.stats_now))
             }
             items(ingestionBursts) { burst ->
                 TimeArrowUp(timeText = burst.timeUntil)
@@ -176,14 +180,18 @@ fun IngestionRowOnSubstanceCompanionScreen(ingestionAndCustomUnit: IngestionsBur
             .padding(vertical = 4.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
+        val doseDesc = if (ingestionAndCustomUnit.ingestion.dose == null) {
+            stringResource(R.string.stats_dose_unknown)
+        } else {
+            ingestionAndCustomUnit.doseDescription
+        }
+        val routeText = stringResource(ingestionAndCustomUnit.ingestion.administrationRoute.titleRes)
         val text = buildAnnotatedString {
-            append(ingestionAndCustomUnit.doseDescription)
+            append(doseDesc)
             if (ingestionAndCustomUnit.customUnit != null) {
                 append(" " + ingestionAndCustomUnit.customUnit.name)
             }
             withStyle(style = SpanStyle(color = if (isSystemInDarkTheme()) Color.Gray else Color.LightGray )) {
-                val routeText =
-                    ingestionAndCustomUnit.ingestion.administrationRoute.displayText.lowercase()
                 if (ingestionAndCustomUnit.customUnit == null) {
                     append(" $routeText")
                 }
