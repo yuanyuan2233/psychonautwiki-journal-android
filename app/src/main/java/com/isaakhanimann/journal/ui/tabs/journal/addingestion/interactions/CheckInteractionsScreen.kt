@@ -142,7 +142,7 @@ fun CheckInteractionsScreen(
     navigateToNext: () -> Unit
 ) {
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.journal_substance_interactions, substanceName)) }) },
+        topBar = { TopAppBar(title = { Text(stringResource(R.string.journal_substance_interactions, com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(substanceName))) }) },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
@@ -257,7 +257,7 @@ fun InteractionRow(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = text,
+                text = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(text),
                 textAlign = TextAlign.Center,
                 color = Color.Black,
                 style = MaterialTheme.typography.titleMedium,

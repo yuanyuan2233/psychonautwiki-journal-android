@@ -436,7 +436,8 @@ fun SettingsScreen(
     }
 }
 
-const val SHARE_APP_URL = "PsychonautWiki Journal 中文版 (v12.0.0)：\nhttps://github.com/yuanyuan2233/psychonautwiki-journal-android/releases/latest"
+val SHARE_APP_URL: String
+    get() = "PsychonautWiki Journal 中文版 (v$VERSION_NAME)：\nhttps://github.com/yuanyuan2233/psychonautwiki-journal-android/releases/latest"
 
 
 

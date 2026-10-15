@@ -124,7 +124,7 @@ fun InteractionRowSubstanceScreen(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = text,
+                text = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(text),
                 textAlign = TextAlign.Center,
                 color = Color.Black
             )

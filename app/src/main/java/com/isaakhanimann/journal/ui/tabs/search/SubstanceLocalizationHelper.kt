@@ -439,6 +439,32 @@ object SubstanceLocalizationHelper {
         "Substituted amphetamines" to "苯丙胺类衍生物",
         "Trazodone" to "曲唑酮",
         "Tricyclic antidepressants" to "三环类抗抑郁药(TCAs)",
+        "GABA" to "GABA",
+        "GABAergic" to "GABA能药物",
+        "GABA|gabaergic" to "GABA/GABA能药物",
+        "analog" to "类似物",
+        "benzhydryl" to "二苯甲基类",
+        "benzodiazepine" to "苯二氮䓬类",
+        "cannabinoids" to "大麻素类",
+        "depressants" to "中枢神经抑制剂",
+        "dissociative" to "解离剂",
+        "dissociative|dissociatives" to "解离剂",
+        "dopamine" to "多巴胺",
+        "dopaminergic" to "多巴胺能药物",
+        "entactogens" to "移情剂(共情剂)",
+        "hallucinogen" to "致幻剂",
+        "modafanil" to "莫达非尼",
+        "nootropic" to "促智药",
+        "nootropic|nootropics" to "促智药",
+        "norepinephrine|noradrenergic" to "去甲肾上腺素能药物",
+        "psychedelic" to "致幻剂",
+        "racetam" to "拉西坦类",
+        "serotonergic" to "5-羟色胺能药物",
+        "serotonin|serotonergic" to "5-羟色胺/5-羟色胺能药物",
+        "stimulant" to "中枢神经兴奋剂",
+        "thienodiazepine" to "噻吩二氮䓬类",
+        "thienzodiazepines" to "噻吩二氮䓬类",
+        "trycyclic antidepressants" to "三环类抗抑郁药(TCAs)",
     )
 
     /**
@@ -457,6 +483,24 @@ object SubstanceLocalizationHelper {
         ZH_NAME_MAP[trimmed]?.let { return it }
         val foundIgnoreCase = ZH_NAME_MAP.entries.firstOrNull { it.key.equals(trimmed, ignoreCase = true) }?.value
         if (foundIgnoreCase != null) return foundIgnoreCase
+
+        // 1.1 尝试去除末尾复数 's' 再次匹配
+        if (trimmed.endsWith("s", ignoreCase = true) && trimmed.length > 2) {
+            val singular = trimmed.substring(0, trimmed.length - 1)
+            val foundSingular = ZH_NAME_MAP.entries.firstOrNull { it.key.equals(singular, ignoreCase = true) }?.value
+            if (foundSingular != null) return foundSingular
+        }
+
+        // 1.2 如果包含 '|'，尝试拆分翻译后用 '/' 拼接
+        if (trimmed.contains('|')) {
+            val parts = trimmed.split('|').map { it.trim() }
+            val translatedParts = parts.map { part ->
+                ZH_NAME_MAP.entries.firstOrNull { it.key.equals(part, ignoreCase = true) }?.value ?: part
+            }
+            if (translatedParts.any { containsChinese(it) }) {
+                return translatedParts.distinct().joinToString("/")
+            }
+        }
 
         // 2. 本身包含中文汉字，直接返回
         if (containsChinese(trimmed)) return trimmed

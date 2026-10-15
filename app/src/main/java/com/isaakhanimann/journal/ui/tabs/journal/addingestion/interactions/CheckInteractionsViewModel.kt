@@ -106,24 +106,30 @@ class CheckInteractionsViewModel @Inject constructor(
         val now = Instant.now()
         val messages = dangerousIngestions.map { ingestion ->
             val timeDiff = getDurationText(fromInstant = ingestion.time, toInstant = now, context = context)
-            context.getString(R.string.journal_alert_dangerous_with_time, ingestion.substanceName, timeDiff)
+            val localizedName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(ingestion.substanceName)
+            context.getString(R.string.journal_alert_dangerous_with_time, localizedName, timeDiff)
         }.toMutableList()
         messages += dangerousExtras.map { extra ->
-            context.getString(R.string.journal_alert_dangerous_extra, extra)
+            val localizedExtra = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(extra)
+            context.getString(R.string.journal_alert_dangerous_extra, localizedExtra)
         }
         messages += unsafeIngestions.map { ingestion ->
             val timeDiff = getDurationText(fromInstant = ingestion.time, toInstant = now, context = context)
-            context.getString(R.string.journal_alert_unsafe_with_time, ingestion.substanceName, timeDiff)
+            val localizedName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(ingestion.substanceName)
+            context.getString(R.string.journal_alert_unsafe_with_time, localizedName, timeDiff)
         }
         messages += unsafeExtras.map { extra ->
-            context.getString(R.string.journal_alert_unsafe_extra, extra)
+            val localizedExtra = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(extra)
+            context.getString(R.string.journal_alert_unsafe_extra, localizedExtra)
         }
         messages += uncertainIngestions.map { ingestion ->
             val timeDiff = getDurationText(fromInstant = ingestion.time, toInstant = now, context = context)
-            context.getString(R.string.journal_alert_uncertain_with_time, ingestion.substanceName, timeDiff)
+            val localizedName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(ingestion.substanceName)
+            context.getString(R.string.journal_alert_uncertain_with_time, localizedName, timeDiff)
         }
         messages += uncertainExtras.map { extra ->
-            context.getString(R.string.journal_alert_uncertain_extra, extra)
+            val localizedExtra = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(extra)
+            context.getString(R.string.journal_alert_uncertain_extra, localizedExtra)
         }
         alertText = messages.distinct().joinToString(separator = "\n")
         isShowingAlert = true
