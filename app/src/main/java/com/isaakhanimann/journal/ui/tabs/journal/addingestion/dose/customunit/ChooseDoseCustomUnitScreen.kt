@@ -32,12 +32,15 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.NavigateNext
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -75,6 +78,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun ChooseDoseCustomUnitScreen(
+    navigateBack: () -> Unit = {},
     navigateToChooseTimeAndMaybeColor: (
         administrationRoute: AdministrationRoute,
         units: String?,
@@ -89,6 +93,7 @@ fun ChooseDoseCustomUnitScreen(
 ) {
     viewModel.customUnit?.let { customUnitUnwrapped ->
         ChooseDoseCustomUnitScreen(
+            navigateBack = navigateBack,
             customUnit = customUnitUnwrapped,
             roaDose = viewModel.roaDose,
             doseText = viewModel.doseText,
@@ -190,10 +195,22 @@ fun ChooseDoseCustomUnitScreen(
     useUnknownDoseAndNavigate: () -> Unit,
     currentDoseClass: DoseClass?,
     customUnitCalculationText: String?,
+    navigateBack: () -> Unit = {},
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(customUnit.name) })
+            TopAppBar(
+                title = { Text(customUnit.name) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         },
         floatingActionButton = {
             if (isValidDose) {

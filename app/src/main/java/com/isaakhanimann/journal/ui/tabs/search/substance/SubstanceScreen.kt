@@ -19,6 +19,7 @@
 package com.isaakhanimann.journal.ui.tabs.search.substance
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -163,6 +164,7 @@ fun SubstanceScreen(
 ) {
     val substance = substanceWithCategories.substance
     val uriHandler = LocalUriHandler.current
+    BackHandler(onBack = navigateBack)
     val displayName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substance.name, substance.commonNames)
     Scaffold(
         topBar = {

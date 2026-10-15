@@ -72,7 +72,7 @@ fun NavGraphBuilder.journalGraph(navController: NavHostController) {
             EditTimedNoteScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<TimelineScreenRoute> {
-            TimelineScreen()
+            TimelineScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<VolumetricDosingOnJournalTabRoute> {
             VolumetricDosingScreen(navigateBack = navController::popBackStack)
@@ -133,12 +133,15 @@ fun NavGraphBuilder.journalGraph(navController: NavHostController) {
         composableWithTransitions<ExplainTimelineOnJournalTabRoute> {
             ExplainTimelineScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions<SaferSniffingRouteOnJournalTab> { SaferSniffingScreen() }
+        composableWithTransitions<SaferSniffingRouteOnJournalTab> {
+            SaferSniffingScreen(navigateBack = navController::popBackStack)
+        }
         composableWithTransitions<CalendarRoute> {
             CalendarJournalScreen(
                 navigateToExperiencePopNothing = { experienceId ->
                     navController.navigate(ExperienceRoute(experienceId))
                 },
+                navigateBack = navController::popBackStack
             )
         }
     }

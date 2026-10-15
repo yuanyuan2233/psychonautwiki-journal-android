@@ -41,12 +41,14 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
                 },
                 navigateToCustomSubstanceChooseRoute = { customSubstanceName ->
                     navController.navigate(CustomSubstanceChooseRouteRoute(customSubstanceName))
-                }
+                },
+                navigateBack = { navController.popBackStack() }
             )
         }
         composableWithTransitions<CustomSubstanceChooseRouteRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<CustomSubstanceChooseRouteRoute>()
             CustomSubstanceChooseRouteScreen(
+                navigateBack = navController::popBackStack,
                 onRouteTap = { administrationRoute ->
                     navController.navigate(
                         FinishAddCustomUnitRoute(
@@ -60,6 +62,7 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
         composableWithTransitions<ChooseRouteOfAddCustomUnitRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<ChooseRouteOfAddCustomUnitRoute>()
             ChooseRouteDuringAddCustomUnitScreen(
+                navigateBack = navController::popBackStack,
                 onRouteChosen = { administrationRoute ->
                     navController.navigate(
                         FinishAddCustomUnitRoute(
@@ -72,6 +75,7 @@ fun NavGraphBuilder.addCustomUnitGraph(navController: NavController) {
         }
         composableWithTransitions<FinishAddCustomUnitRoute> {
             FinishAddCustomUnitScreen(
+                navigateBack = navController::popBackStack,
                 dismissAddCustomUnit = {
                     navController.popBackStack(
                         route = AddCustomUnitsChooseSubstanceScreenRoute,

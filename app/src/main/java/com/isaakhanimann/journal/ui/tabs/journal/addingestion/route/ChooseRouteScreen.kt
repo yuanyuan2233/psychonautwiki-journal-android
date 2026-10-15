@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.addingestion.route
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -63,6 +64,7 @@ import com.isaakhanimann.journal.ui.tabs.journal.getLocalizedNameRes
 
 @Composable
 fun ChooseRouteScreen(
+    navigateBack: () -> Unit = {},
     navigateToChooseDose: (administrationRoute: AdministrationRoute) -> Unit,
     navigateToRouteExplanationScreen: () -> Unit,
     viewModel: ChooseRouteViewModel = hiltViewModel()
@@ -82,6 +84,7 @@ fun ChooseRouteScreen(
                 navigateToChooseDose(route)
             }
         },
+        navigateBack = navigateBack,
         navigateToRouteExplanationScreen = navigateToRouteExplanationScreen,
         isShowingInjectionDialog = viewModel.isShowingInjectionDialog,
         navigateWithCurrentRoute = {
@@ -124,24 +127,36 @@ fun ChooseRouteScreen(
     pwRoutes: List<AdministrationRoute>,
     otherRoutesChunked: List<List<AdministrationRoute>>,
     onRouteTapped: (route: AdministrationRoute) -> Unit,
+    navigateBack: () -> Unit = {},
     navigateToRouteExplanationScreen: () -> Unit,
     isShowingInjectionDialog: Boolean,
     navigateWithCurrentRoute: () -> Unit,
     dismissInjectionDialog: () -> Unit,
     substanceName: String,
 ) {
+    BackHandler(onBack = {
+        if (showOtherRoutes && pwRoutes.isNotEmpty()) {
+            onChangeOfShowOtherRoutes(false)
+        } else {
+            navigateBack()
+        }
+    })
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.journal_substance_route, substanceName)) },
                 navigationIcon = {
-                    if (showOtherRoutes && pwRoutes.isNotEmpty()) {
-                        IconButton(onClick = { onChangeOfShowOtherRoutes(false) }) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = stringResource(R.string.journal_action_back)
-                            )
+                    IconButton(onClick = {
+                        if (showOtherRoutes && pwRoutes.isNotEmpty()) {
+                            onChangeOfShowOtherRoutes(false)
+                        } else {
+                            navigateBack()
                         }
+                    }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
                     }
                 },
                 actions = {

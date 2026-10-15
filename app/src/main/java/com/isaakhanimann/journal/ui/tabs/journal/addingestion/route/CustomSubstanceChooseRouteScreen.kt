@@ -26,8 +26,13 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -49,10 +54,24 @@ fun CustomChooseRouteScreenPreview() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomSubstanceChooseRouteScreen(onRouteTap: (AdministrationRoute) -> Unit) {
+fun CustomSubstanceChooseRouteScreen(
+    onRouteTap: (AdministrationRoute) -> Unit,
+    navigateBack: () -> Unit = {}
+) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.journal_route)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.journal_route)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(modifier = Modifier.padding(padding)) {

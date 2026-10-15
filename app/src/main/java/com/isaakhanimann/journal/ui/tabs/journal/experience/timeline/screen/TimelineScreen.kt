@@ -52,17 +52,24 @@ import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.YOU
 import com.isaakhanimann.journal.ui.tabs.journal.experience.TimelineDisplayOption
 import com.isaakhanimann.journal.ui.tabs.journal.experience.components.TimeDisplayOption
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import com.isaakhanimann.journal.ui.tabs.journal.experience.timeline.AllTimelines
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun TimelineScreen(
+    navigateBack: () -> Unit = {},
     viewModel: TimelineScreenViewModel = hiltViewModel()
 ) {
     TimelineScreen(
         title = viewModel.consumerName,
         timelineDisplayOption = viewModel.timelineDisplayOptionFlow.collectAsState().value,
         timeDisplayOption = viewModel.timeDisplayOptionFlow.collectAsState().value,
+        navigateBack = navigateBack,
     )
 }
 
@@ -72,11 +79,21 @@ fun TimelineScreen(
      title: String,
      timelineDisplayOption: TimelineDisplayOption,
      timeDisplayOption: TimeDisplayOption,
+     navigateBack: () -> Unit = {},
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (title == YOU) stringResource(R.string.journal_you) else title) }
+                title = { Text(if (title == YOU) stringResource(R.string.journal_you) else title) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
             )
         }
     ) { padding ->

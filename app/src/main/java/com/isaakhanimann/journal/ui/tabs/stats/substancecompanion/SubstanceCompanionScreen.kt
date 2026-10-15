@@ -57,10 +57,16 @@ import com.isaakhanimann.journal.ui.tabs.search.substance.roa.ToleranceSection
 import com.isaakhanimann.journal.ui.theme.JournalTheme
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 import com.isaakhanimann.journal.ui.utils.getDateWithWeekdayText
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import com.isaakhanimann.journal.ui.utils.getShortTimeText
 
 @Composable
 fun SubstanceCompanionScreen(
+    navigateBack: () -> Unit = {},
     viewModel: SubstanceCompanionViewModel = hiltViewModel()
 ) {
     val companion = viewModel.thisCompanionFlow.collectAsState().value
@@ -75,7 +81,8 @@ fun SubstanceCompanionScreen(
             ingestionBursts = viewModel.ingestionBurstsFlow.collectAsState().value,
             tolerance = viewModel.tolerance,
             crossTolerances = viewModel.crossTolerances,
-            consumerName = viewModel.consumerName
+            consumerName = viewModel.consumerName,
+            navigateBack = navigateBack
         )
     }
 }
@@ -107,8 +114,10 @@ fun SubstanceCompanionScreen(
     ingestionBursts: List<IngestionsBurst>,
     tolerance: Tolerance?,
     crossTolerances: List<String>,
-    consumerName: String? = null
+    consumerName: String? = null,
+    navigateBack: () -> Unit = {}
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
             val displayName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substanceCompanion.substanceName)
@@ -117,7 +126,17 @@ fun SubstanceCompanionScreen(
             } else {
                 "$displayName ($consumerName)"
             }
-            TopAppBar(title = { Text(title) })
+            TopAppBar(
+                title = { Text(title) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         LazyColumn(

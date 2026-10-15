@@ -57,6 +57,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
@@ -65,14 +67,16 @@ fun CustomUnitsScreen(
     navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
     navigateToAddCustomUnit: () -> Unit,
     navigateToCustomUnitArchive: () -> Unit,
-    ) {
+    navigateBack: () -> Unit = {},
+) {
     CustomUnitsScreenContent(
         filteredUnits = viewModel.filteredCustomUnitsFlow.collectAsState().value,
         navigateToEditCustomUnit = navigateToEditCustomUnit,
         navigateToAddCustomUnit = navigateToAddCustomUnit,
         navigateToCustomUnitArchive = navigateToCustomUnitArchive,
         searchText = viewModel.searchTextFlow.collectAsState().value,
-        onSearch = viewModel::onSearch
+        onSearch = viewModel::onSearch,
+        navigateBack = navigateBack
     )
 }
 
@@ -101,11 +105,21 @@ fun CustomUnitsScreenContent(
     navigateToCustomUnitArchive: () -> Unit,
     searchText: String,
     onSearch: (String) -> Unit,
+    navigateBack: () -> Unit = {},
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.settings_custom_units_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     IconButton(onClick = navigateToCustomUnitArchive) {
                         Icon(Icons.Default.Inventory, contentDescription = stringResource(R.string.settings_custom_units_go_to_archive))

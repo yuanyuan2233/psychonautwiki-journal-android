@@ -52,6 +52,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.IconButton
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
@@ -60,10 +63,21 @@ import com.isaakhanimann.journal.ui.theme.minimumTouchTargetHeight
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun DrugTestingScreen() {
+fun DrugTestingScreen(navigateBack: () -> Unit = {}) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.safer_drug_testing_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.safer_drug_testing_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(

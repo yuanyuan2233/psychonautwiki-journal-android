@@ -35,13 +35,15 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.relocation.BringIntoViewRequester
-import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.verticalScroll
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ContentCopy
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.ButtonDefaults
@@ -50,6 +52,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -90,11 +93,13 @@ import java.time.LocalDateTime
 
 @Composable
 fun FinishIngestionScreen(
+    navigateBack: () -> Unit = {},
     dismissAddIngestionScreens: () -> Unit,
     viewModel: FinishIngestionScreenViewModel = hiltViewModel()
 ) {
     val localDateTime = viewModel.localDateTimeStartFlow.collectAsState().value
     FinishIngestionScreen(
+        navigateBack = navigateBack,
         createSaveAndDismissAfter = {
             viewModel.createSaveAndDismissAfter(dismiss = dismissAddIngestionScreens)
         },
@@ -196,13 +201,23 @@ fun FinishIngestionScreen(
     isEnteredTitleOk: Boolean,
     consumerName: String,
     onChangeOfConsumerName: (String) -> Unit,
-    consumerNamesSorted: List<String>
+    consumerNamesSorted: List<String>,
+    navigateBack: () -> Unit = {}
 ) {
+    BackHandler(onBack = navigateBack)
     val focusManager = LocalFocusManager.current
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.journal_substance_ingestion, substanceName)) }
+                title = { Text(stringResource(R.string.journal_substance_ingestion, substanceName)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
             )
         },
         floatingActionButton = {

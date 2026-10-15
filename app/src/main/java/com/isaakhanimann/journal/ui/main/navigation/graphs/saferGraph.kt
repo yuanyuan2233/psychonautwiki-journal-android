@@ -73,11 +73,14 @@ fun NavGraphBuilder.saferGraph(navController: NavHostController) {
             DoseExplanationScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<AdministrationRouteExplanationRouteOnSaferTab> {
-            RouteExplanationScreen()
+            RouteExplanationScreen(navigateBack = navController::popBackStack)
         }
-        composableWithTransitions<DrugTestingRoute> { DrugTestingScreen() }
+        composableWithTransitions<DrugTestingRoute> {
+            DrugTestingScreen(navigateBack = navController::popBackStack)
+        }
         composableWithTransitions<DosageGuideRoute> {
             DoseGuideScreen(
+                navigateBack = navController::popBackStack,
                 navigateToDoseClassification = {
                     navController.navigate(DosageExplanationRouteOnSaferTab)
                 },
@@ -90,7 +93,7 @@ fun NavGraphBuilder.saferGraph(navController: NavHostController) {
             VolumetricDosingScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<ReagentTestingRoute> {
-            ReagentTestingScreen()
+            ReagentTestingScreen(navigateBack = navController::popBackStack)
         }
     }
 }

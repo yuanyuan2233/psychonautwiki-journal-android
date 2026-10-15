@@ -44,6 +44,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
     ) {
         composableWithTransitions<AddIngestionSearchRoute> {
             AddIngestionSearchScreen(
+                navigateBack = navController::popBackStack,
                 navigateToCheckInteractions = { substanceName ->
                     navController.navigate(CheckInteractionsRoute(substanceName))
                 },
@@ -108,6 +109,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         composableWithTransitions<CheckInteractionsRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<CheckInteractionsRoute>()
             CheckInteractionsScreen(
+                navigateBack = navController::popBackStack,
                 navigateToNext = {
                     navController.navigate(ChooseRouteOfAddIngestionRoute(substanceName = route.substanceName))
                 },
@@ -116,6 +118,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         composableWithTransitions<CheckSaferUseRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<CheckSaferUseRoute>()
             CheckSaferUseScreen(
+                navigateBack = navController::popBackStack,
                 navigateToNext = {
                     navController.navigate(CheckInteractionsRoute(substanceName = route.substanceName))
                 },
@@ -123,6 +126,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         }
         composableWithTransitions<ChooseDoseCustomUnitRoute> {
             ChooseDoseCustomUnitScreen(
+                navigateBack = navController::popBackStack,
                 navigateToChooseTimeAndMaybeColor = { administrationRoute: AdministrationRoute,
                                                       units: String?,
                                                       isEstimate: Boolean,
@@ -155,6 +159,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         composableWithTransitions<ChooseRouteOfAddIngestionRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<ChooseRouteOfAddIngestionRoute>()
             ChooseRouteScreen(
+                navigateBack = navController::popBackStack,
                 navigateToChooseDose = { administrationRoute ->
                     navController.navigate(
                         ChooseDoseRoute(
@@ -171,6 +176,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         composableWithTransitions<CustomSubstanceChooseRouteRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<CustomSubstanceChooseRouteRoute>()
             CustomSubstanceChooseRouteScreen(
+                navigateBack = navController::popBackStack,
                 onRouteTap = { administrationRoute ->
                     navController.navigate(
                         ChooseCustomSubstanceDoseRoute(
@@ -184,6 +190,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         composableWithTransitions<ChooseCustomSubstanceDoseRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<ChooseCustomSubstanceDoseRoute>()
             CustomSubstanceChooseDoseScreen(
+                navigateBack = navController::popBackStack,
                 navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
                     navController.navigate(
                         FinishIngestionRoute(
@@ -213,6 +220,7 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         composableWithTransitions<ChooseDoseRoute> { backStackEntry ->
             val route = backStackEntry.toRoute<ChooseDoseRoute>()
             ChooseDoseScreen(
+                navigateBack = navController::popBackStack,
                 navigateToChooseTimeAndMaybeColor = { units, isEstimate, dose, estimatedDoseStandardDeviation ->
                     navController.navigate(
                         FinishIngestionRoute(
@@ -244,16 +252,18 @@ fun NavGraphBuilder.addIngestionGraph(navController: NavController) {
         }
         composableWithTransitions<FinishIngestionRoute> {
             FinishIngestionScreen(
+                navigateBack = navController::popBackStack,
                 dismissAddIngestionScreens = {
                     navController.popBackStack(route = AddIngestionRoute, inclusive = true)
                 },
             )
         }
         composableWithTransitions<AdministrationRouteExplanationRouteOnJournalTab> {
-            RouteExplanationScreen()
+            RouteExplanationScreen(navigateBack = navController::popBackStack)
         }
         composableWithTransitions<FinishAddCustomUnitRoute> {
             FinishAddCustomUnitScreen(
+                navigateBack = navController::popBackStack,
                 dismissAddCustomUnit = { customUnitId ->
                     navController.navigate(ChooseDoseCustomUnitRoute(customUnitId = customUnitId)) {
                         popUpTo(AddIngestionSearchRoute)

@@ -27,12 +27,15 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.outlined.OpenInBrowser
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -54,12 +57,21 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun RouteExplanationScreen() {
+fun RouteExplanationScreen(navigateBack: () -> Unit = {}) {
+    BackHandler(onBack = navigateBack)
     val uriHandler = LocalUriHandler.current
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.safer_routes_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     TextButton(
                         onClick = { uriHandler.openUri(AdministrationRoute.PSYCHONAUT_WIKI_ARTICLE_URL) },

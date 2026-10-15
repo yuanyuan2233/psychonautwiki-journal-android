@@ -39,6 +39,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.R
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
@@ -55,13 +60,23 @@ fun DoseGuideScreenPreview() {
 @Composable
 fun DoseGuideScreen(
     navigateToDoseClassification: () -> Unit,
-    navigateToVolumetricDosing: () -> Unit
+    navigateToVolumetricDosing: () -> Unit,
+    navigateBack: () -> Unit = {}
 ) {
+    BackHandler(onBack = navigateBack)
     val uriHandler = LocalUriHandler.current
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.safer_dose_guide_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     TextButton(
                         onClick = { uriHandler.openUri("https://psychonautwiki.org/wiki/Dosage") },

@@ -19,6 +19,7 @@
 package com.isaakhanimann.journal.ui.tabs.settings.customunits.add
 
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,6 +32,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Keyboard
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -69,11 +71,13 @@ import com.isaakhanimann.journal.ui.tabs.search.substancerow.SubstanceRow
 fun AddIngestionSearchScreen(
     navigateToChooseRoute: (substanceName: String) -> Unit,
     navigateToCustomSubstanceChooseRoute: (customSubstanceName: String) -> Unit,
+    navigateBack: () -> Unit = {},
     viewModel: AddIngestionSearchViewModel = hiltViewModel()
 ) {
     AddIngestionSearchScreen(
         navigateToChooseRoute = navigateToChooseRoute,
         navigateToCustomSubstanceChooseRoute = navigateToCustomSubstanceChooseRoute,
+        navigateBack = navigateBack,
         searchText = viewModel.searchTextFlow.collectAsState().value,
         onChangeSearchText = {
             viewModel.updateSearchText(it)
@@ -91,7 +95,9 @@ private fun AddIngestionSearchScreen(
     onChangeSearchText: (searchText: String) -> Unit,
     filteredSubstances: List<SubstanceModel>,
     filteredCustomSubstances: List<CustomSubstance>,
+    navigateBack: () -> Unit = {},
 ) {
+    BackHandler(onBack = navigateBack)
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
@@ -125,10 +131,12 @@ private fun AddIngestionSearchScreen(
                     .clearAndSetSemantics { },
                 placeholder = { Text(text = stringResource(R.string.settings_search_substances)) },
                 leadingIcon = {
-                    Icon(
-                        Icons.Default.Search,
-                        contentDescription = stringResource(R.string.settings_search),
-                    )
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back),
+                        )
+                    }
                 },
                 trailingIcon = {
                     Row {

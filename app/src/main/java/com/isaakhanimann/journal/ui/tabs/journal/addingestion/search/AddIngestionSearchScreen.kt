@@ -34,7 +34,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Keyboard
 import androidx.compose.material.icons.filled.Search
@@ -80,6 +82,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun AddIngestionSearchScreen(
+    navigateBack: () -> Unit = {},
     navigateToCheckInteractions: (substanceName: String) -> Unit,
     navigateToCheckSaferUse: (substanceName: String) -> Unit,
     navigateToChooseRoute: (substanceName: String) -> Unit,
@@ -93,6 +96,7 @@ fun AddIngestionSearchScreen(
 ) {
     val searchText = viewModel.searchTextFlow.collectAsState().value
     AddIngestionSearchScreen(
+        navigateBack = navigateBack,
         navigateToCheckInteractions = navigateToCheckInteractions,
         navigateToCheckSaferUse = navigateToCheckSaferUse,
         navigateToChooseRoute = navigateToChooseRoute,
@@ -118,6 +122,7 @@ fun AddIngestionSearchScreen(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AddIngestionSearchScreen(
+    navigateBack: () -> Unit = {},
     navigateToCheckInteractions: (substanceName: String) -> Unit,
     navigateToChooseRoute: (substanceName: String) -> Unit,
     navigateToCheckSaferUse: (substanceName: String) -> Unit,
@@ -134,6 +139,7 @@ fun AddIngestionSearchScreen(
     filteredCustomUnits: List<CustomUnit>,
     filteredCustomSubstances: List<CustomSubstance>
 ) {
+    BackHandler(onBack = navigateBack)
     val focusRequester = remember { FocusRequester() }
     var isFocused by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
@@ -164,10 +170,12 @@ fun AddIngestionSearchScreen(
                     }.clearAndSetSemantics {  },
                 placeholder = { Text(text = stringResource(R.string.journal_search_substances)) },
                 leadingIcon = {
-                    Icon(
-                        Icons.Default.Search,
-                        contentDescription = stringResource(R.string.journal_action_search),
-                    )
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back),
+                        )
+                    }
                 },
                 trailingIcon = {
                     Row {

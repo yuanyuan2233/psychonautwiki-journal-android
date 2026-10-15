@@ -18,9 +18,11 @@
 
 package com.isaakhanimann.journal.ui.tabs.settings.customunits.edit
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -154,11 +156,20 @@ private fun EditCustomUnitScreenContent(
     onChangeOfIsArchived: (Boolean) -> Unit,
     onDelete: () -> Unit
 ) {
+    BackHandler(onBack = dismiss)
     Scaffold(
         topBar = {
             val localizedSubstanceName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substanceName)
             TopAppBar(
                 title = { Text(stringResource(R.string.settings_substance_unit_title, localizedSubstanceName)) },
+                navigationIcon = {
+                    IconButton(onClick = dismiss) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     var isShowingDeleteDialog by remember { mutableStateOf(false) }
                     IconButton(onClick = { isShowingDeleteDialog = true }) {

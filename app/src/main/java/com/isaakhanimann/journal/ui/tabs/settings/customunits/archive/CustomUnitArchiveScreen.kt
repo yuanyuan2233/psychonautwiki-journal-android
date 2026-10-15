@@ -37,6 +37,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.data.room.experiences.entities.CustomUnit
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import com.isaakhanimann.journal.data.substances.AdministrationRoute
 import com.isaakhanimann.journal.ui.tabs.settings.customunits.CustomUnitRow
 import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
@@ -45,10 +50,12 @@ import com.isaakhanimann.journal.ui.tabs.stats.EmptyScreenDisclaimer
 fun CustomUnitArchiveScreen(
     viewModel: CustomUnitArchiveViewModel = hiltViewModel(),
     navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
+    navigateBack: () -> Unit = {},
 ) {
     CustomUnitArchiveScreenContent(
         customUnits = viewModel.customUnitsFlow.collectAsState().value,
         navigateToEditCustomUnit = navigateToEditCustomUnit,
+        navigateBack = navigateBack
     )
 }
 
@@ -93,10 +100,22 @@ fun CustomUnitArchiveScreenPreview() {
 fun CustomUnitArchiveScreenContent(
     customUnits: List<CustomUnit>,
     navigateToEditCustomUnit: (customUnitId: Int) -> Unit,
+    navigateBack: () -> Unit = {},
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.settings_custom_unit_archive_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_custom_unit_archive_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Box(

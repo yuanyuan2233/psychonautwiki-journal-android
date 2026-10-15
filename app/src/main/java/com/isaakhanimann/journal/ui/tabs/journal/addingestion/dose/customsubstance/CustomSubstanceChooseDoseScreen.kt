@@ -32,7 +32,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.NavigateNext
 import androidx.compose.material.icons.filled.QuestionMark
 import androidx.compose.material.icons.outlined.OpenInBrowser
@@ -74,12 +76,14 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun CustomSubstanceChooseDoseScreen(
+    navigateBack: () -> Unit = {},
     navigateToChooseTimeAndMaybeColor: (units: String?, isEstimate: Boolean, dose: Double?, estimatedDoseStandardDeviation: Double?) -> Unit,
     navigateToCreateCustomUnit: () -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
     viewModel: CustomSubstanceChooseDoseViewModel = hiltViewModel()
 ) {
     CustomSubstanceChooseDoseScreen(
+        navigateBack = navigateBack,
         navigateToSaferSniffingScreen = navigateToSaferSniffingScreen,
         navigateToCreateCustomUnit = navigateToCreateCustomUnit,
         substanceName = viewModel.substanceName,
@@ -166,10 +170,21 @@ fun CustomSubstanceChooseDoseScreen(
     isValidPurity: Boolean,
     convertedDoseAndUnitText: String?,
     units: String,
+    navigateBack: () -> Unit = {}
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.journal_dose_title_format, substanceName, stringResource(administrationRoute.getLocalizedNameRes()))) },
+            TopAppBar(
+                title = { Text(stringResource(R.string.journal_dose_title_format, substanceName, stringResource(administrationRoute.getLocalizedNameRes()))) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     var isShowingUnknownDoseDialog by remember { mutableStateOf(false) }
                     IconButton(onClick = { isShowingUnknownDoseDialog = true }) {

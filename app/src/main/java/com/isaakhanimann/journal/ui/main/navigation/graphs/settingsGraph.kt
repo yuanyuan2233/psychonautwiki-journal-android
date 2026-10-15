@@ -56,14 +56,17 @@ fun NavGraphBuilder.settingsGraph(navController: NavHostController) {
                 },
             )
         }
-        composableWithTransitions<FAQRoute> { FAQScreen() }
-        composableWithTransitions<DonateRoute> { DonateScreen() }
-        composableWithTransitions<CombinationSettingsRoute> { CombinationSettingsScreen() }
-        composableWithTransitions<SubstanceColorsRoute> { SubstanceColorsScreen() }
+        composableWithTransitions<FAQRoute> { FAQScreen(navigateBack = navController::popBackStack) }
+        composableWithTransitions<DonateRoute> { DonateScreen(navigateBack = navController::popBackStack) }
+        composableWithTransitions<CombinationSettingsRoute> { CombinationSettingsScreen(navigateBack = navController::popBackStack) }
+        composableWithTransitions<SubstanceColorsRoute> { SubstanceColorsScreen(navigateBack = navController::popBackStack) }
         composableWithTransitions<CustomUnitArchiveRoute> {
-            CustomUnitArchiveScreen(navigateToEditCustomUnit = { customUnitId ->
-                navController.navigate(EditCustomUnitRoute(customUnitId))
-            })
+            CustomUnitArchiveScreen(
+                navigateToEditCustomUnit = { customUnitId ->
+                    navController.navigate(EditCustomUnitRoute(customUnitId))
+                },
+                navigateBack = navController::popBackStack
+            )
         }
         addCustomUnitGraph(navController)
         composableWithTransitions<CustomUnitsRoute> {
@@ -76,7 +79,8 @@ fun NavGraphBuilder.settingsGraph(navController: NavHostController) {
                 },
                 navigateToCustomUnitArchive = {
                     navController.navigate(CustomUnitArchiveRoute)
-                }
+                },
+                navigateBack = navController::popBackStack
             )
         }
         composableWithTransitions<EditCustomUnitRoute> {

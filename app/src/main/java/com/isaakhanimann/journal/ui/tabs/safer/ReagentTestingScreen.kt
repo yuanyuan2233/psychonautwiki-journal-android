@@ -42,17 +42,31 @@ import androidx.compose.ui.unit.dp
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionText
 import com.isaakhanimann.journal.ui.tabs.search.substance.VerticalSpace
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun ReagentTestingScreen() {
+fun ReagentTestingScreen(navigateBack: () -> Unit = {}) {
+    BackHandler(onBack = navigateBack)
     val uriHandler = LocalUriHandler.current
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.safer_reagent_testing_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     TextButton(
                         onClick = { uriHandler.openUri("https://psychonautwiki.org/wiki/Reagent_testing_kits") },

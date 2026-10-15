@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.settings.customunits.add
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -41,20 +42,32 @@ import com.isaakhanimann.journal.ui.tabs.journal.addingestion.route.ChooseRouteV
 @Composable
 fun ChooseRouteDuringAddCustomUnitScreen(
     onRouteChosen: (administrationRoute: AdministrationRoute) -> Unit,
+    navigateBack: () -> Unit = {},
     viewModel: ChooseRouteViewModel = hiltViewModel()
 ) {
+    BackHandler(onBack = {
+        if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
+            viewModel.showOtherRoutes = false
+        } else {
+            navigateBack()
+        }
+    })
     Scaffold(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.settings_choose_route_title, viewModel.substanceName)) },
                 navigationIcon = {
-                    if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
-                        IconButton(onClick = { viewModel.showOtherRoutes = false }) {
-                            Icon(
-                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = stringResource(R.string.settings_back)
-                            )
+                    IconButton(onClick = {
+                        if (viewModel.showOtherRoutes && viewModel.pwRoutes.isNotEmpty()) {
+                            viewModel.showOtherRoutes = false
+                        } else {
+                            navigateBack()
                         }
+                    }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.settings_back)
+                        )
                     }
                 }
             )

@@ -28,15 +28,15 @@ data class TopLevelRoute<T : Any>(
     val route: T,
     val filledIcon: ImageVector,
     val outlinedIcon: ImageVector,
-    val startRoute: KClass<*>
+    val startRoute: Any
 )
 
 val topLevelRoutes = listOf(
-    TopLevelRoute(R.string.nav_stats, StatsTopLevelRoute, Icons.Filled.BarChart, Icons.Outlined.BarChart, StatsScreenRoute::class),
-    TopLevelRoute(R.string.nav_journal, JournalTopLevelRoute, Icons.Filled.Book, Icons.Outlined.Book, JournalScreenRoute::class),
-    TopLevelRoute(R.string.nav_drugs, DrugsTopLevelRoute, Icons.Filled.Medication, Icons.Outlined.Medication, DrugsScreenRoute::class),
-    TopLevelRoute(R.string.nav_safer, SaferUseTopLevelRoute, Icons.Filled.HealthAndSafety, Icons.Outlined.HealthAndSafety, SaferUseScreenRoute::class),
-    TopLevelRoute(R.string.nav_settings, SettingsTopLevelRoute, Icons.Filled.Settings, Icons.Outlined.Settings, SettingsScreenRoute::class)
+    TopLevelRoute(R.string.nav_stats, StatsTopLevelRoute, Icons.Filled.BarChart, Icons.Outlined.BarChart, StatsScreenRoute),
+    TopLevelRoute(R.string.nav_journal, JournalTopLevelRoute, Icons.Filled.Book, Icons.Outlined.Book, JournalScreenRoute),
+    TopLevelRoute(R.string.nav_drugs, DrugsTopLevelRoute, Icons.Filled.Medication, Icons.Outlined.Medication, DrugsScreenRoute),
+    TopLevelRoute(R.string.nav_safer, SaferUseTopLevelRoute, Icons.Filled.HealthAndSafety, Icons.Outlined.HealthAndSafety, SaferUseScreenRoute),
+    TopLevelRoute(R.string.nav_settings, SettingsTopLevelRoute, Icons.Filled.Settings, Icons.Outlined.Settings, SettingsScreenRoute)
 )
 
 @Serializable

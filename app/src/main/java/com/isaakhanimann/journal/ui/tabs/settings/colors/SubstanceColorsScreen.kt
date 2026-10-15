@@ -42,18 +42,25 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.isaakhanimann.journal.data.room.experiences.entities.AdaptiveColor
 import com.isaakhanimann.journal.data.room.experiences.entities.SubstanceCompanion
 import com.isaakhanimann.journal.ui.tabs.journal.addingestion.time.ColorPicker
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.ui.res.stringResource
 import com.isaakhanimann.journal.R
+import com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun SubstanceColorsScreen(
+    navigateBack: () -> Unit = {},
     viewModel: SubstanceColorsViewModel = hiltViewModel(),
 ) {
     LaunchedEffect(Unit) {
         viewModel.deleteUnusedSubstanceCompanions()
     }
     SubstanceColorsScreenContent(
+        navigateBack = navigateBack,
         substanceCompanions = viewModel.substanceCompanionsFlow.collectAsState().value,
         updateColor = viewModel::updateColor,
         alreadyUsedColors = viewModel.alreadyUsedColorsFlow.collectAsState().value,
@@ -89,11 +96,22 @@ fun SubstanceColorsScreenContent(
     substanceCompanions: List<SubstanceCompanion>,
     updateColor: (color: AdaptiveColor, substanceName: String) -> Unit,
     alreadyUsedColors: List<AdaptiveColor>,
-    otherColors: List<AdaptiveColor>
+    otherColors: List<AdaptiveColor>,
+    navigateBack: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.settings_substance_colors)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_substance_colors)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         },
     ) { padding ->
         LazyColumn(
@@ -111,7 +129,7 @@ fun SubstanceColorsScreenContent(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = substanceCompanion.substanceName,
+                        text = SubstanceLocalizationHelper.getLocalizedName(substanceCompanion.substanceName),
                         style = MaterialTheme.typography.titleMedium
                     )
                     ColorPicker(

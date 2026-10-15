@@ -32,6 +32,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.activity.compose.BackHandler
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.ui.res.stringResource
 import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.tabs.search.substance.SectionWithTitle
@@ -40,10 +45,21 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview
 @Composable
-fun FAQScreen() {
+fun FAQScreen(navigateBack: () -> Unit = {}) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.settings_faq_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_faq_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(

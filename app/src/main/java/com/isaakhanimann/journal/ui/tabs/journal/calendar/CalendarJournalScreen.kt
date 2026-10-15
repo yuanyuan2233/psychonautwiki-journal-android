@@ -18,6 +18,7 @@
 
 package com.isaakhanimann.journal.ui.tabs.journal.calendar
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -31,8 +32,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
@@ -90,7 +95,9 @@ fun CalendarJournalScreenPreview() {
 @Composable
 fun CalendarJournalScreen(
     navigateToExperiencePopNothing: (experienceId: Int) -> Unit,
+    navigateBack: () -> Unit = {},
 ) {
+    BackHandler(onBack = navigateBack)
     val currentMonth = remember { YearMonth.now() }
     val startMonth = remember { currentMonth.minusYears(20) }
     val endMonth = remember { currentMonth.plusMonths(10) }
@@ -106,6 +113,14 @@ fun CalendarJournalScreen(
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.journal_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                },
                 actions = {
                     val coroutineScope = rememberCoroutineScope()
                     TextButton(onClick = {

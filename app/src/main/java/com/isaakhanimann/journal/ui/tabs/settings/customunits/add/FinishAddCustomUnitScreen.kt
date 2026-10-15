@@ -31,10 +31,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -83,12 +88,14 @@ import java.time.Instant
 @Composable
 fun FinishAddCustomUnitScreen(
     dismissAddCustomUnit: (customUnitId: Int) -> Unit,
+    navigateBack: () -> Unit = {},
     viewModel: FinishAddCustomUnitViewModel = hiltViewModel()
 ) {
     FinishAddCustomUnitScreenContent(
         substanceName = viewModel.substanceName,
         administrationRoute = viewModel.administrationRoute,
         roaDose = viewModel.roaDose,
+        navigateBack = navigateBack,
         dismiss = {
             viewModel.createSaveAndDismissAfter(dismiss = dismissAddCustomUnit)
         },
@@ -175,11 +182,23 @@ private fun FinishAddCustomUnitScreenContent(
     onChangeOfNote: (String) -> Unit,
     isArchived: Boolean,
     onChangeOfIsArchived: (Boolean) -> Unit,
+    navigateBack: () -> Unit = {}
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
             val localizedSubstanceName = com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getSubstanceDisplayName(substanceName)
-            TopAppBar(title = { Text(stringResource(R.string.settings_substance_unit_title, localizedSubstanceName)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_substance_unit_title, localizedSubstanceName)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         },
         floatingActionButton = {
             FloatingDoneButton(

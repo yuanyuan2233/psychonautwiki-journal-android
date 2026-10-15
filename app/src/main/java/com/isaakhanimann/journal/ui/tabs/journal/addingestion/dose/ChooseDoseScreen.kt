@@ -34,7 +34,9 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.NavigateNext
 import androidx.compose.material.icons.filled.Expand
 import androidx.compose.material.icons.filled.Warning
@@ -45,6 +47,7 @@ import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -85,6 +88,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun ChooseDoseScreen(
+    navigateBack: () -> Unit = {},
     navigateToChooseTimeAndMaybeColor: (units: String?, isEstimate: Boolean, dose: Double?, estimatedDoseStandardDeviation: Double?) -> Unit,
     navigateToVolumetricDosingScreenOnJournalTab: () -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
@@ -92,6 +96,7 @@ fun ChooseDoseScreen(
     viewModel: ChooseDoseViewModel = hiltViewModel()
 ) {
     ChooseDoseScreen(
+        navigateBack = navigateBack,
         navigateToVolumetricDosingScreen = navigateToVolumetricDosingScreenOnJournalTab,
         navigateToSaferSniffingScreen = navigateToSaferSniffingScreen,
         substanceName = viewModel.substance.name,
@@ -204,6 +209,7 @@ fun ChooseDoseScreenPreview2() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChooseDoseScreen(
+    navigateBack: () -> Unit = {},
     navigateToVolumetricDosingScreen: () -> Unit,
     navigateToSaferSniffingScreen: () -> Unit,
     substanceName: String,
@@ -229,9 +235,20 @@ fun ChooseDoseScreen(
     onChangeOfUnits: (units: String) -> Unit,
     navigateToCreateCustomUnit: () -> Unit,
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.journal_dose_title_format, substanceName, stringResource(administrationRoute.getLocalizedNameRes()))) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.journal_dose_title_format, substanceName, stringResource(administrationRoute.getLocalizedNameRes()))) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         },
         floatingActionButton = {
             if (isValidDose) {

@@ -44,7 +44,7 @@ fun NavGraphBuilder.statsGraph(navController: NavHostController) {
             )
         }
         composableWithTransitions<SubstanceCompanionRoute> {
-            SubstanceCompanionScreen()
+            SubstanceCompanionScreen(navigateBack = navController::popBackStack)
         }
     }
 }

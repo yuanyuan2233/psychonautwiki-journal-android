@@ -27,8 +27,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -48,8 +52,12 @@ import com.isaakhanimann.journal.R
 import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
-fun CombinationSettingsScreen(viewModel: CombinationSettingsViewModel = hiltViewModel()) {
+fun CombinationSettingsScreen(
+    navigateBack: () -> Unit = {},
+    viewModel: CombinationSettingsViewModel = hiltViewModel()
+) {
     CombinationSettingsScreen(
+        navigateBack = navigateBack,
         substanceInteractions = viewModel.optionsFlow.collectAsState().value.map {
             SubstanceInteraction(
                 name = it.name,
@@ -85,11 +93,22 @@ fun CombinationSettingsPreview() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CombinationSettingsScreen(
-    substanceInteractions: List<SubstanceInteraction>
+    substanceInteractions: List<SubstanceInteraction>,
+    navigateBack: () -> Unit = {}
 ) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.settings_combinations_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.settings_combinations_title)) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
         }
     ) { padding ->
         Column(

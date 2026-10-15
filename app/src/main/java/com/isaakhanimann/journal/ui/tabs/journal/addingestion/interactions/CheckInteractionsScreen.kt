@@ -31,13 +31,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.activity.compose.BackHandler
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.WarningAmber
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -68,6 +71,7 @@ import com.isaakhanimann.journal.ui.theme.horizontalPadding
 
 @Composable
 fun CheckInteractionsScreen(
+    navigateBack: () -> Unit = {},
     navigateToNext: () -> Unit,
     viewModel: CheckInteractionsViewModel = hiltViewModel()
 ) {
@@ -78,6 +82,7 @@ fun CheckInteractionsScreen(
         dangerousInteractions = viewModel.dangerousInteractions,
         unsafeInteractions = viewModel.unsafeInteractions,
         uncertainInteractions = viewModel.uncertainInteractions,
+        navigateBack = navigateBack,
         navigateToNext = navigateToNext,
         dismissAlert = {
             viewModel.isShowingAlert = false
@@ -139,10 +144,24 @@ fun CheckInteractionsScreen(
     dangerousInteractions: List<String>,
     unsafeInteractions: List<String>,
     uncertainInteractions: List<String>,
+    navigateBack: () -> Unit = {},
     navigateToNext: () -> Unit
 ) {
+    BackHandler(onBack = navigateBack)
     Scaffold(
-        topBar = { TopAppBar(title = { Text(stringResource(R.string.journal_substance_interactions, com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(substanceName))) }) },
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(R.string.journal_substance_interactions, com.isaakhanimann.journal.ui.tabs.search.SubstanceLocalizationHelper.getLocalizedName(substanceName))) },
+                navigationIcon = {
+                    IconButton(onClick = navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.journal_action_back)
+                        )
+                    }
+                }
+            )
+        },
         floatingActionButton = {
             NextFAB(navigateToNext)
         }
